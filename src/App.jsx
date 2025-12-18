@@ -17,6 +17,16 @@ import {
 } from 'lucide-react';
 
 import profPic from './assets/prof-pic.png';
+import aceCart from './assets/ace-cart.png';
+import aceChat from './assets/ace-chat.png';
+import aceCheckout from './assets/ace-checkout.png';
+import aceChoices from './assets/ace-choices.png';
+import aceChoices2 from './assets/ace-choices2.png';
+import aceDeck from './assets/ace-deck.png';
+import aceEmail from './assets/ace-email.png';
+import aceFacial from './assets/ace-facial.png';
+import aceMenu from './assets/ace-menu.png';
+import aceMenu2 from './assets/ace-menu2.png';
 
 // --- Configuration & Data ---
 
@@ -149,9 +159,16 @@ const PORTFOLIO_DATA = {
         "Smart quiz flows, open-ended AI chat, owned-product uploads (“My Deck”), and image inputs all resolve into the same recommendation engine, keeping outputs consistent while allowing flexibility in how users engage."
       ],
       gallery: [
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200",
-        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1200",
-        "https://images.unsplash.com/photo-1504868584819-f8e905263543?q=80&w=1200"
+        aceCart,
+        aceChat,
+        aceCheckout,
+        aceChoices,
+        aceChoices2,
+        aceDeck,
+        aceEmail,
+        aceFacial,
+        aceMenu,
+        aceMenu2
       ]
     },
     {
