@@ -116,17 +116,17 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "04",
-      title: "AI-Driven Quiz Flow Personalisation",
-      context: "Generic quiz apps felt limited. We needed a tailored experience to educate customers on complex skincare.",
-      role: "Customized headless logic for Blu Atlas to auto-bundle products based on skin type.",
+      title: "Custom Quiz Flow - Product Matching at Scale (Supply)",
+      context: "Supply sells precision tools, but customers were struggling with choice. The problem wasn’t product quality or trust - it was decision anxiety at the point of entry. Existing “Find Your Razor” flows were static, over-explanatory, and failed to translate intent into a confident purchase. The challenge was to guide customers to the right tool quickly, without overwhelming them or turning the experience into a sales pitch.",
+      role: "I designed and built a fully custom, logic-driven quiz directly into the storefront, avoiding third-party quiz apps entirely. The flow was structured to feel lightweight and conversational while still capturing high-signal intent data. I owned the logic tree, UX pacing, copy tone, and implementation, and iterated based on real user behavior post-launch.",
       metrics: [
         { label: "Quiz Completion", before: "0%", after: "71%" },
         { label: "Quiz CVR", before: "N/A", after: "8.4%" }
       ],
       highlights: [
-        "Seamless Klaviyo data syncing.",
-        "Interactive progress tracking.",
-        "Zero-friction 'Add to Cart' from results."
+        "The quiz uses branching logic tied to shaving behavior, pain points, and desired outcomes rather than simple point tallies. This allowed each path to collapse into a single, confident recommendation instead of a comparison grid.",
+        "Built directly into the theme using custom sections and JavaScript, keeping performance tight and maintenance fully in-house. This avoided vendor lock-in and ensured the quiz could evolve alongside the storefront.",
+        "Cleaner attribution and higher downstream CVR."
       ],
       gallery: [
         "https://images.unsplash.com/photo-1551288049-bbda48658a7d?q=80&w=1200",
@@ -136,17 +136,17 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "05",
-      title: "Blu Atlas Performance Optimization",
-      context: "Global scaling required ultra-fast global performance. The legacy site struggled with heavy assets and scripts.",
-      role: "Cleaned up third-party script bloat and optimized image delivery pipelines.",
+      title: "AI Concierge for Skincare & Beardcare",
+      context: "As product lines expanded, customers needed more than single-product recommendations. They needed help building routines that matched their skin type, grooming habits, and tolerance for complexity. Traditional quizzes couldn’t handle nuance, and generic chatbots lacked brand and product awareness. The challenge was to replicate a high-touch in-store expert inside a Shopify experience - without breaking conversion flow.",
+      role: "I concepted Ace as a standalone assisted-selling product, not a feature. I designed the decision framework, UX flows, and interaction model across structured quizzes, AI chat, and image-based inputs. I defined how AI logic, product rules, and commerce systems interact safely, and built the Shopify cart integration so recommendations translate directly into revenue.",
       metrics: [
-        { label: "Lighthouse Score", before: "42", after: "94" },
+        { label: "Conversion Rate", before: "Baseline", after: "3.4%" },
         { label: "Bounce Rate", before: "58%", after: "41%" }
       ],
       highlights: [
-        "Critical CSS path injection.",
-        "Lazy-loading script manager.",
-        "Modern WebP/AVIF delivery."
+        "Product exclusions, compatibility rules, and brand logic were baked into the system’s “brain,” ensuring recommendations were accurate, safe, and aligned with Supply and Blu Atlas product lines.",
+        "Recommended routines are added directly to cart with pricing logic, discounts, and gifts applied in real time. No redirects, no manual rebuilding, and no fragile bundle hacks.",
+        "Smart quiz flows, open-ended AI chat, owned-product uploads (“My Deck”), and image inputs all resolve into the same recommendation engine, keeping outputs consistent while allowing flexibility in how users engage."
       ],
       gallery: [
         "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200",
@@ -156,17 +156,17 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "06",
-      title: "TechnoRV Subscription Migration",
-      context: "Migrating from Recharge to Skio to improve subscriber retention and lower management friction.",
-      role: "Lead migration engineer. Managed API data transfer and custom subscriber dashboard dev.",
+      title: "Build-a-Box Feature (Custom Product Bundling)",
+      context: "Customers wanted to create custom bundles, but existing Shopify bundle apps were either rigid, expensive, or introduced performance and maintenance issues. The goal was to offer a flexible mix-and-match experience without sacrificing speed, pricing accuracy, or brand control. The solution also needed to work across multiple brands with different product types and rules.",
+      role: "I designed and built a custom Build-a-Box system directly into the Shopify theme. The feature was implemented as both a standalone landing page and a modular section that could be injected anywhere on the site. I owned the UX, pricing logic, cart behavior, and multi-brand adaptability.",
       metrics: [
         { label: "Churn Rate", before: "8.2%", after: "5.4%" },
-        { label: "CS Tickets", before: "100/wk", after: "35/wk" }
+        { label: "CS Tickets", before: "100/wk", after: "55/wk" }
       ],
       highlights: [
-        "Zero-downtime migration.",
-        "Custom customer portal logic.",
-        "SMS-based management integration."
+        "Bundle pricing updates instantly as products are added or removed, including tiered discounts and brand-specific rules. This keeps the experience responsive and removes pricing ambiguity.",
+        "Built as a configurable section rather than a one-off page, allowing the same system to be reused across Supply, Blu Atlas, and Brute Magnetics with minimal changes.",
+        "Build-a-Box orders consistently outperform standard carts in AOV by encouraging intentional add-ons while keeping the flow simple and fast."
       ],
       gallery: [
         "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200",
@@ -176,17 +176,17 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "07",
-      title: "Benevolence LA Gift Personalization",
-      context: "Holiday gifting is peak season. We needed a way to add personal messages and gift wrapping without custom apps.",
-      role: "Built a native Liquid gifting engine that allows per-item messages and wrapping options.",
+      title: "ShopDeck: Shopify Developer Command Centre (Internal Tool)",
+      context: "Working across multiple Shopify themes makes small tasks slow and repetitive. Opening previews, accessing the editor, inspecting cart state, or grabbing context for dev tickets meant constant tab switching. The friction added up quickly.",
+      role: "I built ShopDeck as a Chrome extension that turns any Shopify storefront into a developer command layer. It runs directly on the page, detects Shopify context, and surfaces the actions you need instantly. I own the concept, UX, and implementation.",
       metrics: [
-        { label: "Gifting AOV", before: "$42", after: "$59" },
-        { label: "Wrapping Uptake", before: "2%", after: "14%" }
+        { label: "N/A", before: "N/A", after: "N/A" },
+        { label: "N/A", before: "N/A", after: "N/A" }
       ],
       highlights: [
-        "Per-item customization logic.",
-        "Inventory-linked gift wrap variants.",
-        "Mobile-optimized input UX."
+        "Open theme previews, jump to the editor, copy task markup, fetch live cart data, and log Shopify objects from a single on-page interface.",
+        "Surface navigation timing and performance signals without leaving the storefront or opening external tools.",
+        "Used daily by multiple developers, reducing context switching and standardizing debugging workflows."
       ],
       gallery: [
         "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1200",
@@ -196,17 +196,17 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "08",
-      title: "Foundry Internal 'ShopDeck' Tooling",
-      context: "Managing multiple Shopify themes was becoming inefficient. Developers needed a way to sync sections across brands.",
-      role: "Architected a custom CLI tool using Node.js to sync, deploy, and version control Liquid components.",
+      title: "Seamless Theme Migrations & Shared Architecture",
+      context: "Managing multiple Shopify stores with different themes sounds fine - until you try to scale. Every update became slower, riskier, and more repetitive. With OS 2.0 rolling out and design standards evolving, we needed a cleaner way to ship changes without breaking things across brands.",
+      role: "I led the migration of four production stores onto modern, OS 2.0-ready themes and set up a B2B wholesale store alongside them. To avoid repeating work, I built a private bootstrap theme on GitHub with reusable sections and patterns that could be shared across brands. I also put proper version control and rollback in place using GitHub Actions.",
       metrics: [
         { label: "Dev Velocity", before: "1x", after: "3.5x" },
         { label: "Error Rate", before: "High", after: "Near Zero" }
       ],
       highlights: [
-        "Cross-store component syncing.",
-        "Automated regression testing.",
-        "CI/CD pipeline for theme assets."
+        "Core sections and features live as modular components, making it easy to port functionality between Supply, Blu Atlas, Benevolence LA, and Brute Magnetics with minimal rework.",
+        "New features and stores now ship by enabling existing components instead of rebuilding from scratch, reducing risk and development time.",
+        "Shared architecture means tools like Elevar, Klaviyo, Recharge, Rebuy, Skio, and Timesact work out of the box across brands, with far fewer edge cases."
       ],
       gallery: [
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
@@ -408,10 +408,12 @@ const CaseStudyModal = ({ study, onClose }) => {
           </div>
         </div>
         <div className="space-y-24">
-          <div className="w-full">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-6 px-2">Visual Proof (Scrollable)</h4>
-            <ImageGallery images={gallery} />
-          </div>
+          {gallery.length > 0 && (
+            <div className="w-full">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-6 px-2">Visual Proof (Scrollable)</h4>
+              <ImageGallery images={gallery} />
+            </div>
+          )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             {metrics.length > 0 && (
               <div className="bg-black text-white p-12 rounded-[3rem] shadow-2xl relative overflow-hidden">
