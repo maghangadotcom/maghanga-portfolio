@@ -71,6 +71,12 @@ import supQuiz from './assets/sup-quiz.png';
 import supQuiz3 from './assets/sup-quiz3.png';
 import supQuiz4 from './assets/sup-quiz4.png';
 import supQuiz5 from './assets/sup-quiz5.png';
+import shopdeckCart from './assets/shopdeck-cart.png';
+import shopdeckDebug from './assets/shopdeck-debug.png';
+import shopdeckFetchCart from './assets/shopdeck-fetch-cart.png';
+import shopdeckMenu from './assets/shopdeck-menu.png';
+import shopdeckPerformance from './assets/shopdeck-performance.png';
+import shopdeckTheme from './assets/shopdeck-theme.png';
 
 // --- Configuration & Data ---
 
@@ -257,11 +263,7 @@ const PORTFOLIO_DATA = {
         "Built as a configurable section rather than a one-off page, allowing the same system to be reused across Supply, Blu Atlas, and Brute Magnetics with minimal changes.",
         "Build-a-Box orders consistently outperform standard carts in AOV by encouraging intentional add-ons while keeping the flow simple and fast."
       ],
-      gallery: [
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200",
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200",
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"
-      ]
+      gallery: []
     },
     {
       id: "07",
@@ -278,9 +280,12 @@ const PORTFOLIO_DATA = {
         "Used daily by multiple developers, reducing context switching and standardizing debugging workflows."
       ],
       gallery: [
-        "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1200",
-        "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1200",
-        "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200"
+        shopdeckCart,
+        shopdeckDebug,
+        shopdeckFetchCart,
+        shopdeckMenu,
+        shopdeckPerformance,
+        shopdeckTheme
       ]
     },
     {
@@ -297,11 +302,7 @@ const PORTFOLIO_DATA = {
         "New features and stores now ship by enabling existing components instead of rebuilding from scratch, reducing risk and development time.",
         "Shared architecture means tools like Elevar, Klaviyo, Recharge, Rebuy, Skio, and Timesact work out of the box across brands, with far fewer edge cases."
       ],
-      gallery: [
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
-        "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=1200",
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200"
-      ]
+      gallery: []
     }
   ]
 };
