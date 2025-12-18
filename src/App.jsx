@@ -27,6 +27,50 @@ import aceEmail from './assets/ace-email.png';
 import aceFacial from './assets/ace-facial.png';
 import aceMenu from './assets/ace-menu.png';
 import aceMenu2 from './assets/ace-menu2.png';
+import supCollectionsMobile from './assets/sup-collections-mobile.png';
+import supComplexAutosliderMobile from './assets/sup-complex-autoslider-mobile.png';
+import supComplexAutosliderMobile2 from './assets/sup-complex-autoslider-mobile2.png';
+import supComplexSliderMobile from './assets/sup-complex-slider-mobile.png';
+import supReploSection from './assets/sup-replo-section.png';
+import supReploSection2 from './assets/sup-replo-section2.png';
+import supReviewCarousel from './assets/sup-review-carousel.png';
+import supReviewSlider from './assets/sup-review-slider.png';
+import supSubscriptionWidget from './assets/sup-subscription-widget.png';
+import supTestimonialCarouselMobile from './assets/sup-testimonial-carousel-mobile.png';
+import supTestimonialCarousel from './assets/sup-testimonial-carousel.png';
+import supTextImageGridEditor from './assets/sup-text-image-grid-editor.png';
+import supTextImageGridEditor2 from './assets/sup-text-image-grid-editor2.png';
+import supTextImageGridMobile from './assets/sup-text-image-grid-mobile.png';
+import supTextImageGridMobile2 from './assets/sup-text-image-grid-mobile2.png';
+import supTextImageGrid from './assets/sup-text-image-grid.png';
+import supTextImageGrid2 from './assets/sup-text-image-grid2.png';
+import supLpComparison from './assets/sup-lp-comparison.png';
+import supLpProduct from './assets/sup-lp-product.png';
+import supLpSaveskin from './assets/sup-lp-saveskin.png';
+import supLpSection from './assets/sup-lp-section.png';
+import supLpSection2 from './assets/sup-lp-section2.png';
+import supLpSection3 from './assets/sup-lp-section3.png';
+import supLpSection4 from './assets/sup-lp-section4.png';
+import supLpTextImageCenter from './assets/sup-lp-text-image-center.png';
+import supLpTextImageCollage from './assets/sup-lp-text-image-collage.png';
+import supLpTextImageComplex from './assets/sup-lp-text-image-complex.png';
+import supLpUgc from './assets/sup-lp-ugc.png';
+import blaCartUpsell from './assets/bla-cart-upsell.png';
+import bluEmbedUpsell from './assets/blu-embed-upsell.png';
+import bluPopupUpsellMobile from './assets/blu-popup-upsell-mobile.png';
+import bluPopupUpsell from './assets/blu-popup-upsell.png';
+import supCheckoutUpsellMobile from './assets/sup-checkout-upsell-mobile.png';
+import supCheckoutUpsell from './assets/sup-checkout-upsell.png';
+import supEmbedUpsell from './assets/sup-embed-upsell.png';
+import supDiscountRebuycart from './assets/sup-discount-rebuycart.png';
+import supProgressRebuycart from './assets/sup-progress-rebuycart.png';
+import technorvCartDiscounts from './assets/technorv-cart-discounts.png';
+import supQuizLanderMobile from './assets/sup-quiz-lander-mobile.png';
+import supQuizLander from './assets/sup-quiz-lander.png';
+import supQuiz from './assets/sup-quiz.png';
+import supQuiz3 from './assets/sup-quiz3.png';
+import supQuiz4 from './assets/sup-quiz4.png';
+import supQuiz5 from './assets/sup-quiz5.png';
 
 // --- Configuration & Data ---
 
@@ -77,11 +121,23 @@ const PORTFOLIO_DATA = {
         "Seamless migration. All legacy URLs redirected properly and the new theme integrated with Klaviyo, Elevar and ReCharge. The result? Better speed, smoother UX and a modern foundation for future experiments."
       ],
       gallery: [
-        "https://images.unsplash.com/photo-1626073766483-360e2d5392bc?q=80&w=1200",
-        "https://images.unsplash.com/photo-1585914641050-fa9883c4e21c?q=80&w=1200",
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200",
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200",
-        "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1200"
+        supCollectionsMobile,
+        supComplexAutosliderMobile,
+        supComplexAutosliderMobile2,
+        supComplexSliderMobile,
+        supReploSection,
+        supReploSection2,
+        supReviewCarousel,
+        supReviewSlider,
+        supSubscriptionWidget,
+        supTestimonialCarouselMobile,
+        supTestimonialCarousel,
+        supTextImageGridEditor,
+        supTextImageGridEditor2,
+        supTextImageGridMobile,
+        supTextImageGridMobile2,
+        supTextImageGrid,
+        supTextImageGrid2
       ]
     },
     {
@@ -99,10 +155,17 @@ const PORTFOLIO_DATA = {
         "Analytical rigor. Heat‑map analysis (Lucky Orange) and user recordings informed micro‑optimisations. Copy and imagery were tweaked based on visitor scroll depth and click patterns."
       ],
       gallery: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
-        "https://images.unsplash.com/photo-1551288049-bbda48658a7d?q=80&w=1200",
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200",
-        "https://images.unsplash.com/photo-1454165833767-1390e7490f0a?q=80&w=1200"
+        supLpComparison,
+        supLpProduct,
+        supLpSaveskin,
+        supLpSection,
+        supLpSection2,
+        supLpSection3,
+        supLpSection4,
+        supLpTextImageCenter,
+        supLpTextImageCollage,
+        supLpTextImageComplex,
+        supLpUgc
       ]
     },
     {
@@ -118,10 +181,16 @@ const PORTFOLIO_DATA = {
         "The cart modules I built help brands like TechnoRV show progress toward free shipping and recommended add‑ons (see image gallery below). Visitors are informed, not pressured about the next tier of rewards, increasing basket size organically."
       ],
       gallery: [
-        "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200",
-        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200",
-        "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200"
+        blaCartUpsell,
+        bluEmbedUpsell,
+        bluPopupUpsellMobile,
+        bluPopupUpsell,
+        supCheckoutUpsellMobile,
+        supCheckoutUpsell,
+        supEmbedUpsell,
+        supDiscountRebuycart,
+        supProgressRebuycart,
+        technorvCartDiscounts
       ]
     },
     {
@@ -139,9 +208,12 @@ const PORTFOLIO_DATA = {
         "Cleaner attribution and higher downstream CVR."
       ],
       gallery: [
-        "https://images.unsplash.com/photo-1551288049-bbda48658a7d?q=80&w=1200",
-        "https://images.unsplash.com/photo-1454165833767-1390e7490f0a?q=80&w=1200",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
+        supQuizLanderMobile,
+        supQuizLander,
+        supQuiz,
+        supQuiz3,
+        supQuiz4,
+        supQuiz5
       ]
     },
     {
