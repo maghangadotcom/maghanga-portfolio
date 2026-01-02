@@ -417,20 +417,20 @@ const ImageGallery = ({ images = [] }) => {
   );
 };
 
-const Navbar = ({ activePage, setActivePage }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const links = [{ name: 'About Me', id: 'about' }, { name: 'Why Me', id: 'whyme' }, { name: 'Case Studies', id: 'casestudies' }];
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-100">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="font-bold tracking-tighter text-xl cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-2" onClick={() => setActivePage('about')}>
+        <a href="#" className="font-bold tracking-tighter text-xl cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-2">
           <div className="w-6 h-6 bg-[#b8ff00] rounded-sm rotate-45" />
           THOMAS <span className="text-zinc-400 font-normal">MAGHANGA</span>
-        </div>
+        </a>
         <div className="hidden md:flex gap-10">
           {links.map(link => (
-            <button key={link.id} onClick={() => setActivePage(link.id)} className={`text-sm uppercase tracking-widest font-bold transition-all border-b-2 py-2 ${activePage === link.id ? 'border-[#b8ff00] text-black' : 'border-transparent text-zinc-400 hover:text-black'}`}>{link.name}</button>
+            <a key={link.id} href={`#${link.id}`} className="text-sm uppercase tracking-widest font-bold transition-all border-b-2 py-2 border-transparent text-zinc-400 hover:text-black hover:border-[#b8ff00]">{link.name}</a>
           ))}
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X size={24} /> : <Menu size={24} />}</button>
@@ -438,7 +438,7 @@ const Navbar = ({ activePage, setActivePage }) => {
       {isOpen && (
         <div className="md:hidden bg-white border-b border-zinc-200 py-6 px-6 flex flex-col gap-4">
           {links.map(link => (
-            <button key={link.id} onClick={() => { setActivePage(link.id); setIsOpen(false); }} className="text-lg font-bold text-left">{link.name}</button>
+            <a key={link.id} href={`#${link.id}`} onClick={() => setIsOpen(false)} className="text-lg font-bold text-left">{link.name}</a>
           ))}
         </div>
       )}
@@ -558,131 +558,123 @@ const CaseStudyModal = ({ study, onClose }) => {
 // --- Main App ---
 
 export default function App() {
-  const [activePage, setActivePage] = useState('about');
   const [selectedStudy, setSelectedStudy] = useState(null);
 
-  useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [activePage]);
   useEffect(() => { document.body.style.overflow = selectedStudy ? 'hidden' : 'unset'; }, [selectedStudy]);
 
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-[#b8ff00] selection:text-black antialiased">
-      <Navbar activePage={activePage} setActivePage={setActivePage} />
+      <Navbar />
 
-      <main className="pt-32 pb-24 max-w-7xl mx-auto px-6">
-        {/* Page 1: About */}
-        {activePage === 'about' && (
-          <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="flex flex-col lg:flex-row gap-20 items-center lg:items-start">
-              {/* Left Content Column */}
-              <div className="lg:w-7/12 order-2 lg:order-1">
-                <h1 className="text-7xl md:text-[9rem] font-black tracking-tighter mb-12 leading-[0.8] uppercase">
-                  Technical <br /> Prowess <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '3px black' }}>Meets</span> <br /> Strategy.
-                </h1>
+      <main className="max-w-7xl mx-auto px-6">
+        {/* Section 1: About */}
+        <section id="about" className="pt-32 pb-20">
+          <div className="flex flex-col lg:flex-row gap-20 items-center lg:items-start">
+            {/* Left Content Column */}
+            <div className="lg:w-7/12 order-2 lg:order-1">
+              <h1 className="text-7xl md:text-[9rem] font-black tracking-tighter mb-12 leading-[0.8] uppercase">
+                Technical <br /> Prowess <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '3px black' }}>Meets</span> <br /> Strategy.
+              </h1>
 
-                <div className="space-y-8 text-2xl font-medium text-zinc-700 leading-[1.2] max-w-2xl">
-                  {PORTFOLIO_DATA.about.content.map((p, i) => (
-                    <p key={i} className={i === 0 ? "text-zinc-900 font-bold" : ""}>
-                      {p}
-                    </p>
-                  ))}
-                </div>
-
-                <div className="mt-20 flex flex-wrap gap-6">
-                  <button
-                    onClick={() => setActivePage('casestudies')}
-                    className="group px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
-                  >
-                    See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                  </button>
-                  <button onClick={() => window.location.href = 'mailto:neilmaghanga@proton.me'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
-                    Email Me <ArrowUpRight size={18} />
-                  </button>
-                </div>
+              <div className="space-y-8 text-2xl font-medium text-zinc-700 leading-[1.2] max-w-2xl">
+                {PORTFOLIO_DATA.about.content.map((p, i) => (
+                  <p key={i} className={i === 0 ? "text-zinc-900 font-bold" : ""}>
+                    {p}
+                  </p>
+                ))}
               </div>
 
-              {/* Right Media Column */}
-              <div className="lg:w-5/12 order-1 lg:order-2">
-                <div className="sticky top-32 flex flex-col items-center lg:items-end w-full">
-                  <div className="relative inline-block">
-                    <div className="w-full max-w-[340px] md:w-80 h-[480px] rounded-[3rem] overflow-hidden bg-zinc-100 border-2 border-zinc-100 shadow-2xl -rotate-2">
-                      <img
-                        src={PORTFOLIO_DATA.about.image}
-                        className="w-full h-full object-cover grayscale brightness-110"
-                        alt="Profile"
-                      />
-                    </div>
-                    <div className="absolute -bottom-8 -left-8 bg-[#b8ff00] w-24 h-24 flex items-center justify-center rounded-3xl shadow-2xl rotate-12">
-                      <Code2 size={40} className="text-black" />
-                    </div>
-                  </div>
-
-                  <div className="mt-16 text-center lg:text-right space-y-6 max-w-[280px]">
-                    <div className="flex items-center gap-3 text-[10px] font-black tracking-widest uppercase text-black bg-[#b8ff00] w-fit px-4 py-2 rounded-full mx-auto lg:ml-auto lg:mr-0">
-                      <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                      Available for Hire
-                    </div>
-                    <p className="text-zinc-400 text-sm font-bold leading-relaxed uppercase tracking-tighter">
-                      Helping household names sharpen their edge on Shopify.
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-20 flex flex-wrap gap-6">
+                <a
+                  href="#casestudies"
+                  className="group px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
+                >
+                  See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                </a>
+                <button onClick={() => window.location.href = 'mailto:neilmaghanga@proton.me'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
+                  Email Me <ArrowUpRight size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="mt-20">
-              <div className="mb-10 flex justify-between items-end border-b-2 border-zinc-100 pb-4">
-                <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
-                <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
-              </div>
-              <Marquee />
-            </div>
-          </div>
-        )}
-
-        {/* Page 2: Why Me */}
-        {activePage === 'whyme' && (
-          <div className="animate-in fade-in slide-in-from-bottom-8 duration-500">
-            <div className="mb-24">
-              <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
-              <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
-                Building for <br /> <span className="bg-[#b8ff00] px-4">Scale.</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-10">
-              {PORTFOLIO_DATA.whyMe.map((item, i) => (
-                <div key={i} className="group p-12 bg-white border-2 border-zinc-100 rounded-[3rem] hover:border-black transition-all relative overflow-hidden">
-                  <div className="absolute -top-4 -right-4 p-8 text-zinc-50 font-black text-[10rem] group-hover:text-[#b8ff00]/20 transition-colors leading-none -rotate-12 pointer-events-none select-none">0{i + 1}</div>
-                  <div className="relative z-10">
-                    <h3 className="text-3xl font-black mb-8 uppercase tracking-tighter leading-none">{item.title}</h3>
-                    <p className="text-zinc-500 leading-relaxed text-xl font-medium">{item.description}</p>
+            {/* Right Media Column */}
+            <div className="lg:w-5/12 order-1 lg:order-2">
+              <div className="sticky top-32 flex flex-col items-center lg:items-end w-full">
+                <div className="relative inline-block">
+                  <div className="w-full max-w-[340px] md:w-80 h-[480px] rounded-[3rem] overflow-hidden bg-zinc-100 border-2 border-zinc-100 shadow-2xl -rotate-2">
+                    <img
+                      src={PORTFOLIO_DATA.about.image}
+                      className="w-full h-full object-cover grayscale brightness-110"
+                      alt="Profile"
+                    />
+                  </div>
+                  <div className="absolute -bottom-8 -left-8 bg-[#b8ff00] w-24 h-24 flex items-center justify-center rounded-3xl shadow-2xl rotate-12">
+                    <Code2 size={40} className="text-black" />
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="mt-24 bg-zinc-900 text-white p-20 rounded-[4rem] relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full bg-[#b8ff00]/5" />
-              <div className="relative z-10 max-w-3xl">
-                <h3 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 leading-[0.9] uppercase">The Tech <br /> Stack.</h3>
-                <p className="text-zinc-400 text-2xl leading-relaxed mb-16 font-medium">I work close to the metal of Shopify. Themes, data, performance, and the systems that keep stores stable under real traffic. This is the tooling I use to build fast, reliable, growth-ready storefronts.</p>
-                <div className="flex flex-wrap gap-3">{['SHOPIFY OS 2.0', 'LIQUID', 'JAVASCRIPT', 'CHECKOUT EXTENSIONS', 'TAILWIND', 'STOREFRONT APIS', 'GTM (CLIENT & SERVER)', 'SHOPIFY FUNCTIONS', 'SIDEKICK', 'SHOPIFY CLI', 'AJAX', 'HYDROGEN', 'REMIX', 'GIT', 'SHOPIFY ADMIN'].map(tag => (<span key={tag} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em]">{tag}</span>))}</div>
+
+                <div className="mt-16 text-center lg:text-right space-y-6 max-w-[280px]">
+                  <div className="flex items-center gap-3 text-[10px] font-black tracking-widest uppercase text-black bg-[#b8ff00] w-fit px-4 py-2 rounded-full mx-auto lg:ml-auto lg:mr-0">
+                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    Available for Hire
+                  </div>
+                  <p className="text-zinc-400 text-sm font-bold leading-relaxed uppercase tracking-tighter">
+                    Helping household names sharpen their edge on Shopify.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        )}
 
-        {/* Page 3: Case Studies */}
-        {activePage === 'casestudies' && (
-          <div className="animate-in fade-in slide-in-from-bottom-8 duration-500">
-            <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
-              <div className="max-w-4xl">
-                <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
-                <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
-                <p className="text-2xl text-zinc-400 font-medium leading-tight">Eight recent Shopify deployments spanning legacy theme rebuilds, performance optimization, checkout stability and growth-driven feature rollouts.</p>
-              </div>
+          <div className="mt-20">
+            <div className="mb-10 flex justify-between items-end border-b-2 border-zinc-100 pb-4">
+              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
+              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
+            <Marquee />
           </div>
-        )}
+        </section>
+
+        {/* Section 2: Why Me */}
+        <section id="whyme" className="py-24 border-t border-zinc-100">
+          <div className="mb-24">
+            <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
+            <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
+              Building for <br /> <span className="bg-[#b8ff00] px-4">Scale.</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-10">
+            {PORTFOLIO_DATA.whyMe.map((item, i) => (
+              <div key={i} className="group p-12 bg-white border-2 border-zinc-100 rounded-[3rem] hover:border-black transition-all relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 p-8 text-zinc-50 font-black text-[10rem] group-hover:text-[#b8ff00]/20 transition-colors leading-none -rotate-12 pointer-events-none select-none">0{i + 1}</div>
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-black mb-8 uppercase tracking-tighter leading-none">{item.title}</h3>
+                  <p className="text-zinc-500 leading-relaxed text-xl font-medium">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-24 bg-zinc-900 text-white p-20 rounded-[4rem] relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[#b8ff00]/5" />
+            <div className="relative z-10 max-w-3xl">
+              <h3 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 leading-[0.9] uppercase">The Tech <br /> Stack.</h3>
+              <p className="text-zinc-400 text-2xl leading-relaxed mb-16 font-medium">I work close to the metal of Shopify. Themes, data, performance, and the systems that keep stores stable under real traffic. This is the tooling I use to build fast, reliable, growth-ready storefronts.</p>
+              <div className="flex flex-wrap gap-3">{['SHOPIFY OS 2.0', 'LIQUID', 'JAVASCRIPT', 'CHECKOUT EXTENSIONS', 'TAILWIND', 'STOREFRONT APIS', 'GTM (CLIENT & SERVER)', 'SHOPIFY FUNCTIONS', 'SIDEKICK', 'SHOPIFY CLI', 'AJAX', 'HYDROGEN', 'REMIX', 'GIT', 'SHOPIFY ADMIN'].map(tag => (<span key={tag} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em]">{tag}</span>))}</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Case Studies */}
+        <section id="casestudies" className="py-24 border-t border-zinc-100">
+          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="max-w-4xl">
+              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
+              <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
+              <p className="text-2xl text-zinc-400 font-medium leading-tight">Eight recent Shopify deployments spanning legacy theme rebuilds, performance optimization, checkout stability and growth-driven feature rollouts.</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
+        </section>
       </main>
 
       <footer className="border-t-2 border-zinc-100 py-32 px-6 bg-zinc-50 relative overflow-hidden">
