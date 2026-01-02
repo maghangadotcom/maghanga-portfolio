@@ -317,7 +317,7 @@ const Marquee = () => {
     { name: 'BRUTE MAGNETICS', url: 'https://brutemagnetics.com' },
     { name: 'TECHNORV', url: 'https://technorv.com' },
     { name: 'STRYX', url: 'https://www.stryx.com/' },
-    { name: 'FOUNDRY BRANDS', url: 'https://foundrybrands.com' }
+    { name: 'CRAFT & KIN', url: 'https://craftandkin.co/' }
   ];
   return (
     <div className="overflow-x-auto border-y border-zinc-100 py-10 bg-white group no-scrollbar cursor-grab active:cursor-grabbing">
