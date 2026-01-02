@@ -316,10 +316,11 @@ const Marquee = () => {
     { name: 'BENEVOLENCE LA', url: 'https://benevolencela.com' },
     { name: 'BRUTE MAGNETICS', url: 'https://brutemagnetics.com' },
     { name: 'TECHNORV', url: 'https://technorv.com' },
+    { name: 'STRYX', url: 'https://www.stryx.com/' },
     { name: 'FOUNDRY BRANDS', url: 'https://foundrybrands.com' }
   ];
   return (
-    <div className="overflow-hidden border-y border-zinc-100 py-10 bg-white group">
+    <div className="overflow-x-auto border-y border-zinc-100 py-10 bg-white group no-scrollbar cursor-grab active:cursor-grabbing">
       <div className="flex whitespace-nowrap animate-marquee">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="flex gap-20 items-center mx-10">
@@ -347,6 +348,13 @@ const Marquee = () => {
         }
         .animate-marquee:hover {
           animation-play-state: paused;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </div>
@@ -455,8 +463,8 @@ const Navbar = () => {
               key={link.id}
               href={`#${link.id}`}
               className={`text-sm uppercase tracking-widest font-bold transition-all border-b-2 py-2 ${activeSection === link.id
-                  ? 'border-[#b8ff00] text-black'
-                  : 'border-transparent text-zinc-400 hover:text-black hover:border-[#b8ff00]'
+                ? 'border-[#b8ff00] text-black'
+                : 'border-transparent text-zinc-400 hover:text-black hover:border-[#b8ff00]'
                 }`}
             >
               {link.name}
