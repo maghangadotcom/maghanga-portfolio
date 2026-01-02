@@ -1,16 +1,75 @@
-# React + Vite
+# Maghanga Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A showcase portfolio for Thomas Maghanga, a Shopify Developer specializing in high-performance storefronts, conversion optimization, and custom theme development.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the live version here: [https://maghanga-portfolio.vercel.app/](https://maghanga-portfolio.vercel.app/)
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project is built with a modern, performance-focused stack:
 
-## Expanding the ESLint configuration
+-   **[React 19](https://react.dev/)**: The latest version of the library for web and native user interfaces.
+-   **[Vite](https://vitejs.dev/)**: Next Generation Frontend Tooling for fast development and build speeds.
+-   **[Tailwind CSS 4](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development (v4 alpha/beta).
+-   **[Lucide React](https://lucide.dev/)**: Beautiful & consistent icons.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+-   **Case Study Gallery**: Detailed walkthroughs of past projects with "Before & After" metrics.
+-   **Responsive Design**: Mobile-first architecture ensuring visually stunning experiences across all devices.
+-   **Performance Optimization**: Fast load times and optimized assets.
+
+## Getting Started
+
+To run this project locally, follow these steps:
+
+### Prerequisites
+
+Ensure you have Node.js installed on your machine.
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/maghangadotcom/maghanga-portfolio.git
+    cd maghanga-portfolio
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal) to view it in the browser.
+
+### Build
+
+To build the project for production:
+
+```bash
+npm run build
+```
+
+This will generate a `dist` folder with the optimized assets ready for deployment.
+
+### Linting
+
+To run the linter:
+
+```bash
+npm run lint
+```
+
+## License
+
+All rights reserved.
