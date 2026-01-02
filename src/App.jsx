@@ -419,7 +419,28 @@ const ImageGallery = ({ images = [] }) => {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
   const links = [{ name: 'About Me', id: 'about' }, { name: 'Why Me', id: 'whyme' }, { name: 'Case Studies', id: 'casestudies' }];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -35% 0px', // Trigger when section is in the middle-ish of viewport
+      threshold: 0.1
+    });
+
+    links.forEach(link => {
+      const section = document.getElementById(link.id);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-100">
@@ -430,7 +451,16 @@ const Navbar = () => {
         </a>
         <div className="hidden md:flex gap-10">
           {links.map(link => (
-            <a key={link.id} href={`#${link.id}`} className="text-sm uppercase tracking-widest font-bold transition-all border-b-2 py-2 border-transparent text-zinc-400 hover:text-black hover:border-[#b8ff00]">{link.name}</a>
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`text-sm uppercase tracking-widest font-bold transition-all border-b-2 py-2 ${activeSection === link.id
+                  ? 'border-[#b8ff00] text-black'
+                  : 'border-transparent text-zinc-400 hover:text-black hover:border-[#b8ff00]'
+                }`}
+            >
+              {link.name}
+            </a>
           ))}
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X size={24} /> : <Menu size={24} />}</button>
@@ -438,7 +468,15 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white border-b border-zinc-200 py-6 px-6 flex flex-col gap-4">
           {links.map(link => (
-            <a key={link.id} href={`#${link.id}`} onClick={() => setIsOpen(false)} className="text-lg font-bold text-left">{link.name}</a>
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setIsOpen(false)}
+              className={`text-lg font-bold text-left ${activeSection === link.id ? 'text-black' : 'text-zinc-400'
+                }`}
+            >
+              {link.name}
+            </a>
           ))}
         </div>
       )}
