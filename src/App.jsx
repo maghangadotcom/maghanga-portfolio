@@ -428,7 +428,7 @@ const ImageGallery = ({ images = [] }) => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
-  const links = [{ name: 'About Me', id: 'about' }, { name: 'Why Me', id: 'whyme' }, { name: 'Case Studies', id: 'casestudies' }];
+  const links = [{ name: 'About Me', id: 'about' }, { name: 'Case Studies', id: 'casestudies' }, { name: 'Why Me', id: 'whyme' }];
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -681,7 +681,19 @@ export default function App() {
           </div>
         </section>
 
-        {/* Section 2: Why Me */}
+        {/* Section 2: Case Studies */}
+        <section id="casestudies" className="py-24 border-t border-zinc-100">
+          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="max-w-4xl">
+              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
+              <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
+              <p className="text-2xl text-zinc-400 font-medium leading-tight">Eight recent Shopify deployments spanning legacy theme rebuilds, performance optimization, checkout stability and growth-driven feature rollouts.</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
+        </section>
+
+        {/* Section 3: Why Me */}
         <section id="whyme" className="py-24 border-t border-zinc-100">
           <div className="mb-24">
             <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
@@ -708,18 +720,6 @@ export default function App() {
               <div className="flex flex-wrap gap-3">{['SHOPIFY OS 2.0', 'LIQUID', 'JAVASCRIPT', 'CHECKOUT EXTENSIONS', 'TAILWIND', 'STOREFRONT APIS', 'GTM (CLIENT & SERVER)', 'SHOPIFY FUNCTIONS', 'SIDEKICK', 'SHOPIFY CLI', 'AJAX', 'HYDROGEN', 'REMIX', 'GIT', 'SHOPIFY ADMIN'].map(tag => (<span key={tag} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em]">{tag}</span>))}</div>
             </div>
           </div>
-        </section>
-
-        {/* Section 3: Case Studies */}
-        <section id="casestudies" className="py-24 border-t border-zinc-100">
-          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
-            <div className="max-w-4xl">
-              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
-              <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
-              <p className="text-2xl text-zinc-400 font-medium leading-tight">Eight recent Shopify deployments spanning legacy theme rebuilds, performance optimization, checkout stability and growth-driven feature rollouts.</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
         </section>
       </main>
 
