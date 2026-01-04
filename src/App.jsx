@@ -633,7 +633,7 @@ export default function App() {
               <div className="mt-20 flex flex-wrap gap-6">
                 <a
                   href="#casestudies"
-                  className="group px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
+                  className="group w-full md:w-auto justify-center px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
                 >
                   See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
                 </a>
