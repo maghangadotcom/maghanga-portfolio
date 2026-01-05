@@ -676,27 +676,34 @@ export default function App() {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6">
-        {/* Section 1: Hero */}
-        <section id="hero" className="pt-20 pb-20">
-          <div className="flex flex-col items-center text-center max-w-7xl mx-auto z-10">
-            <div className="w-24 h-24 bg-black rounded-3xl flex items-center justify-center rotate-12 mb-12 shadow-2xl hover:rotate-[360deg] transition-all duration-700"><div className="w-10 h-10 bg-[#b8ff00] rounded-sm -rotate-12" /></div>
+        {/* Section 1: About */}
+        <section id="about" className="pt-32 pb-20">
+          <div className="flex flex-col lg:flex-row gap-20 items-center lg:items-start">
+            {/* Left Content Column */}
+            <div className="lg:w-7/12 order-2 lg:order-1">
+              <h1 className="text-7xl md:text-[9rem] font-black tracking-tighter mb-12 leading-[0.8] uppercase">
+                Technical <br /> Prowess <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '3px black' }}>Meets</span> <br /> Strategy.
+              </h1>
 
-            <h1 className="text-5xl md:text-[7rem] font-black mb-10 tracking-tighter uppercase leading-[0.9]">
-              I help Shopify Brands <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-black animate-gradient bg-300%">Scale Faster.</span>
-            </h1>
+              <div className="space-y-8 text-2xl font-medium text-zinc-700 leading-[1.2] max-w-2xl">
+                {PORTFOLIO_DATA.about.content.map((p, i) => (
+                  <p key={i} className={i === 0 ? "text-zinc-900 font-bold" : ""}>
+                    {p}
+                  </p>
+                ))}
+              </div>
 
-            <p className="text-xl md:text-3xl text-zinc-500 font-medium max-w-4xl mb-12 leading-relaxed">
-              I stabilize fragile themes, boost conversions, and build growth-ready storefronts for 7-figure brands.
-            </p>
-
-            <div className="flex flex-col md:flex-row gap-6 mb-20 w-full md:w-auto">
-              <a href="#casestudies" className="group px-12 py-6 bg-black text-white rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl hover:shadow-[#b8ff00]/20 hover:-translate-y-1">
-                See My Work <ArrowDown className="group-hover:translate-y-1 transition-transform" />
-              </a>
-              <a href="mailto:maghangamail@gmail.com" className="group px-12 py-6 bg-white text-black border-2 border-zinc-100 rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:border-black transition-all hover:-translate-y-1">
-                Let's Talk <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </a>
+              <div className="mt-20 flex flex-wrap gap-6">
+                <a
+                  href="#casestudies"
+                  className="group w-full md:w-auto justify-center px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
+                >
+                  See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                </a>
+                <button onClick={() => window.location.href = 'mailto:maghangamail@gmail.com'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
+                  Email Me <ArrowUpRight size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Quick Stats */}
