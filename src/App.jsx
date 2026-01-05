@@ -679,7 +679,7 @@ export default function App() {
                 >
                   See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
                 </a>
-                <button onClick={() => window.location.href = 'mailto:neilmaghanga@proton.me'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
+                <button onClick={() => window.location.href = 'mailto:maghangamail@gmail.com'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
                   Email Me <ArrowUpRight size={18} />
                 </button>
               </div>
@@ -769,7 +769,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
           <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center rotate-12 mb-12"><div className="w-6 h-6 bg-[#b8ff00] rounded-sm -rotate-12" /></div>
           <div className="font-black tracking-tighter text-6xl md:text-8xl mb-12 uppercase">GET IN TOUCH</div>
-          <a href="mailto:work@foundrydev.com" className="text-2xl md:text-5xl font-medium tracking-tight mb-20 hover:text-[#b8ff00] transition-colors underline decoration-2 underline-offset-8">neilmaghanga@proton.me</a>
+          <a href="mailto:work@foundrydev.com" className="text-2xl md:text-5xl font-medium tracking-tight mb-20 hover:text-[#b8ff00] transition-colors underline decoration-2 underline-offset-8">maghangamail@gmail.com</a>
           <div className="flex gap-16 font-black text-[10px] uppercase tracking-[0.4em] text-zinc-400 mb-20">
             <a href="https://x.com/maghangadotcom" className="hover:text-black transition-colors flex items-center gap-2">
               <Twitter size={16} /> TWITTER
