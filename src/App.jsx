@@ -735,7 +735,7 @@ export default function App() {
         <section id="about" className="py-12 md:py-24 border-t border-zinc-100">
           <div className="flex flex-col md:flex-row gap-16 items-start">
             {/* Visual Column */}
-            <div className="md:w-5/12">
+            <div className="w-full md:w-5/12">
               <div className="relative mb-12 max-w-sm mx-auto md:max-w-none">
                 <div className="w-full h-[350px] md:h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
                   <img src={PORTFOLIO_DATA.about.image} alt="Thomas Maghanga" className="w-full h-full object-cover grayscale px-4 pt-4" />
@@ -747,7 +747,7 @@ export default function App() {
             </div>
 
             {/* Content Column */}
-            <div className="md:w-7/12">
+            <div className="w-full md:w-7/12">
               <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-8 block uppercase bg-black w-fit px-4 py-2 rounded-full">About Me</span>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-10">
                 Data-Driven <br /> <span className="text-zinc-400">Shopify Developer.</span>
