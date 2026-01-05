@@ -386,23 +386,24 @@ const BrandGrid = () => {
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8ff00] bg-black px-2 py-1 rounded">
             {currentBrand.desc}
           </span>
+        </div>
 
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2">
-            <button onClick={prevBrand} className="p-2 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronLeft size={20} /></button>
-            <button onClick={nextBrand} className="p-2 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronRight size={20} /></button>
+        {/* Controls Row */}
+        <div className="flex items-center justify-between w-full max-w-xs px-4">
+          <button onClick={prevBrand} className="p-3 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronLeft size={20} /></button>
+
+          <div className="flex gap-2">
+            {brands.map((_, idx) => (
+              <div
+                key={idx}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-black w-6' : 'bg-zinc-200'}`}
+              />
+            ))}
           </div>
-        </div>
 
-        {/* Indicators */}
-        <div className="flex gap-2 mb-4">
-          {brands.map((_, idx) => (
-            <div
-              key={idx}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-black w-6' : 'bg-zinc-200'}`}
-            />
-          ))}
+          <button onClick={nextBrand} className="p-3 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronRight size={20} /></button>
         </div>
-        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-300"> Swipe / Click Arrows</div>
+        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 mt-6">Swipe / Click Arrows</div>
       </div>
 
       {/* Desktop Grid */}
@@ -691,7 +692,7 @@ export default function App() {
 
       <main className="max-w-7xl mx-auto px-6">
         {/* Section 1: Hero */}
-        <section id="hero" className="pt-20 pb-20">
+        <section id="hero" className="pt-32 pb-12 md:pt-20 md:pb-20">
           <div className="flex flex-col items-center text-center max-w-7xl mx-auto z-10">
             <div className="w-24 h-24 bg-black rounded-3xl flex items-center justify-center rotate-12 mb-12 shadow-2xl hover:rotate-[360deg] transition-all duration-700"><div className="w-10 h-10 bg-[#b8ff00] rounded-sm -rotate-12" /></div>
 
@@ -700,11 +701,11 @@ export default function App() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-black animate-gradient bg-300%">Scale Faster.</span>
             </h1>
 
-            <p className="text-xl md:text-3xl text-zinc-500 font-medium max-w-4xl mb-12 leading-relaxed">
+            <p className="text-xl md:text-3xl text-zinc-500 font-medium max-w-4xl mb-8 md:mb-12 leading-relaxed">
               I stabilize fragile themes, boost conversions, and build growth-ready storefronts for 7-figure brands.
             </p>
 
-            <div className="flex flex-col md:flex-row gap-6 mb-20 w-full md:w-auto">
+            <div className="flex flex-col md:flex-row gap-6 mb-12 md:mb-20 w-full md:w-auto">
               <a href="#casestudies" className="group px-12 py-6 bg-black text-white rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl hover:shadow-[#b8ff00]/20 hover:-translate-y-1">
                 See My Work <ArrowDown className="group-hover:translate-y-1 transition-transform" />
               </a>
@@ -731,16 +732,16 @@ export default function App() {
         </section>
 
         {/* Section 1.5: About Me (New) */}
-        <section id="about" className="py-24 border-t border-zinc-100">
+        <section id="about" className="py-12 md:py-24 border-t border-zinc-100">
           <div className="flex flex-col md:flex-row gap-16 items-start">
             {/* Visual Column */}
             <div className="md:w-5/12">
-              <div className="relative mb-12">
-                <div className="w-full h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
+              <div className="relative mb-12 max-w-sm mx-auto md:max-w-none">
+                <div className="w-full h-[350px] md:h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
                   <img src={PORTFOLIO_DATA.about.image} alt="Thomas Maghanga" className="w-full h-full object-cover grayscale px-4 pt-4" />
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#b8ff00] rounded-2xl flex items-center justify-center -rotate-6 shadow-xl">
-                  <Code2 size={40} className="text-black" />
+                <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 w-20 h-20 md:w-24 md:h-24 bg-[#b8ff00] rounded-2xl flex items-center justify-center -rotate-6 shadow-xl z-10">
+                  <Code2 size={32} className="md:w-10 md:h-10 text-black" />
                 </div>
               </div>
             </div>
@@ -780,7 +781,7 @@ export default function App() {
 
         {/* Right Media Column */}
 
-        <div className="mt-20">
+        <div className="mt-12 md:mt-20">
           <div className="mb-10 flex justify-between items-end border-b-2 border-zinc-100 pb-4">
             <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
             <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
@@ -790,8 +791,8 @@ export default function App() {
 
 
         {/* Section 2: Case Studies */}
-        <section id="casestudies" className="py-24 border-t border-zinc-100">
-          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
+        <section id="casestudies" className="py-12 md:py-24 border-t border-zinc-100">
+          <div className="mb-12 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="max-w-4xl">
               <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
               <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
@@ -814,15 +815,15 @@ export default function App() {
         </section>
 
         {/* Section 3: Why Me */}
-        <section id="whyme" className="py-24 border-t border-zinc-100">
-          <div className="mb-24">
+        <section id="whyme" className="py-12 md:py-24 border-t border-zinc-100">
+          <div className="mb-12 md:mb-24">
             <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">Differentiators</span>
             <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
               Building for <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8ff00] to-green-600">Scale.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-24">
+          <div className="grid md:grid-cols-2 gap-8 mb-12 md:mb-24">
             {PORTFOLIO_DATA.whyMe.map((item, i) => (
               <div key={i} className="group p-10 bg-zinc-50 rounded-[2.5rem] hover:bg-black hover:text-white transition-all duration-500">
                 <div className="mb-8 w-16 h-16 bg-white border border-zinc-200 rounded-2xl flex items-center justify-center text-black group-hover:bg-[#b8ff00] group-hover:border-[#b8ff00] transition-colors shadow-sm">
@@ -862,7 +863,7 @@ export default function App() {
         </section>
       </main >
 
-      <footer className="py-32 px-6 bg-black text-white relative overflow-hidden">
+      <footer className="py-16 md:py-32 px-6 bg-black text-white relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-0 right-0 p-96 bg-[#b8ff00] blur-[200px] opacity-10 rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 p-64 bg-[#b8ff00] blur-[150px] opacity-5 rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2" />
