@@ -736,7 +736,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row gap-16 items-start">
             {/* Visual Column */}
             <div className="md:w-5/12">
-              <div className="relative mb-12 max-w-sm mx-auto md:max-w-none">
+              <div className="relative mb-12 max-w-xs mx-auto md:max-w-none">
                 <div className="w-full h-[350px] md:h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
                   <img src={PORTFOLIO_DATA.about.image} alt="Thomas Maghanga" className="w-full h-full object-cover grayscale px-4 pt-4" />
                 </div>
