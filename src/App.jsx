@@ -15,6 +15,14 @@ import {
   Zap,
   Layout,
   TrendingUp,
+  UserCheck,
+  BarChart3,
+  Server,
+  Globe,
+  Database,
+  Terminal,
+  Cpu,
+  ShoppingCart,
   Twitter,
   Linkedin,
   Github
@@ -98,25 +106,44 @@ const PORTFOLIO_DATA = {
   },
   whyMe: [
     {
-      title: "Owner-level involvement",
-      description: "I’m not a contractor executing tickets. I lead discovery, prioritise roadmaps, write the code and test the results. The goal is to build what the business actually needs, not just what is easy to ship."
+      icon: <UserCheck size={32} />,
+      title: "Owner-Level Involvement",
+      description: "I don't just clear tickets. I lead discovery, audit the roadmap, and write the code myself. You get a partner who treats your store like their own business."
     },
     {
-      title: "Evidence-driven design",
-      description: "Heat-maps, user recordings, review mining and A/B tests inform every decision. If we add a progress bar to the cart, it's because we saw drop-off in analytics and validated the fix with split tests."
+      icon: <BarChart3 size={32} />,
+      title: "Evidence-Driven Design",
+      description: "No guesswork. Every feature—from sticky carts to upsell flows—is backed by heatmaps, A/B tests, and analytics data."
     },
     {
-      title: "Infrastructure and tooling",
-      description: "I set up GA4, GTM, and server-side tracking to ensure your data is first-party, accurate and compliant. I've also created internal tools like ShopDeck (a Shopify development helper chromium extension) to speed up theme work."
+      icon: <Server size={32} />,
+      title: "Deep Infrastructure",
+      description: "I go beyond the theme editor. I set up proper GTM, GA4, pixel tracking, and server-side events so your data is actually accurate."
     },
     {
-      title: "Ecosystem know-how",
-      description: "Beyond Shopify, I’ve migrated and troubleshot third-party apps like Klaviyo, Recharge, Rebuy, Timesact and Skio. I understand their APIs to ensure seamless migrations."
+      icon: <Globe size={32} />,
+      title: "Ecosystem Mastery",
+      description: "I know the APIs of the apps you use (Recharge, Klaviyo, Yotpo). I make them play nice together without slowing down your site."
+    }
+  ],
+  stack: [
+    {
+      category: "Storefront",
+      tools: ["Shopify OS 2.0", "Liquid", "Tailwind CSS", "Alpine.js"]
+    },
+    {
+      category: "Headless & Custom",
+      tools: ["React", "Hydrogen", "Remix", "Node.js"]
+    },
+    {
+      category: "Data & Ops",
+      tools: ["GTM (Server)", "GA4", "Shopify Functions", "Git / CI/CD"]
     }
   ],
   caseStudies: [
     {
       id: "01",
+      category: "Theme Rebuilds",
       title: "Re-Architecting Supply on OS 2.0",
       context: "Supply’s Single Edge razors are legendary. Lori Greiner called them 'The Cadillac of razors' on Shark Tank and Robert Herjavec invested in the company. But by 2022 their site was running on an older Impulse theme with slow load times and a bulky codebase. We wanted to migrate to Expanse (a modern OS 2.0 theme) without sacrificing conversion. Our redesign had to look fresh, preserve existing SEO, integrate with dozens of apps and support a full suite of upsells.",
       role: "I was the architect and lead developer. I audited every template, mapped the migration plan and collaborated with design on Figma. I built a custom OS 2.0 theme from scratch, converting legacy Liquid to JSON sections and modular components. Critical features like the cart and product page were rebuilt in pure Liquid/JS rather than using off‑the‑shelf page builders.",
@@ -152,6 +179,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "02",
+      category: "Growth",
       title: "Campaign Landing Pages (3–6% CVR)",
       context: "Supply needed a library of high‑converting landing pages for paid campaigns and promotional events. Previous pages built with drag‑and‑drop builders converted at 1–3 %. The design team provided Figma files; we had to build them quickly and ensure they didn’t slow the store.",
       role: "I prototyped each new landing page in Replo for speed, then rebuilt them in native Liquid/JS once validated. This approach allowed us to iterate quickly while keeping the codebase clean. I also ran A/B tests on new sections to avoid conversion interference",
@@ -180,6 +208,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "03",
+      category: "Growth",
       title: "Data-Driven Upsells & Cross-Sells",
       context: "Foundry Brands wanted to increase revenue without relying solely on new visitors. By using upsells and cross‑sells intelligently we could lift average order value (AOV) and conversion rate (CVR). The challenge was to implement these offers without annoying shoppers.",
       role: "I led research and implementation across multiple brands: I used an internal tool (built myself) to mine customer reviews for objections and desires. Lucky Orange provided heat‑maps and user recordings. Insights from the CXL conversion course guided the testing roadmap. I ran experiments via Google Optimize (before sunset), Convert.com and Intelligems to validate shipping thresholds and price points. Only changes with 94 %+ statistical significance shipped to production. I built dynamic cross‑sell widgets for product pages, carts and checkouts. For instance, the Blu Atlas product page now surfaces a “Pairs Well With” body wash pop‑up with subscription options instead of static recommendations.",
@@ -205,6 +234,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "04",
+      category: "Growth",
       title: "Custom Quiz Flow - Product Matching at Scale (Supply)",
       context: "Supply sells precision tools, but customers were struggling with choice. The problem wasn’t product quality or trust - it was decision anxiety at the point of entry. Existing “Find Your Razor” flows were static, over-explanatory, and failed to translate intent into a confident purchase. The challenge was to guide customers to the right tool quickly, without overwhelming them or turning the experience into a sales pitch.",
       role: "I designed and built a fully custom, logic-driven quiz directly into the storefront, avoiding third-party quiz apps entirely. The flow was structured to feel lightweight and conversational while still capturing high-signal intent data. I owned the logic tree, UX pacing, copy tone, and implementation, and iterated based on real user behavior post-launch.",
@@ -228,6 +258,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "05",
+      category: "Growth",
       title: "AI Concierge for Skincare & Beardcare",
       context: "As product lines expanded, customers needed more than single-product recommendations. They needed help building routines that matched their skin type, grooming habits, and tolerance for complexity. Traditional quizzes couldn’t handle nuance, and generic chatbots lacked brand and product awareness. The challenge was to replicate a high-touch in-store expert inside a Shopify experience - without breaking conversion flow.",
       role: "I concepted Ace as a standalone assisted-selling product, not a feature. I designed the decision framework, UX flows, and interaction model across structured quizzes, AI chat, and image-based inputs. I defined how AI logic, product rules, and commerce systems interact safely, and built the Shopify cart integration so recommendations translate directly into revenue.",
@@ -255,6 +286,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "06",
+      category: "Growth",
       title: "Build-a-Box Feature (Custom Product Bundling)",
       context: "Customers wanted to create custom bundles, but existing Shopify bundle apps were either rigid, expensive, or introduced performance and maintenance issues. The goal was to offer a flexible mix-and-match experience without sacrificing speed, pricing accuracy, or brand control. The solution also needed to work across multiple brands with different product types and rules.",
       role: "I designed and built a custom Build-a-Box system directly into the Shopify theme. The feature was implemented as both a standalone landing page and a modular section that could be injected anywhere on the site. I owned the UX, pricing logic, cart behavior, and multi-brand adaptability.",
@@ -271,6 +303,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "07",
+      category: "Performance",
       title: "ShopDeck: Shopify Developer Command Centre (Internal Tool)",
       context: "Working across multiple Shopify themes makes small tasks slow and repetitive. Opening previews, accessing the editor, inspecting cart state, or grabbing context for dev tickets meant constant tab switching. The friction added up quickly.",
       role: "I built ShopDeck as a Chrome extension that turns any Shopify storefront into a developer command layer. It runs directly on the page, detects Shopify context, and surfaces the actions you need instantly. I own the concept, UX, and implementation.",
@@ -294,6 +327,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "08",
+      category: "Theme Rebuilds",
       title: "Seamless Theme Migrations & Shared Architecture",
       context: "Managing multiple Shopify stores with different themes sounds fine - until you try to scale. Every update became slower, riskier, and more repetitive. With OS 2.0 rolling out and design standards evolving, we needed a cleaner way to ship changes without breaking things across brands.",
       role: "I led the migration of four production stores onto modern, OS 2.0-ready themes and set up a B2B wholesale store alongside them. To avoid repeating work, I built a private bootstrap theme on GitHub with reusable sections and patterns that could be shared across brands. I also put proper version control and rollback in place using GitHub Actions.",
@@ -313,96 +347,84 @@ const PORTFOLIO_DATA = {
 
 // --- Components ---
 
-const Marquee = () => {
+const BrandGrid = () => {
   const brands = [
-    { name: 'SUPPLY', url: 'https://supply.co' },
-    { name: 'BLU ATLAS', url: 'https://bluatlas.com' },
-    { name: 'BENEVOLENCE LA', url: 'https://benevolencela.com' },
-    { name: 'BRUTE MAGNETICS', url: 'https://brutemagnetics.com' },
-    { name: 'TECHNORV', url: 'https://technorv.com' },
-    { name: 'STRYX', url: 'https://www.stryx.com/' },
-    { name: 'CRAFT & KIN', url: 'https://craftandkin.co/' }
+    { name: 'SUPPLY', url: 'https://supply.co/', desc: 'Full Theme Rebuild & 38% AOV Lift' },
+    { name: 'BLU ATLAS', url: 'https://bluatlas.com/', desc: 'Subscription Logic & Upsells' },
+    { name: 'BENEVOLENCE LA', url: 'https://benevolencela.com', desc: 'Theme Customization & Speed' },
+    { name: 'BRUTE MAGNETICS', url: 'https://brutemagnetics.com/', desc: 'Custom Bundle Builder' },
+    { name: 'TECHNORV', url: 'https://technorv.com/', desc: 'Performance & Search Upgrade' },
+    { name: 'STRYX', url: 'https://www.stryx.com/', desc: 'Conversion Rate Optimization' },
+    { name: 'CRAFT & KIN', url: 'https://craftandkin.co/', desc: 'Wholesale B2B Setup' }
   ];
 
-  const DesktopMarquee = () => (
-    <div className="hidden md:block overflow-hidden border-y border-zinc-100 py-10 bg-white group">
-      <div className="flex whitespace-nowrap animate-marquee">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="flex gap-20 items-center mx-10">
-            {brands.map(brand => (
-              <a
-                key={brand.name}
-                href={brand.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-3xl font-black tracking-tighter text-zinc-300 hover:text-black transition-colors flex items-center gap-4"
-              >
-                {brand.name}
-              </a>
-            ))}
-          </div>
-        ))}
-      </div>
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
-        }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-    </div>
-  );
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const MobileBrandSlider = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const next = () => setCurrentIndex((prev) => (prev + 1) % brands.length);
-    const prev = () => setCurrentIndex((prev) => (prev - 1 + brands.length) % brands.length);
-
-    return (
-      <div className="md:hidden border-y border-zinc-100 py-10 bg-white">
-        <div className="flex items-center justify-between px-6 gap-4">
-          <button onClick={prev} className="p-2 border border-zinc-100 rounded-full hover:bg-black hover:text-white transition-colors">
-            <ChevronLeft size={20} />
-          </button>
-
-          <div className="flex-1 text-center">
-            <a
-              href={brands[currentIndex].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl font-black tracking-tighter text-black block mb-2"
-            >
-              {brands[currentIndex].name}
-            </a>
-            <div className="flex justify-center gap-2">
-              {brands.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-6 bg-[#b8ff00]' : 'w-1.5 bg-zinc-200'
-                    }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <button onClick={next} className="p-2 border border-zinc-100 rounded-full hover:bg-black hover:text-white transition-colors">
-            <ChevronRight size={20} />
-          </button>
-        </div>
-      </div>
-    );
+  const nextBrand = () => {
+    setCurrentIndex((prev) => (prev + 1) % brands.length);
   };
+
+  const prevBrand = () => {
+    setCurrentIndex((prev) => (prev - 1 + brands.length) % brands.length);
+  };
+
+  const currentBrand = brands[currentIndex];
 
   return (
     <>
-      <DesktopMarquee />
-      <MobileBrandSlider />
+      {/* Mobile Slider */}
+      <div className="md:hidden flex flex-col items-center px-6">
+        <div className="relative w-full bg-zinc-50 border border-zinc-100 rounded-2xl p-8 flex flex-col items-center text-center h-[200px] justify-center mb-6">
+          <a
+            href={currentBrand.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-3xl font-black uppercase tracking-tighter mb-4 hover:underline"
+          >
+            {currentBrand.name}
+          </a>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8ff00] bg-black px-2 py-1 rounded">
+            {currentBrand.desc}
+          </span>
+
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2">
+            <button onClick={prevBrand} className="p-2 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronLeft size={20} /></button>
+            <button onClick={nextBrand} className="p-2 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronRight size={20} /></button>
+          </div>
+        </div>
+
+        {/* Indicators */}
+        <div className="flex gap-2 mb-4">
+          {brands.map((_, idx) => (
+            <div
+              key={idx}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-black w-6' : 'bg-zinc-200'}`}
+            />
+          ))}
+        </div>
+        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-300"> Swipe / Click Arrows</div>
+      </div>
+
+      {/* Desktop Grid */}
+      <div className="hidden md:grid grid-cols-4 gap-4 px-6">
+        {brands.map((brand, i) => (
+          <a
+            key={i}
+            href={brand.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex flex-col items-center justify-center p-8 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-black transition-all hover:-translate-y-1 hover:shadow-lg h-[180px]"
+          >
+            <span className="text-xl md:text-2xl font-black uppercase tracking-tighter group-hover:opacity-0 transition-opacity duration-300 text-center">{brand.name}</span>
+            <div className="absolute inset-0 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-[10px] font-bold text-center uppercase tracking-widest text-[#b8ff00] bg-black px-2 py-1 rounded">{brand.desc}</span>
+            </div>
+          </a>
+        ))}
+        <div className="flex items-center justify-center p-8 border-2 border-dashed border-zinc-200 rounded-2xl h-[180px]">
+          <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest text-center">Your Brand Here</span>
+        </div>
+      </div>
     </>
   );
 };
@@ -539,25 +561,28 @@ const Navbar = () => {
 };
 
 const CaseStudyCard = ({ study, onSelect }) => (
-  <div className="group relative bg-white border border-zinc-100 p-8 rounded-2xl hover:bg-zinc-50 transition-all cursor-pointer overflow-hidden flex flex-col min-h-[420px]" onClick={() => onSelect(study)}>
-    <div className="absolute top-0 right-0 w-24 h-24 bg-[#b8ff00] translate-x-1/2 -translate-y-1/2 rotate-45 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-    <div className="flex justify-between items-start mb-8">
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-[#b8ff00] px-2 py-0.5 rounded-sm shadow-sm">0{study.id}</span>
+  <div className="group relative bg-white border border-zinc-100 p-8 rounded-[2rem] hover:bg-zinc-50 transition-all cursor-pointer overflow-hidden flex flex-col min-h-[420px] hover:shadow-xl hover:shadow-zinc-200/50 hover:border-black/5" onClick={() => onSelect(study)}>
+    <div className="flex justify-between items-start mb-6">
+      <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-zinc-100/50 px-3 py-1 rounded-full text-zinc-400 group-hover:bg-[#b8ff00] group-hover:text-black transition-colors">{study.category}</span>
       <ArrowUpRight className="text-zinc-300 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" size={24} />
     </div>
-    <div className="flex-grow">
-      <h3 className="text-3xl font-black mb-4 leading-[1.1] tracking-tighter uppercase">{study.title}</h3>
-      <p className="text-zinc-500 line-clamp-3 text-sm leading-relaxed mb-8">{study.context}</p>
-    </div>
-    <div className="mt-auto pt-8 border-t border-zinc-100">
-      <div className="flex flex-wrap gap-2">
+
+    <div className="mb-8">
+      <div className="flex gap-4 mb-6 overflow-x-auto no-scrollbar">
         {study.metrics && study.metrics.slice(0, 2).map((m, i) => (
-          <div key={i} className="flex flex-col">
-            <span className="text-[8px] uppercase tracking-widest text-zinc-400 font-bold">{m.label}</span>
-            <span className="text-sm font-black text-black">{m.after}</span>
+          <div key={i} className="flex items-center gap-2 bg-[#b8ff00]/10 px-3 py-1.5 rounded-lg border border-[#b8ff00]/20 whitespace-nowrap">
+            <TrendingUp size={12} className="text-[#6da300]" />
+            <span className="text-[10px] uppercase tracking-widest text-[#5a8600] font-black">{m.label}:</span>
+            <span className="text-xs font-black text-black">{m.after}</span>
           </div>
         ))}
       </div>
+      <h3 className="text-2xl md:text-3xl font-black mb-3 leading-[1.1] tracking-tighter uppercase group-hover:underline decoration-2 underline-offset-4 decoration-[#b8ff00] transition-all">{study.title}</h3>
+      <p className="text-zinc-500 line-clamp-2 text-sm leading-relaxed font-medium">{study.context}</p>
+    </div>
+
+    <div className="mt-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-300 group-hover:text-black transition-colors">
+      Read Case Study <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
     </div>
   </div>
 );
@@ -651,42 +676,41 @@ const CaseStudyModal = ({ study, onClose }) => {
 
 export default function App() {
   const [selectedStudy, setSelectedStudy] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('All');
 
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, []);
   useEffect(() => { document.body.style.overflow = selectedStudy ? 'hidden' : 'unset'; }, [selectedStudy]);
+
+  const filteredStudies = activeFilter === 'All'
+    ? PORTFOLIO_DATA.caseStudies
+    : PORTFOLIO_DATA.caseStudies.filter(study => study.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-[#b8ff00] selection:text-black antialiased">
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6">
-        {/* Section 1: About */}
-        <section id="about" className="pt-32 pb-20">
-          <div className="flex flex-col lg:flex-row gap-20 items-center lg:items-start">
-            {/* Left Content Column */}
-            <div className="lg:w-7/12 order-2 lg:order-1">
-              <h1 className="text-7xl md:text-[9rem] font-black tracking-tighter mb-12 leading-[0.8] uppercase">
-                Technical <br /> Prowess <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '3px black' }}>Meets</span> <br /> Strategy.
-              </h1>
+        {/* Section 1: Hero */}
+        <section id="hero" className="pt-20 pb-20">
+          <div className="flex flex-col items-center text-center max-w-7xl mx-auto z-10">
+            <div className="w-24 h-24 bg-black rounded-3xl flex items-center justify-center rotate-12 mb-12 shadow-2xl hover:rotate-[360deg] transition-all duration-700"><div className="w-10 h-10 bg-[#b8ff00] rounded-sm -rotate-12" /></div>
 
-              <div className="space-y-8 text-2xl font-medium text-zinc-700 leading-[1.2] max-w-2xl">
-                {PORTFOLIO_DATA.about.content.map((p, i) => (
-                  <p key={i} className={i === 0 ? "text-zinc-900 font-bold" : ""}>
-                    {p}
-                  </p>
-                ))}
-              </div>
+            <h1 className="text-5xl md:text-[7rem] font-black mb-10 tracking-tighter uppercase leading-[0.9]">
+              I help Shopify Brands <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-black animate-gradient bg-300%">Scale Faster.</span>
+            </h1>
 
-              <div className="mt-20 flex flex-wrap gap-6">
-                <a
-                  href="#casestudies"
-                  className="group w-full md:w-auto justify-center px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
-                >
-                  See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                </a>
-                <button onClick={() => window.location.href = 'mailto:maghangamail@gmail.com'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
-                  Email Me <ArrowUpRight size={18} />
-                </button>
-              </div>
+            <p className="text-xl md:text-3xl text-zinc-500 font-medium max-w-4xl mb-12 leading-relaxed">
+              I stabilize fragile themes, boost conversions, and build growth-ready storefronts for 7-figure brands.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-6 mb-20 w-full md:w-auto">
+              <a href="#casestudies" className="group px-12 py-6 bg-black text-white rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl hover:shadow-[#b8ff00]/20 hover:-translate-y-1">
+                See My Work <ArrowDown className="group-hover:translate-y-1 transition-transform" />
+              </a>
+              <a href="mailto:maghangamail@gmail.com" className="group px-12 py-6 bg-white text-black border-2 border-zinc-100 rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:border-black transition-all hover:-translate-y-1">
+                Let's Talk <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </a>
             </div>
 
             {/* Quick Stats */}
@@ -710,7 +734,7 @@ export default function App() {
         <section id="about" className="py-24 border-t border-zinc-100">
           <div className="flex flex-col md:flex-row gap-16 items-start">
             {/* Visual Column */}
-            <div className="md:w-5/12 sticky top-32">
+            <div className="md:w-5/12">
               <div className="relative mb-12">
                 <div className="w-full h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
                   <img src={PORTFOLIO_DATA.about.image} alt="Thomas Maghanga" className="w-full h-full object-cover grayscale px-4 pt-4" />
@@ -761,7 +785,7 @@ export default function App() {
             <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
             <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
           </div>
-          <Marquee />
+          <BrandGrid />
         </div>
 
 
@@ -772,39 +796,70 @@ export default function App() {
               <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
               <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
               <p className="text-2xl text-zinc-400 font-medium leading-tight">Eight recent Shopify deployments spanning legacy theme rebuilds, performance optimization, checkout stability and growth-driven feature rollouts.</p>
+              {/* Filters */}
+              <div className="flex flex-wrap gap-4 mt-8">
+                {['All', 'Theme Rebuilds', 'Growth', 'Performance'].map(filter => (
+                  <button
+                    key={filter}
+                    onClick={() => setActiveFilter(filter)}
+                    className={`px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeFilter === filter ? 'bg-black text-[#b8ff00]' : 'bg-zinc-100 text-zinc-400 hover:bg-zinc-200'}`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
-        </section >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{filteredStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
+        </section>
 
         {/* Section 3: Why Me */}
-        < section id="whyme" className="py-24 border-t border-zinc-100" >
+        <section id="whyme" className="py-24 border-t border-zinc-100">
           <div className="mb-24">
-            <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
+            <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">Differentiators</span>
             <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
-              Building for <br /> <span className="bg-[#b8ff00] px-4">Scale.</span>
+              Building for <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8ff00] to-green-600">Scale.</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-10">
+
+          <div className="grid md:grid-cols-2 gap-8 mb-24">
             {PORTFOLIO_DATA.whyMe.map((item, i) => (
-              <div key={i} className="group p-12 bg-white border-2 border-zinc-100 rounded-[3rem] hover:border-black transition-all relative overflow-hidden">
-                <div className="absolute -top-4 -right-4 p-8 text-zinc-50 font-black text-[10rem] group-hover:text-[#b8ff00]/20 transition-colors leading-none -rotate-12 pointer-events-none select-none">0{i + 1}</div>
-                <div className="relative z-10">
-                  <h3 className="text-3xl font-black mb-8 uppercase tracking-tighter leading-none">{item.title}</h3>
-                  <p className="text-zinc-500 leading-relaxed text-xl font-medium">{item.description}</p>
+              <div key={i} className="group p-10 bg-zinc-50 rounded-[2.5rem] hover:bg-black hover:text-white transition-all duration-500">
+                <div className="mb-8 w-16 h-16 bg-white border border-zinc-200 rounded-2xl flex items-center justify-center text-black group-hover:bg-[#b8ff00] group-hover:border-[#b8ff00] transition-colors shadow-sm">
+                  {item.icon}
                 </div>
+                <h3 className="text-2xl font-black mb-4 uppercase tracking-tight">{item.title}</h3>
+                <p className="text-zinc-500 font-medium leading-relaxed group-hover:text-zinc-400 text-lg">{item.description}</p>
               </div>
             ))}
           </div>
-          <div className="mt-24 bg-zinc-900 text-white p-20 rounded-[4rem] relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[#b8ff00]/5" />
-            <div className="relative z-10 max-w-3xl">
-              <h3 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 leading-[0.9] uppercase">The Tech <br /> Stack.</h3>
-              <p className="text-zinc-400 text-2xl leading-relaxed mb-16 font-medium">I work close to the metal of Shopify. Themes, data, performance, and the systems that keep stores stable under real traffic. This is the tooling I use to build fast, reliable, growth-ready storefronts.</p>
-              <div className="flex flex-wrap gap-3">{['SHOPIFY OS 2.0', 'LIQUID', 'JAVASCRIPT', 'CHECKOUT EXTENSIONS', 'TAILWIND', 'STOREFRONT APIS', 'GTM (CLIENT & SERVER)', 'SHOPIFY FUNCTIONS', 'SIDEKICK', 'SHOPIFY CLI', 'AJAX', 'HYDROGEN', 'REMIX', 'GIT', 'SHOPIFY ADMIN'].map(tag => (<span key={tag} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em]">{tag}</span>))}</div>
+
+          <div className="bg-black text-white p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-32 bg-[#b8ff00] blur-[150px] opacity-10 rounded-full pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="mb-16">
+                <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 leading-[0.9] uppercase">The Tech Stack.</h3>
+                <p className="text-zinc-400 text-xl max-w-2xl font-medium">Tools I use to build fast, reliable, and growth-ready storefronts.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-zinc-800 pt-12">
+                {PORTFOLIO_DATA.stack.map((group, i) => (
+                  <div key={i}>
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#b8ff00] mb-8">{group.category}</h4>
+                    <ul className="space-y-4">
+                      {group.tools.map((tool, j) => (
+                        <li key={j} className="text-xl md:text-2xl font-bold tracking-tight text-white flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 bg-zinc-700 rounded-full" /> {tool}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </section >
+        </section>
       </main >
 
       <footer className="border-t-2 border-zinc-100 py-32 px-6 bg-zinc-50 relative overflow-hidden">
