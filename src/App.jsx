@@ -117,6 +117,7 @@ const PORTFOLIO_DATA = {
   caseStudies: [
     {
       id: "01",
+      category: "Theme Rebuilds",
       title: "Re-Architecting Supply on OS 2.0",
       context: "Supply’s Single Edge razors are legendary. Lori Greiner called them 'The Cadillac of razors' on Shark Tank and Robert Herjavec invested in the company. But by 2022 their site was running on an older Impulse theme with slow load times and a bulky codebase. We wanted to migrate to Expanse (a modern OS 2.0 theme) without sacrificing conversion. Our redesign had to look fresh, preserve existing SEO, integrate with dozens of apps and support a full suite of upsells.",
       role: "I was the architect and lead developer. I audited every template, mapped the migration plan and collaborated with design on Figma. I built a custom OS 2.0 theme from scratch, converting legacy Liquid to JSON sections and modular components. Critical features like the cart and product page were rebuilt in pure Liquid/JS rather than using off‑the‑shelf page builders.",
@@ -152,6 +153,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "02",
+      category: "Growth",
       title: "Campaign Landing Pages (3–6% CVR)",
       context: "Supply needed a library of high‑converting landing pages for paid campaigns and promotional events. Previous pages built with drag‑and‑drop builders converted at 1–3 %. The design team provided Figma files; we had to build them quickly and ensure they didn’t slow the store.",
       role: "I prototyped each new landing page in Replo for speed, then rebuilt them in native Liquid/JS once validated. This approach allowed us to iterate quickly while keeping the codebase clean. I also ran A/B tests on new sections to avoid conversion interference",
@@ -180,6 +182,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "03",
+      category: "Growth",
       title: "Data-Driven Upsells & Cross-Sells",
       context: "Foundry Brands wanted to increase revenue without relying solely on new visitors. By using upsells and cross‑sells intelligently we could lift average order value (AOV) and conversion rate (CVR). The challenge was to implement these offers without annoying shoppers.",
       role: "I led research and implementation across multiple brands: I used an internal tool (built myself) to mine customer reviews for objections and desires. Lucky Orange provided heat‑maps and user recordings. Insights from the CXL conversion course guided the testing roadmap. I ran experiments via Google Optimize (before sunset), Convert.com and Intelligems to validate shipping thresholds and price points. Only changes with 94 %+ statistical significance shipped to production. I built dynamic cross‑sell widgets for product pages, carts and checkouts. For instance, the Blu Atlas product page now surfaces a “Pairs Well With” body wash pop‑up with subscription options instead of static recommendations.",
@@ -205,6 +208,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "04",
+      category: "Growth",
       title: "Custom Quiz Flow - Product Matching at Scale (Supply)",
       context: "Supply sells precision tools, but customers were struggling with choice. The problem wasn’t product quality or trust - it was decision anxiety at the point of entry. Existing “Find Your Razor” flows were static, over-explanatory, and failed to translate intent into a confident purchase. The challenge was to guide customers to the right tool quickly, without overwhelming them or turning the experience into a sales pitch.",
       role: "I designed and built a fully custom, logic-driven quiz directly into the storefront, avoiding third-party quiz apps entirely. The flow was structured to feel lightweight and conversational while still capturing high-signal intent data. I owned the logic tree, UX pacing, copy tone, and implementation, and iterated based on real user behavior post-launch.",
@@ -228,6 +232,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "05",
+      category: "Growth",
       title: "AI Concierge for Skincare & Beardcare",
       context: "As product lines expanded, customers needed more than single-product recommendations. They needed help building routines that matched their skin type, grooming habits, and tolerance for complexity. Traditional quizzes couldn’t handle nuance, and generic chatbots lacked brand and product awareness. The challenge was to replicate a high-touch in-store expert inside a Shopify experience - without breaking conversion flow.",
       role: "I concepted Ace as a standalone assisted-selling product, not a feature. I designed the decision framework, UX flows, and interaction model across structured quizzes, AI chat, and image-based inputs. I defined how AI logic, product rules, and commerce systems interact safely, and built the Shopify cart integration so recommendations translate directly into revenue.",
@@ -255,6 +260,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "06",
+      category: "Growth",
       title: "Build-a-Box Feature (Custom Product Bundling)",
       context: "Customers wanted to create custom bundles, but existing Shopify bundle apps were either rigid, expensive, or introduced performance and maintenance issues. The goal was to offer a flexible mix-and-match experience without sacrificing speed, pricing accuracy, or brand control. The solution also needed to work across multiple brands with different product types and rules.",
       role: "I designed and built a custom Build-a-Box system directly into the Shopify theme. The feature was implemented as both a standalone landing page and a modular section that could be injected anywhere on the site. I owned the UX, pricing logic, cart behavior, and multi-brand adaptability.",
@@ -271,6 +277,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "07",
+      category: "Performance",
       title: "ShopDeck: Shopify Developer Command Centre (Internal Tool)",
       context: "Working across multiple Shopify themes makes small tasks slow and repetitive. Opening previews, accessing the editor, inspecting cart state, or grabbing context for dev tickets meant constant tab switching. The friction added up quickly.",
       role: "I built ShopDeck as a Chrome extension that turns any Shopify storefront into a developer command layer. It runs directly on the page, detects Shopify context, and surfaces the actions you need instantly. I own the concept, UX, and implementation.",
@@ -294,6 +301,7 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "08",
+      category: "Theme Rebuilds",
       title: "Seamless Theme Migrations & Shared Architecture",
       context: "Managing multiple Shopify stores with different themes sounds fine - until you try to scale. Every update became slower, riskier, and more repetitive. With OS 2.0 rolling out and design standards evolving, we needed a cleaner way to ship changes without breaking things across brands.",
       role: "I led the migration of four production stores onto modern, OS 2.0-ready themes and set up a B2B wholesale store alongside them. To avoid repeating work, I built a private bootstrap theme on GitHub with reusable sections and patterns that could be shared across brands. I also put proper version control and rollback in place using GitHub Actions.",
@@ -539,25 +547,28 @@ const Navbar = () => {
 };
 
 const CaseStudyCard = ({ study, onSelect }) => (
-  <div className="group relative bg-white border border-zinc-100 p-8 rounded-2xl hover:bg-zinc-50 transition-all cursor-pointer overflow-hidden flex flex-col min-h-[420px]" onClick={() => onSelect(study)}>
-    <div className="absolute top-0 right-0 w-24 h-24 bg-[#b8ff00] translate-x-1/2 -translate-y-1/2 rotate-45 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-    <div className="flex justify-between items-start mb-8">
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-[#b8ff00] px-2 py-0.5 rounded-sm shadow-sm">0{study.id}</span>
+  <div className="group relative bg-white border border-zinc-100 p-8 rounded-[2rem] hover:bg-zinc-50 transition-all cursor-pointer overflow-hidden flex flex-col min-h-[420px] hover:shadow-xl hover:shadow-zinc-200/50 hover:border-black/5" onClick={() => onSelect(study)}>
+    <div className="flex justify-between items-start mb-6">
+      <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-zinc-100/50 px-3 py-1 rounded-full text-zinc-400 group-hover:bg-[#b8ff00] group-hover:text-black transition-colors">{study.category}</span>
       <ArrowUpRight className="text-zinc-300 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" size={24} />
     </div>
-    <div className="flex-grow">
-      <h3 className="text-3xl font-black mb-4 leading-[1.1] tracking-tighter uppercase">{study.title}</h3>
-      <p className="text-zinc-500 line-clamp-3 text-sm leading-relaxed mb-8">{study.context}</p>
-    </div>
-    <div className="mt-auto pt-8 border-t border-zinc-100">
-      <div className="flex flex-wrap gap-2">
+
+    <div className="mb-8">
+      <div className="flex gap-4 mb-6 overflow-x-auto no-scrollbar">
         {study.metrics && study.metrics.slice(0, 2).map((m, i) => (
-          <div key={i} className="flex flex-col">
-            <span className="text-[8px] uppercase tracking-widest text-zinc-400 font-bold">{m.label}</span>
-            <span className="text-sm font-black text-black">{m.after}</span>
+          <div key={i} className="flex items-center gap-2 bg-[#b8ff00]/10 px-3 py-1.5 rounded-lg border border-[#b8ff00]/20 whitespace-nowrap">
+            <TrendingUp size={12} className="text-[#6da300]" />
+            <span className="text-[10px] uppercase tracking-widest text-[#5a8600] font-black">{m.label}:</span>
+            <span className="text-xs font-black text-black">{m.after}</span>
           </div>
         ))}
       </div>
+      <h3 className="text-2xl md:text-3xl font-black mb-3 leading-[1.1] tracking-tighter uppercase group-hover:underline decoration-2 underline-offset-4 decoration-[#b8ff00] transition-all">{study.title}</h3>
+      <p className="text-zinc-500 line-clamp-2 text-sm leading-relaxed font-medium">{study.context}</p>
+    </div>
+
+    <div className="mt-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-300 group-hover:text-black transition-colors">
+      Read Case Study <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
     </div>
   </div>
 );
@@ -651,8 +662,14 @@ const CaseStudyModal = ({ study, onClose }) => {
 
 export default function App() {
   const [selectedStudy, setSelectedStudy] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('All');
 
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, []);
   useEffect(() => { document.body.style.overflow = selectedStudy ? 'hidden' : 'unset'; }, [selectedStudy]);
+
+  const filteredStudies = activeFilter === 'All'
+    ? PORTFOLIO_DATA.caseStudies
+    : PORTFOLIO_DATA.caseStudies.filter(study => study.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-[#b8ff00] selection:text-black antialiased">
@@ -765,13 +782,25 @@ export default function App() {
               <span className="text-[10px] font-black tracking-[0.6em] text-zinc-400 mb-6 block uppercase">Some of my Work</span>
               <h2 className="text-6xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] mb-8">Featured <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '2px black' }}>Projects.</span></h2>
               <p className="text-2xl text-zinc-400 font-medium leading-tight">Eight recent Shopify deployments spanning legacy theme rebuilds, performance optimization, checkout stability and growth-driven feature rollouts.</p>
+              {/* Filters */}
+              <div className="flex flex-wrap gap-4 mt-8">
+                {['All', 'Theme Rebuilds', 'Growth', 'Performance'].map(filter => (
+                  <button
+                    key={filter}
+                    onClick={() => setActiveFilter(filter)}
+                    className={`px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeFilter === filter ? 'bg-black text-[#b8ff00]' : 'bg-zinc-100 text-zinc-400 hover:bg-zinc-200'}`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
-        </section >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{filteredStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
+        </section>
 
         {/* Section 3: Why Me */}
-        < section id="whyme" className="py-24 border-t border-zinc-100" >
+        <section id="whyme" className="py-24 border-t border-zinc-100">
           <div className="mb-24">
             <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
             <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
