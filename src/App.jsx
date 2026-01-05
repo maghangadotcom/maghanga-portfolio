@@ -11,6 +11,10 @@ import {
   Plus,
   Search,
   ArrowUpRight,
+  ArrowDown,
+  Zap,
+  Layout,
+  TrendingUp,
   Twitter,
   Linkedin,
   Github
@@ -685,43 +689,81 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Media Column */}
-            <div className="lg:w-5/12 order-1 lg:order-2">
-              <div className="sticky top-32 flex flex-col items-center lg:items-end w-full">
-                <div className="relative inline-block">
-                  <div className="w-full max-w-[340px] md:w-80 h-[480px] rounded-[3rem] overflow-hidden bg-zinc-100 border-2 border-zinc-100 shadow-2xl -rotate-2">
-                    <img
-                      src={PORTFOLIO_DATA.about.image}
-                      className="w-full h-full object-cover grayscale brightness-110"
-                      alt="Profile"
-                    />
-                  </div>
-                  <div className="absolute -bottom-8 -left-8 bg-[#b8ff00] w-24 h-24 flex items-center justify-center rounded-3xl shadow-2xl rotate-12">
-                    <Code2 size={40} className="text-black" />
-                  </div>
+            {/* Quick Stats */}
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 w-full max-w-5xl border-y border-zinc-100 py-10 bg-zinc-50/50 backdrop-blur-sm rounded-2xl">
+              {[
+                { label: 'Dev Velocity', value: '3.5x' },
+                { label: 'Avg FCP', value: '1.2s' },
+                { label: 'Upsell Revenue', value: '+38%' },
+                { label: 'Yrs Experience', value: '4+' }
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col items-center min-w-[120px]">
+                  <span className="text-3xl md:text-5xl font-black tracking-tighter mb-2">{stat.value}</span>
+                  <span className="text-xs font-black text-zinc-400 uppercase tracking-widest">{stat.label}</span>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                <div className="mt-16 text-center lg:text-right space-y-6 max-w-[280px]">
-                  <div className="flex items-center gap-3 text-[10px] font-black tracking-widest uppercase text-black bg-[#b8ff00] w-fit px-4 py-2 rounded-full mx-auto lg:ml-auto lg:mr-0">
-                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    Available for Hire
-                  </div>
-                  <p className="text-zinc-400 text-sm font-bold leading-relaxed uppercase tracking-tighter">
-                    Helping household names sharpen their edge on Shopify.
-                  </p>
+        {/* Section 1.5: About Me (New) */}
+        <section id="about" className="py-24 border-t border-zinc-100">
+          <div className="flex flex-col md:flex-row gap-16 items-start">
+            {/* Visual Column */}
+            <div className="md:w-5/12 sticky top-32">
+              <div className="relative mb-12">
+                <div className="w-full h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
+                  <img src={PORTFOLIO_DATA.about.image} alt="Thomas Maghanga" className="w-full h-full object-cover grayscale px-4 pt-4" />
+                </div>
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#b8ff00] rounded-2xl flex items-center justify-center -rotate-6 shadow-xl">
+                  <Code2 size={40} className="text-black" />
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-20">
-            <div className="mb-10 flex justify-between items-end border-b-2 border-zinc-100 pb-4">
-              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
-              <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
+            {/* Content Column */}
+            <div className="md:w-7/12">
+              <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-8 block uppercase bg-black w-fit px-4 py-2 rounded-full">About Me</span>
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-10">
+                Data-Driven <br /> <span className="text-zinc-400">Shopify Developer.</span>
+              </h2>
+
+              <div className="space-y-10 mb-12">
+                {[
+                  { icon: <Zap size={24} />, text: "4+ years building scalable, high-performance Shopify stores." },
+                  { icon: <Layout size={24} />, text: "Optimized PDP & cart flows for multiple 7-figure brands." },
+                  { icon: <TrendingUp size={24} />, text: "Specialist in OS 2.0, Liquid, Tailwind & headless integrations." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-6 items-start group">
+                    <div className="w-12 h-12 bg-zinc-50 border border-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#b8ff00] group-hover:border-[#b8ff00] transition-colors duration-300">
+                      {React.cloneElement(item.icon, { className: "text-zinc-400 group-hover:text-black transition-colors" })}
+                    </div>
+                    <p className="text-xl font-medium text-zinc-600 leading-snug pt-2">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-8 bg-zinc-50 rounded-3xl border border-zinc-100">
+                <p className="text-zinc-500 font-medium mb-6">"I don't just write code. I build systems that help brands grow faster and break less."</p>
+                <a href="mailto:maghangamail@gmail.com" className="inline-flex items-center gap-2 text-black font-black uppercase tracking-widest text-sm hover:gap-4 transition-all border-b-2 border-black pb-1">
+                  Reaching out for a project? <ArrowRight size={16} />
+                </a>
+              </div>
             </div>
-            <Marquee />
           </div>
         </section>
+
+
+        {/* Right Media Column */}
+
+        <div className="mt-20">
+          <div className="mb-10 flex justify-between items-end border-b-2 border-zinc-100 pb-4">
+            <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
+            <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
+          </div>
+          <Marquee />
+        </div>
+
 
         {/* Section 2: Case Studies */}
         <section id="casestudies" className="py-24 border-t border-zinc-100">
@@ -733,10 +775,10 @@ export default function App() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{PORTFOLIO_DATA.caseStudies.map(study => (<CaseStudyCard key={study.id} study={study} onSelect={setSelectedStudy} />))}</div>
-        </section>
+        </section >
 
         {/* Section 3: Why Me */}
-        <section id="whyme" className="py-24 border-t border-zinc-100">
+        < section id="whyme" className="py-24 border-t border-zinc-100" >
           <div className="mb-24">
             <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
             <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
@@ -762,8 +804,8 @@ export default function App() {
               <div className="flex flex-wrap gap-3">{['SHOPIFY OS 2.0', 'LIQUID', 'JAVASCRIPT', 'CHECKOUT EXTENSIONS', 'TAILWIND', 'STOREFRONT APIS', 'GTM (CLIENT & SERVER)', 'SHOPIFY FUNCTIONS', 'SIDEKICK', 'SHOPIFY CLI', 'AJAX', 'HYDROGEN', 'REMIX', 'GIT', 'SHOPIFY ADMIN'].map(tag => (<span key={tag} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em]">{tag}</span>))}</div>
             </div>
           </div>
-        </section>
-      </main>
+        </section >
+      </main >
 
       <footer className="border-t-2 border-zinc-100 py-32 px-6 bg-zinc-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
@@ -790,6 +832,6 @@ export default function App() {
       </footer>
 
       <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />
-    </div>
+    </div >
   );
 }
