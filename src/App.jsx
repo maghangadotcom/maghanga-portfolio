@@ -15,6 +15,14 @@ import {
   Zap,
   Layout,
   TrendingUp,
+  UserCheck,
+  BarChart3,
+  Server,
+  Globe,
+  Database,
+  Terminal,
+  Cpu,
+  ShoppingCart,
   Twitter,
   Linkedin,
   Github
@@ -98,20 +106,38 @@ const PORTFOLIO_DATA = {
   },
   whyMe: [
     {
-      title: "Owner-level involvement",
-      description: "I’m not a contractor executing tickets. I lead discovery, prioritise roadmaps, write the code and test the results. The goal is to build what the business actually needs, not just what is easy to ship."
+      icon: <UserCheck size={32} />,
+      title: "Owner-Level Involvement",
+      description: "I don't just clear tickets. I lead discovery, audit the roadmap, and write the code myself. You get a partner who treats your store like their own business."
     },
     {
-      title: "Evidence-driven design",
-      description: "Heat-maps, user recordings, review mining and A/B tests inform every decision. If we add a progress bar to the cart, it's because we saw drop-off in analytics and validated the fix with split tests."
+      icon: <BarChart3 size={32} />,
+      title: "Evidence-Driven Design",
+      description: "No guesswork. Every feature—from sticky carts to upsell flows—is backed by heatmaps, A/B tests, and analytics data."
     },
     {
-      title: "Infrastructure and tooling",
-      description: "I set up GA4, GTM, and server-side tracking to ensure your data is first-party, accurate and compliant. I've also created internal tools like ShopDeck (a Shopify development helper chromium extension) to speed up theme work."
+      icon: <Server size={32} />,
+      title: "Deep Infrastructure",
+      description: "I go beyond the theme editor. I set up proper GTM, GA4, pixel tracking, and server-side events so your data is actually accurate."
     },
     {
-      title: "Ecosystem know-how",
-      description: "Beyond Shopify, I’ve migrated and troubleshot third-party apps like Klaviyo, Recharge, Rebuy, Timesact and Skio. I understand their APIs to ensure seamless migrations."
+      icon: <Globe size={32} />,
+      title: "Ecosystem Mastery",
+      description: "I know the APIs of the apps you use (Recharge, Klaviyo, Yotpo). I make them play nice together without slowing down your site."
+    }
+  ],
+  stack: [
+    {
+      category: "Storefront",
+      tools: ["Shopify OS 2.0", "Liquid", "Tailwind CSS", "Alpine.js"]
+    },
+    {
+      category: "Headless & Custom",
+      tools: ["React", "Hydrogen", "Remix", "Node.js"]
+    },
+    {
+      category: "Data & Ops",
+      tools: ["GTM (Server)", "GA4", "Shopify Functions", "Git / CI/CD"]
     }
   ],
   caseStudies: [
@@ -321,96 +347,84 @@ const PORTFOLIO_DATA = {
 
 // --- Components ---
 
-const Marquee = () => {
+const BrandGrid = () => {
   const brands = [
-    { name: 'SUPPLY', url: 'https://supply.co' },
-    { name: 'BLU ATLAS', url: 'https://bluatlas.com' },
-    { name: 'BENEVOLENCE LA', url: 'https://benevolencela.com' },
-    { name: 'BRUTE MAGNETICS', url: 'https://brutemagnetics.com' },
-    { name: 'TECHNORV', url: 'https://technorv.com' },
-    { name: 'STRYX', url: 'https://www.stryx.com/' },
-    { name: 'CRAFT & KIN', url: 'https://craftandkin.co/' }
+    { name: 'SUPPLY', url: 'https://supply.co/', desc: 'Full Theme Rebuild & 38% AOV Lift' },
+    { name: 'BLU ATLAS', url: 'https://bluatlas.com/', desc: 'Subscription Logic & Upsells' },
+    { name: 'BENEVOLENCE LA', url: 'https://benevolencela.com', desc: 'Theme Customization & Speed' },
+    { name: 'BRUTE MAGNETICS', url: 'https://brutemagnetics.com/', desc: 'Custom Bundle Builder' },
+    { name: 'TECHNORV', url: 'https://technorv.com/', desc: 'Performance & Search Upgrade' },
+    { name: 'STRYX', url: 'https://www.stryx.com/', desc: 'Conversion Rate Optimization' },
+    { name: 'CRAFT & KIN', url: 'https://craftandkin.co/', desc: 'Wholesale B2B Setup' }
   ];
 
-  const DesktopMarquee = () => (
-    <div className="hidden md:block overflow-hidden border-y border-zinc-100 py-10 bg-white group">
-      <div className="flex whitespace-nowrap animate-marquee">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="flex gap-20 items-center mx-10">
-            {brands.map(brand => (
-              <a
-                key={brand.name}
-                href={brand.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-3xl font-black tracking-tighter text-zinc-300 hover:text-black transition-colors flex items-center gap-4"
-              >
-                {brand.name}
-              </a>
-            ))}
-          </div>
-        ))}
-      </div>
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
-        }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-    </div>
-  );
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const MobileBrandSlider = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const next = () => setCurrentIndex((prev) => (prev + 1) % brands.length);
-    const prev = () => setCurrentIndex((prev) => (prev - 1 + brands.length) % brands.length);
-
-    return (
-      <div className="md:hidden border-y border-zinc-100 py-10 bg-white">
-        <div className="flex items-center justify-between px-6 gap-4">
-          <button onClick={prev} className="p-2 border border-zinc-100 rounded-full hover:bg-black hover:text-white transition-colors">
-            <ChevronLeft size={20} />
-          </button>
-
-          <div className="flex-1 text-center">
-            <a
-              href={brands[currentIndex].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl font-black tracking-tighter text-black block mb-2"
-            >
-              {brands[currentIndex].name}
-            </a>
-            <div className="flex justify-center gap-2">
-              {brands.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-6 bg-[#b8ff00]' : 'w-1.5 bg-zinc-200'
-                    }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <button onClick={next} className="p-2 border border-zinc-100 rounded-full hover:bg-black hover:text-white transition-colors">
-            <ChevronRight size={20} />
-          </button>
-        </div>
-      </div>
-    );
+  const nextBrand = () => {
+    setCurrentIndex((prev) => (prev + 1) % brands.length);
   };
+
+  const prevBrand = () => {
+    setCurrentIndex((prev) => (prev - 1 + brands.length) % brands.length);
+  };
+
+  const currentBrand = brands[currentIndex];
 
   return (
     <>
-      <DesktopMarquee />
-      <MobileBrandSlider />
+      {/* Mobile Slider */}
+      <div className="md:hidden flex flex-col items-center px-6">
+        <div className="relative w-full bg-zinc-50 border border-zinc-100 rounded-2xl p-8 flex flex-col items-center text-center h-[200px] justify-center mb-6">
+          <a
+            href={currentBrand.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-3xl font-black uppercase tracking-tighter mb-4 hover:underline"
+          >
+            {currentBrand.name}
+          </a>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8ff00] bg-black px-2 py-1 rounded">
+            {currentBrand.desc}
+          </span>
+
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2">
+            <button onClick={prevBrand} className="p-2 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronLeft size={20} /></button>
+            <button onClick={nextBrand} className="p-2 bg-white border border-zinc-100 rounded-full shadow-sm hover:bg-black hover:text-[#b8ff00] transition-colors"><ChevronRight size={20} /></button>
+          </div>
+        </div>
+
+        {/* Indicators */}
+        <div className="flex gap-2 mb-4">
+          {brands.map((_, idx) => (
+            <div
+              key={idx}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-black w-6' : 'bg-zinc-200'}`}
+            />
+          ))}
+        </div>
+        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-300"> Swipe / Click Arrows</div>
+      </div>
+
+      {/* Desktop Grid */}
+      <div className="hidden md:grid grid-cols-4 gap-4 px-6">
+        {brands.map((brand, i) => (
+          <a
+            key={i}
+            href={brand.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex flex-col items-center justify-center p-8 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-black transition-all hover:-translate-y-1 hover:shadow-lg h-[180px]"
+          >
+            <span className="text-xl md:text-2xl font-black uppercase tracking-tighter group-hover:opacity-0 transition-opacity duration-300 text-center">{brand.name}</span>
+            <div className="absolute inset-0 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-[10px] font-bold text-center uppercase tracking-widest text-[#b8ff00] bg-black px-2 py-1 rounded">{brand.desc}</span>
+            </div>
+          </a>
+        ))}
+        <div className="flex items-center justify-center p-8 border-2 border-dashed border-zinc-200 rounded-2xl h-[180px]">
+          <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest text-center">Your Brand Here</span>
+        </div>
+      </div>
     </>
   );
 };
@@ -676,34 +690,27 @@ export default function App() {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6">
-        {/* Section 1: About */}
-        <section id="about" className="pt-32 pb-20">
-          <div className="flex flex-col lg:flex-row gap-20 items-center lg:items-start">
-            {/* Left Content Column */}
-            <div className="lg:w-7/12 order-2 lg:order-1">
-              <h1 className="text-7xl md:text-[9rem] font-black tracking-tighter mb-12 leading-[0.8] uppercase">
-                Technical <br /> Prowess <br /> <span className="text-[#b8ff00] stroke-black stroke-2" style={{ WebkitTextStroke: '3px black' }}>Meets</span> <br /> Strategy.
-              </h1>
+        {/* Section 1: Hero */}
+        <section id="hero" className="pt-20 pb-20">
+          <div className="flex flex-col items-center text-center max-w-7xl mx-auto z-10">
+            <div className="w-24 h-24 bg-black rounded-3xl flex items-center justify-center rotate-12 mb-12 shadow-2xl hover:rotate-[360deg] transition-all duration-700"><div className="w-10 h-10 bg-[#b8ff00] rounded-sm -rotate-12" /></div>
 
-              <div className="space-y-8 text-2xl font-medium text-zinc-700 leading-[1.2] max-w-2xl">
-                {PORTFOLIO_DATA.about.content.map((p, i) => (
-                  <p key={i} className={i === 0 ? "text-zinc-900 font-bold" : ""}>
-                    {p}
-                  </p>
-                ))}
-              </div>
+            <h1 className="text-5xl md:text-[7rem] font-black mb-10 tracking-tighter uppercase leading-[0.9]">
+              I help Shopify Brands <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-black animate-gradient bg-300%">Scale Faster.</span>
+            </h1>
 
-              <div className="mt-20 flex flex-wrap gap-6">
-                <a
-                  href="#casestudies"
-                  className="group w-full md:w-auto justify-center px-12 py-8 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl"
-                >
-                  See My Previous Work  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                </a>
-                <button onClick={() => window.location.href = 'mailto:maghangamail@gmail.com'} className="w-full md:w-auto px-12 py-6 md:py-8 bg-white text-black border-2 border-black rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:border-[#b8ff00] hover:text-black transition-all">
-                  Email Me <ArrowUpRight size={18} />
-                </button>
-              </div>
+            <p className="text-xl md:text-3xl text-zinc-500 font-medium max-w-4xl mb-12 leading-relaxed">
+              I stabilize fragile themes, boost conversions, and build growth-ready storefronts for 7-figure brands.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-6 mb-20 w-full md:w-auto">
+              <a href="#casestudies" className="group px-12 py-6 bg-black text-white rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-[#b8ff00] hover:text-black transition-all shadow-xl hover:shadow-[#b8ff00]/20 hover:-translate-y-1">
+                See My Work <ArrowDown className="group-hover:translate-y-1 transition-transform" />
+              </a>
+              <a href="mailto:maghangamail@gmail.com" className="group px-12 py-6 bg-white text-black border-2 border-zinc-100 rounded-full font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 hover:border-black transition-all hover:-translate-y-1">
+                Let's Talk <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </a>
             </div>
 
             {/* Quick Stats */}
@@ -727,7 +734,7 @@ export default function App() {
         <section id="about" className="py-24 border-t border-zinc-100">
           <div className="flex flex-col md:flex-row gap-16 items-start">
             {/* Visual Column */}
-            <div className="md:w-5/12 sticky top-32">
+            <div className="md:w-5/12">
               <div className="relative mb-12">
                 <div className="w-full h-[500px] bg-zinc-100 rounded-[2rem] overflow-hidden rotate-2 border-2 border-zinc-100 shadow-2xl">
                   <img src={PORTFOLIO_DATA.about.image} alt="Thomas Maghanga" className="w-full h-full object-cover grayscale px-4 pt-4" />
@@ -778,7 +785,7 @@ export default function App() {
             <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">Brands I’ve Built and Scaled With:</span>
             <span className="text-[10px] font-black tracking-[0.6em] text-zinc-300 uppercase">(Click brandname to visit store)</span>
           </div>
-          <Marquee />
+          <BrandGrid />
         </div>
 
 
@@ -809,31 +816,50 @@ export default function App() {
         {/* Section 3: Why Me */}
         <section id="whyme" className="py-24 border-t border-zinc-100">
           <div className="mb-24">
-            <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">What Sets My Work Apart</span>
+            <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] mb-6 block uppercase bg-black w-fit px-5 py-2 rounded-full">Differentiators</span>
             <h2 className="text-6xl md:text-[7rem] font-black tracking-tighter uppercase leading-[0.85]">
-              Building for <br /> <span className="bg-[#b8ff00] px-4">Scale.</span>
+              Building for <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8ff00] to-green-600">Scale.</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-10">
+
+          <div className="grid md:grid-cols-2 gap-8 mb-24">
             {PORTFOLIO_DATA.whyMe.map((item, i) => (
-              <div key={i} className="group p-12 bg-white border-2 border-zinc-100 rounded-[3rem] hover:border-black transition-all relative overflow-hidden">
-                <div className="absolute -top-4 -right-4 p-8 text-zinc-50 font-black text-[10rem] group-hover:text-[#b8ff00]/20 transition-colors leading-none -rotate-12 pointer-events-none select-none">0{i + 1}</div>
-                <div className="relative z-10">
-                  <h3 className="text-3xl font-black mb-8 uppercase tracking-tighter leading-none">{item.title}</h3>
-                  <p className="text-zinc-500 leading-relaxed text-xl font-medium">{item.description}</p>
+              <div key={i} className="group p-10 bg-zinc-50 rounded-[2.5rem] hover:bg-black hover:text-white transition-all duration-500">
+                <div className="mb-8 w-16 h-16 bg-white border border-zinc-200 rounded-2xl flex items-center justify-center text-black group-hover:bg-[#b8ff00] group-hover:border-[#b8ff00] transition-colors shadow-sm">
+                  {item.icon}
                 </div>
+                <h3 className="text-2xl font-black mb-4 uppercase tracking-tight">{item.title}</h3>
+                <p className="text-zinc-500 font-medium leading-relaxed group-hover:text-zinc-400 text-lg">{item.description}</p>
               </div>
             ))}
           </div>
-          <div className="mt-24 bg-zinc-900 text-white p-20 rounded-[4rem] relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[#b8ff00]/5" />
-            <div className="relative z-10 max-w-3xl">
-              <h3 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 leading-[0.9] uppercase">The Tech <br /> Stack.</h3>
-              <p className="text-zinc-400 text-2xl leading-relaxed mb-16 font-medium">I work close to the metal of Shopify. Themes, data, performance, and the systems that keep stores stable under real traffic. This is the tooling I use to build fast, reliable, growth-ready storefronts.</p>
-              <div className="flex flex-wrap gap-3">{['SHOPIFY OS 2.0', 'LIQUID', 'JAVASCRIPT', 'CHECKOUT EXTENSIONS', 'TAILWIND', 'STOREFRONT APIS', 'GTM (CLIENT & SERVER)', 'SHOPIFY FUNCTIONS', 'SIDEKICK', 'SHOPIFY CLI', 'AJAX', 'HYDROGEN', 'REMIX', 'GIT', 'SHOPIFY ADMIN'].map(tag => (<span key={tag} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em]">{tag}</span>))}</div>
+
+          <div className="bg-black text-white p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-32 bg-[#b8ff00] blur-[150px] opacity-10 rounded-full pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="mb-16">
+                <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 leading-[0.9] uppercase">The Tech Stack.</h3>
+                <p className="text-zinc-400 text-xl max-w-2xl font-medium">Tools I use to build fast, reliable, and growth-ready storefronts.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-zinc-800 pt-12">
+                {PORTFOLIO_DATA.stack.map((group, i) => (
+                  <div key={i}>
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#b8ff00] mb-8">{group.category}</h4>
+                    <ul className="space-y-4">
+                      {group.tools.map((tool, j) => (
+                        <li key={j} className="text-xl md:text-2xl font-bold tracking-tight text-white flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 bg-zinc-700 rounded-full" /> {tool}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </section >
+        </section>
       </main >
 
       <footer className="border-t-2 border-zinc-100 py-32 px-6 bg-zinc-50 relative overflow-hidden">
