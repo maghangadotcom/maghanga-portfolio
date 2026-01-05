@@ -319,8 +319,9 @@ const Marquee = () => {
     { name: 'STRYX', url: 'https://www.stryx.com/' },
     { name: 'CRAFT & KIN', url: 'https://craftandkin.co/' }
   ];
-  return (
-    <div className="overflow-x-auto border-y border-zinc-100 py-10 bg-white group no-scrollbar cursor-grab active:cursor-grabbing">
+
+  const DesktopMarquee = () => (
+    <div className="hidden md:block overflow-hidden border-y border-zinc-100 py-10 bg-white group">
       <div className="flex whitespace-nowrap animate-marquee">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="flex gap-20 items-center mx-10">
@@ -349,15 +350,56 @@ const Marquee = () => {
         .animate-marquee:hover {
           animation-play-state: paused;
         }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
       `}</style>
     </div>
+  );
+
+  const MobileBrandSlider = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const next = () => setCurrentIndex((prev) => (prev + 1) % brands.length);
+    const prev = () => setCurrentIndex((prev) => (prev - 1 + brands.length) % brands.length);
+
+    return (
+      <div className="md:hidden border-y border-zinc-100 py-10 bg-white">
+        <div className="flex items-center justify-between px-6 gap-4">
+          <button onClick={prev} className="p-2 border border-zinc-100 rounded-full hover:bg-black hover:text-white transition-colors">
+            <ChevronLeft size={20} />
+          </button>
+
+          <div className="flex-1 text-center">
+            <a
+              href={brands[currentIndex].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl font-black tracking-tighter text-black block mb-2"
+            >
+              {brands[currentIndex].name}
+            </a>
+            <div className="flex justify-center gap-2">
+              {brands.map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-6 bg-[#b8ff00]' : 'w-1.5 bg-zinc-200'
+                    }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <button onClick={next} className="p-2 border border-zinc-100 rounded-full hover:bg-black hover:text-white transition-colors">
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <DesktopMarquee />
+      <MobileBrandSlider />
+    </>
   );
 };
 
