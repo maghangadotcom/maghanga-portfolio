@@ -862,26 +862,54 @@ export default function App() {
         </section>
       </main >
 
-      <footer className="border-t-2 border-zinc-100 py-32 px-6 bg-zinc-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center rotate-12 mb-12"><div className="w-6 h-6 bg-[#b8ff00] rounded-sm -rotate-12" /></div>
-          <div className="font-black tracking-tighter text-6xl md:text-8xl mb-12 uppercase">GET IN TOUCH</div>
-          <a href="mailto:work@foundrydev.com" className="text-2xl md:text-5xl font-medium tracking-tight mb-20 hover:text-[#b8ff00] transition-colors underline decoration-2 underline-offset-8">maghangamail@gmail.com</a>
-          <div className="flex gap-16 font-black text-[10px] uppercase tracking-[0.4em] text-zinc-400 mb-20">
-            <a href="https://x.com/maghangadotcom" className="hover:text-black transition-colors flex items-center gap-2">
+      <footer className="py-32 px-6 bg-black text-white relative overflow-hidden">
+        {/* Background Gradients */}
+        <div className="absolute top-0 right-0 p-96 bg-[#b8ff00] blur-[200px] opacity-10 rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 p-64 bg-[#b8ff00] blur-[150px] opacity-5 rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+
+          <div className="mb-12">
+            <span className="text-[10px] font-black tracking-[0.6em] text-[#b8ff00] uppercase bg-white/10 px-5 py-2 rounded-full backdrop-blur-sm">What's Next?</span>
+          </div>
+
+          <h2 className="font-black tracking-tighter text-5xl md:text-8xl mb-12 uppercase leading-[0.9] max-w-5xl">
+            Let's build your <br /> <span className="text-[#b8ff00]">Shopify Store</span> together.
+          </h2>
+
+          <p className="text-zinc-400 text-xl md:text-2xl font-medium max-w-2xl mb-16 leading-relaxed">
+            I'm currently accepting new projects for Q1 2025. If you have a store that needs faster load times, higher conversion, or a complete rebuild, let's talk.
+          </p>
+
+          <a
+            href="mailto:maghangamail@gmail.com"
+            className="group relative px-12 py-8 bg-[#b8ff00] text-black rounded-full font-black text-xl uppercase tracking-widest flex items-center gap-4 hover:bg-white transition-all shadow-xl hover:shadow-[#b8ff00]/20 hover:-translate-y-2 mb-24"
+          >
+            Start a Project <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </a>
+
+          <div className="flex gap-12 font-black text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-20 flex-wrap justify-center">
+            <a href="https://x.com/maghangadotcom" className="hover:text-white transition-colors flex items-center gap-2 border-b border-transparent hover:border-[#b8ff00] pb-1">
               <Twitter size={16} /> TWITTER
             </a>
-            <a href="https://www.linkedin.com/in/thomas-maghanga/" className="hover:text-black transition-colors flex items-center gap-2">
+            <a href="https://www.linkedin.com/in/thomas-maghanga/" className="hover:text-white transition-colors flex items-center gap-2 border-b border-transparent hover:border-[#b8ff00] pb-1">
               <Linkedin size={16} /> LINKEDIN
             </a>
-            <a href="https://github.com/maghangadotcom" className="hover:text-black transition-colors flex items-center gap-2">
+            <a href="https://github.com/maghangadotcom" className="hover:text-white transition-colors flex items-center gap-2 border-b border-transparent hover:border-[#b8ff00] pb-1">
               <Github size={16} /> GITHUB
             </a>
           </div>
-          <div className="flex flex-col md:flex-row gap-8 items-center justify-between w-full pt-12 border-t border-zinc-200">
-            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">© 2025 / THOMAS MAGHANGA</span>
-            <div className="flex gap-6"><div className="w-3 h-3 bg-[#b8ff00] rounded-full" /><div className="w-3 h-3 bg-black rounded-full" /><div className="w-3 h-3 bg-zinc-300 rounded-full" /></div>
-            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">NAIROBI / REMOTE</span>
+
+          <div className="flex flex-col md:flex-row gap-8 items-center justify-between w-full pt-12 border-t border-zinc-900">
+            <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">© 2025 / THOMAS MAGHANGA</span>
+            <div className="flex gap-6">
+              <div className="w-2 h-2 bg-[#b8ff00] rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-zinc-800 rounded-full" />
+              <div className="w-2 h-2 bg-zinc-800 rounded-full" />
+            </div>
+            <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest flex items-center gap-2">
+              <Globe size={12} /> NAIROBI / REMOTE
+            </span>
           </div>
         </div>
       </footer>
