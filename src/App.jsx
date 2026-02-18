@@ -181,7 +181,73 @@ const Process = () => {
     </section>
   );
 };
-const Work = () => <section>Work</section>;
+const Work = () => {
+  const caseStudies = [
+    {
+      title: "Supply.co",
+      cvrLift: "+38%",
+      revenue: "+16% of annual (upsells)",
+      description: "Two years as the primary CRO technical resource. Built Rebuy-powered upsell flows, optimized PDPs from heatmap data and improved site speed by 35%. The conversion lift compounded across the entire funnel.",
+    },
+    {
+      title: "Fifth Ray",
+      funnelLeak: "89.6%",
+      reviewsMined: "849+",
+      description: "Inherited a store with broken analytics, a 51% data discrepancy and a checkout drop-off nearly double the industry benchmark. Built the measurement foundation first - because if you can't measure it, you can't test it. Now running structured A/B tests on Intelligems.",
+    },
+    {
+      title: "Foundry Brands",
+      stores: "10+",
+      speed: "+35% improvement",
+      description: "Rebuilt theme architecture across a portfolio of 7-9 figure stores. Replaced heavy third-party apps with lean custom Liquid, built subscription flows and bundle systems and created modular section libraries that let marketing ship without developer bottleneck.",
+    },
+  ];
+
+  const tools = [
+    "Shopify Liquid", "GA4", "GTM", "Intelligems", "Microsoft Clarity", "Hotjar", "Klaviyo", "Rebuy", "Skio", "Recharge", "Figma", "Shopify Flow", "Elevar", "JavaScript", "HTML/CSS", "OS 2.0", "MetaFields", "Git/GitHub"
+  ];
+
+  const CaseStudyCard = ({ study }) => (
+    <div className="bg-bg-card p-8 rounded-lg border border-border-subtle text-left">
+      <h3 className="text-xl font-bold mb-4">{study.title}</h3>
+      <div className="flex space-x-4 mb-4">
+        {study.cvrLift && <p className="text-accent-primary font-mono">{study.cvrLift} CVR LIFT</p>}
+        {study.revenue && <p className="text-accent-primary font-mono">{study.revenue}</p>}
+        {study.funnelLeak && <p className="text-accent-primary font-mono">{study.funnelLeak} FUNNEL LEAK</p>}
+        {study.reviewsMined && <p className="text-accent-primary font-mono">{study.reviewsMined} REVIEWS MINED</p>}
+        {study.stores && <p className="text-accent-primary font-mono">{study.stores} STORES</p>}
+        {study.speed && <p className="text-accent-primary font-mono">{study.speed}</p>}
+      </div>
+      <p className="text-text-secondary">{study.description}</p>
+    </div>
+  );
+
+  return (
+    <section id="work" className="py-20 bg-bg-secondary">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">The numbers speak.</h2>
+        <p className="text-lg text-text-secondary max-w-3xl mx-auto mb-12">
+          Real results from real stores. Not vanity metrics.
+        </p>
+        <div className="grid md:grid-cols-3 gap-8">
+          {caseStudies.map((study, index) => (
+            <CaseStudyCard key={index} study={study} />
+          ))}
+        </div>
+        <div className="mt-20 overflow-x-hidden">
+          <div className="flex animate-scroll">
+            {tools.map((tool, index) => (
+              <span key={index} className="mx-4 text-text-muted whitespace-nowrap">{tool}</span>
+            ))}
+            {tools.map((tool, index) => (
+              <span key={index} className="mx-4 text-text-muted whitespace-nowrap">{tool}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 const CompoundingEffect = () => <section>Compounding Effect</section>;
 const TechStack = () => <section>Tech Stack</section>;
 const About = () => <section>About</section>;
