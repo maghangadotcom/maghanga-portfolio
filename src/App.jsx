@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <nav className="sticky top-0 z-50 bg-bg-primary/80 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-6">
@@ -16,10 +18,27 @@ const Navbar = () => {
             Let's Talk
           </a>
           <div className="md:hidden">
-            {/* Mobile menu button */}
+            <button onClick={() => setIsOpen(!isOpen)}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
+      {isOpen && (
+        <div className="md:hidden bg-bg-secondary">
+          <div className="flex flex-col items-center space-y-4 py-8">
+            <a href="#process" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setIsOpen(false)}>Process</a>
+            <a href="#work" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setIsOpen(false)}>Work</a>
+            <a href="#results" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setIsOpen(false)}>Results</a>
+            <a href="#contact" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setIsOpen(false)}>Contact</a>
+            <a href="mailto:maghangamail@gmail.com" className="bg-accent-primary text-bg-primary font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">
+              Let's Talk
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
@@ -234,7 +253,7 @@ const Work = () => {
             <CaseStudyCard key={index} study={study} />
           ))}
         </div>
-        <div className="mt-20 overflow-x-hidden">
+        <div className="mt-20 w-full overflow-x-hidden">
           <div className="flex animate-scroll">
             {tools.map((tool, index) => (
               <span key={index} className="mx-4 text-text-muted whitespace-nowrap">{tool}</span>
@@ -284,6 +303,9 @@ const CompoundingEffect = () => {
           <svg width="100%" height="300" viewBox="0 0 800 300">
             <line x1="0" y1="250" x2="800" y2="250" stroke="#4A5568" strokeDasharray="4" />
             <path d="M 0 250 Q 200 150, 400 100 T 800 50" stroke="#00e5a0" fill="none" strokeWidth="2" />
+            <circle cx="0" cy="250" r="5" fill="#00e5a0" />
+            <circle cx="400" cy="100" r="5" fill="#00e5a0" />
+            <circle cx="800" cy="50" r="5" fill="#00e5a0" />
           </svg>
         </div>
         <div className="grid md:grid-cols-4 gap-8">
