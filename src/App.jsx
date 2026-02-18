@@ -342,7 +342,26 @@ const TechStack = () => {
     </section>
   );
 };
-const About = () => <section>About</section>;
+const About = () => {
+  return (
+    <section id="about" className="py-20">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-8">How I think about this work.</h2>
+        <div className="space-y-6 text-lg text-text-secondary">
+          <p>
+            I work like an internal builder, not a ticket-taker. I'm comfortable owning technical decisions, collaborating across teams and shipping fixes while stores are live - often across multiple time zones.
+          </p>
+          <p>
+            I think in commercial terms - trust, friction, perceived value and how decisions on the storefront impact ROAS. Every pixel serves a function in the revenue engine or it doesn't belong.
+          </p>
+          <p>
+            I prioritize clarity, performance and maintainability because Shopify stores don't get second chances under traffic. The work I ship today shouldn't become technical debt tomorrow.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
 const Contact = () => <section>Contact</section>;
 
 function App() {
