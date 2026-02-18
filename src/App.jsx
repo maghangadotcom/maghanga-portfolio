@@ -298,7 +298,50 @@ const CompoundingEffect = () => {
     </section>
   );
 };
-const TechStack = () => <section>Tech Stack</section>;
+const TechStack = () => {
+  const stacks = [
+    {
+      title: "Research & Analytics",
+      tools: ["GA4", "Google Tag Manager", "Microsoft Clarity", "Hotjar", "Elevar", "Shopify Analytics", "Review Mining", "Customer Surveys"],
+    },
+    {
+      title: "Testing & Implementation",
+      tools: ["Intelligems", "Shopify Liquid", "JavaScript", "HTML/CSS", "OS 2.0", "Web Components", "AJAX", "MetaFields/MetaObjects", "Core Web Vitals (LCP, CLS, INP)"],
+    },
+    {
+      title: "Commerce & Retention",
+      tools: ["Klaviyo", "Rebuy", "Skio", "Recharge", "Shopify Flow", "Shopify Functions", "Customer Accounts API", "Subscription Architecture", "Bundle Builders"],
+    },
+  ];
+
+  return (
+    <section id="tech-stack" className="py-20 bg-bg-secondary">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center">
+          <h2 className="text-4xl font-bold mb-4">What I work with.</h2>
+          <p className="text-lg text-text-secondary max-w-3xl mx-auto mb-12">
+            The full stack - from data collection to test deployment.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {stacks.map((stack, index) => (
+            <div key={index} className="bg-bg-card p-8 rounded-lg border border-border-subtle">
+              <h3 className="text-xl font-bold mb-4">{stack.title}</h3>
+              <ul className="space-y-2">
+                {stack.tools.map((tool, i) => (
+                  <li key={i} className="text-text-secondary">{tool}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="text-center text-text-muted mt-12">
+          I also leverage AI and agentic workflows to accelerate research, automate repetitive analysis and ship faster. Tools are only as good as the thinking behind them.
+        </p>
+      </div>
+    </section>
+  );
+};
 const About = () => <section>About</section>;
 const Contact = () => <section>Contact</section>;
 
