@@ -128,7 +128,59 @@ const Problem = () => {
     </section>
   );
 };
-const Process = () => <section>Process</section>;
+const Process = () => {
+  const [activeStep, setActiveStep] = React.useState(1);
+
+  const steps = [
+    {
+      id: 1,
+      title: "Audit",
+      content: "I start with the data. GA4 funnels, heatmaps, session recordings, review mining. I read what your customers are actually saying - not what you think they're saying. I mined 849+ reviews for one brand to build a customer language bank that informed every test.",
+    },
+    {
+      id: 2,
+      title: "Hypothesize",
+      content: "Every change starts as a hypothesis with a measurable outcome. I build testing roadmaps prioritized by revenue impact, not by what's easiest. The PDP gets tested first because that's where buying decisions happen.",
+    },
+    {
+      id: 3,
+      title: "Build & Test",
+      content: "Here's where I'm different - I don't hand off a wireframe to a developer. I write the Liquid, the JavaScript and the CSS myself. That means tests ship faster, run cleaner and I understand exactly what's being measured.",
+    },
+    {
+      id: 4,
+      title: "Analyze & Ship",
+      content: "Winners get implemented. Losers get documented. Both make the next test smarter. I track CVR lift, revenue impact and statistical confidence on every experiment.",
+    },
+  ];
+
+  return (
+    <section id="process" className="py-20">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">How I work.</h2>
+        <p className="text-lg text-text-secondary max-w-3xl mx-auto mb-12">
+          A repeatable system, not a guessing game.
+        </p>
+        <div className="grid md:grid-cols-4 gap-8">
+          {steps.map((step) => (
+            <div
+              key={step.id}
+              className={`p-8 rounded-lg border cursor-pointer ${
+                activeStep === step.id ? 'bg-bg-card border-border-accent' : 'bg-bg-secondary border-border-subtle'
+              }`}
+              onClick={() => setActiveStep(step.id)}
+            >
+              <h3 className="text-xl font-bold mb-4">{step.title}</h3>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 text-left bg-bg-secondary p-8 rounded-lg border border-border-subtle min-h-[150px]">
+          <p className="text-text-secondary">{steps.find(step => step.id === activeStep).content}</p>
+        </div>
+      </div>
+    </section>
+  );
+};
 const Work = () => <section>Work</section>;
 const CompoundingEffect = () => <section>Compounding Effect</section>;
 const TechStack = () => <section>Tech Stack</section>;
