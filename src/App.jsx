@@ -248,7 +248,56 @@ const Work = () => {
     </section>
   );
 };
-const CompoundingEffect = () => <section>Compounding Effect</section>;
+const CompoundingEffect = () => {
+  const milestones = [
+    {
+      month: "Month 1",
+      title: "Fix the foundation",
+      description: "Analytics audit. Baseline metrics. First A/B test ships. If we can't measure it, we're guessing.",
+    },
+    {
+      month: "Month 2",
+      title: "Find the first winner",
+      description: "PDP tests based on real user behavior. Cart and checkout friction removed. Upsell flows optimized.",
+    },
+    {
+      month: "Month 3",
+      title: "Expand and iterate",
+      description: "Re-test winners for further lift. Homepage and collection page optimization. Landing page development.",
+    },
+    {
+      month: "Month 4+",
+      title: "Continuous engine",
+      description: "Repeatable CRO system in place. Testing roadmap, documentation and reporting cadence. Every month gets better.",
+    },
+  ];
+
+  return (
+    <section id="results" className="py-20">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">CRO compounds.</h2>
+        <p className="text-lg text-text-secondary max-w-3xl mx-auto mb-12">
+          Each winning test stacks on the last. Month 6 you isn't competing with month 1 you.
+        </p>
+        {/* Chart */}
+        <div className="bg-bg-secondary p-8 rounded-lg border border-border-subtle mb-12">
+          <svg width="100%" height="300" viewBox="0 0 800 300">
+            <line x1="0" y1="250" x2="800" y2="250" stroke="#4A5568" strokeDasharray="4" />
+            <path d="M 0 250 Q 200 150, 400 100 T 800 50" stroke="#00e5a0" fill="none" strokeWidth="2" />
+          </svg>
+        </div>
+        <div className="grid md:grid-cols-4 gap-8">
+          {milestones.map((milestone, index) => (
+            <div key={index} className="bg-bg-card p-8 rounded-lg border border-border-subtle text-left">
+              <h3 className="text-xl font-bold mb-4">{milestone.title}</h3>
+              <p className="text-text-secondary">{milestone.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 const TechStack = () => <section>Tech Stack</section>;
 const About = () => <section>About</section>;
 const Contact = () => <section>Contact</section>;
