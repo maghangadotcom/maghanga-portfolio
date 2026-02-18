@@ -23,7 +23,76 @@ const Navbar = () => {
     </nav>
   );
 };
-const Hero = () => <section>Hero</section>;
+const Hero = () => {
+  return (
+    <section id="hero" className="py-20">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Left Column */}
+          <div className="text-left">
+            <span className="inline-block bg-accent-primary/10 text-accent-primary text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">
+              Fullstack Shopify CRO Developer
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              I find the revenue your Shopify store is leaving on the table.
+            </h1>
+            <p className="text-lg text-text-secondary mb-8">
+              I bridge code and conversion for 7-9 figure DTC brands - building what the data says will sell, not what looks good in a pitch deck. 4+ years across 10+ brands.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#work" className="bg-accent-primary text-bg-primary font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">
+                See my work ↓
+              </a>
+              <a href="#process" className="bg-transparent border border-border-subtle text-text-primary font-bold py-3 px-6 rounded-lg hover:bg-border-subtle transition-colors">
+                My process
+              </a>
+            </div>
+          </div>
+          {/* Right Column */}
+          <div>
+            {/* PDP Wireframe */}
+            <div className="bg-bg-secondary p-8 rounded-lg border border-border-subtle">
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-3 h-3 bg-danger rounded-full"></div>
+                <div className="w-3 h-3 bg-accent-tertiary rounded-full"></div>
+                <div className="w-3 h-3 bg-success rounded-full"></div>
+              </div>
+              <div className="bg-bg-card p-6 rounded-lg">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="col-span-1 bg-bg-card-hover h-32 rounded-md"></div>
+                  <div className="col-span-1 space-y-2">
+                    <div className="bg-bg-card-hover h-6 rounded-md"></div>
+                    <div className="bg-bg-card-hover h-12 rounded-md"></div>
+                    <div className="bg-accent-primary h-10 rounded-md"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Stats Bar */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p className="text-4xl font-bold text-accent-primary font-mono">10+</p>
+            <p className="text-text-muted uppercase text-sm tracking-wider">Brands built</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold text-accent-primary font-mono">4+</p>
+            <p className="text-text-muted uppercase text-sm tracking-wider">Years in DTC</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold text-accent-primary font-mono">38%</p>
+            <p className="text-text-muted uppercase text-sm tracking-wider">CVR lift (YoY)</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold text-accent-primary font-mono">~16%</p>
+            <p className="text-text-muted uppercase text-sm tracking-wider">Revenue from upsells</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 const Problem = () => <section>Problem</section>;
 const Process = () => <section>Process</section>;
 const Work = () => <section>Work</section>;
