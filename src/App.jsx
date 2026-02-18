@@ -93,7 +93,41 @@ const Hero = () => {
     </section>
   );
 };
-const Problem = () => <section>Problem</section>;
+const Problem = () => {
+  return (
+    <section id="problem" className="py-20 bg-bg-secondary">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">Sound familiar?</h2>
+        <p className="text-lg text-text-secondary max-w-3xl mx-auto mb-12">
+          These are the revenue killers I find in almost every store I audit.
+        </p>
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Card 1 */}
+          <div className="bg-bg-card p-8 rounded-lg border border-border-subtle text-left">
+            <h3 className="text-xl font-bold mb-4">Your PDP works hard. Your checkout doesn't.</h3>
+            <p className="text-text-secondary">
+              You're driving qualified traffic to a product page, but something between the Add to Cart button and the order confirmation is bleeding revenue. For one brand I audited, that gap was 89.6% - nearly double the industry standard.
+            </p>
+          </div>
+          {/* Card 2 */}
+          <div className="bg-bg-card p-8 rounded-lg border border-border-subtle text-left">
+            <h3 className="text-xl font-bold mb-4">Your data is lying to you.</h3>
+            <p className="text-text-secondary">
+              You're making decisions based on numbers you think are right. I've found 51% discrepancies between GA4 and Shopify reporting on a live store - which means every test, every insight and every strategy built on that data was compromised.
+            </p>
+          </div>
+          {/* Card 3 */}
+          <div className="bg-bg-card p-8 rounded-lg border border-border-subtle text-left">
+            <h3 className="text-xl font-bold mb-4">Your apps are eating your speed.</h3>
+            <p className="text-text-secondary">
+              Every third-party app adds JavaScript, network requests and render-blocking resources. I've seen stores where replacing three heavy apps with custom Liquid cut load times by 35% - and the conversion lift followed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 const Process = () => <section>Process</section>;
 const Work = () => <section>Work</section>;
 const CompoundingEffect = () => <section>Compounding Effect</section>;
