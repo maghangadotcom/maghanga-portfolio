@@ -362,7 +362,32 @@ const About = () => {
     </section>
   );
 };
-const Contact = () => <section>Contact</section>;
+const Contact = () => {
+  return (
+    <section id="contact" className="py-20 bg-bg-secondary">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">Let's build something that converts.</h2>
+        <p className="text-lg text-text-secondary mb-8">
+          Based in Nairobi (UTC+3). Comfortable working across UK and US timezones.
+        </p>
+        <a href="mailto:maghangamail@gmail.com" className="inline-block bg-accent-primary text-bg-primary font-bold py-4 px-8 rounded-lg hover:opacity-90 transition-opacity mb-8">
+          Get in touch
+        </a>
+        <div className="flex justify-center space-x-6">
+          <a href="https://www.linkedin.com/in/thomas-maghanga" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors">
+            LinkedIn
+          </a>
+          <a href="https://github.com/maghangadotcom" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors">
+            GitHub
+          </a>
+        </div>
+      </div>
+      <footer className="text-center text-text-muted text-sm mt-20">
+        &copy; {new Date().getFullYear()} Thomas Maghanga
+      </footer>
+    </section>
+  );
+};
 
 function App() {
   return (
