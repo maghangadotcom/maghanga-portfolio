@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-text-secondary;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary font-sans font-bold;
+  }
+
+  p {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .gradient-accent {
+    background: linear-gradient(135deg, #00e5a0 0%, #818cf8 100%);
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
