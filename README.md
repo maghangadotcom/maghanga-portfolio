@@ -8,18 +8,29 @@ Check out the live version here: [https://maghanga-portfolio.vercel.app/](https:
 
 ## Tech Stack
 
-This project is built with a modern, performance-focused stack:
+This project is built with a lean, performance-focused stack:
 
 -   **[React 19](https://react.dev/)**: The latest version of the library for web and native user interfaces.
 -   **[Vite](https://vitejs.dev/)**: Next Generation Frontend Tooling for fast development and build speeds.
--   **[Tailwind CSS 4](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development (v4 alpha/beta).
--   **[Lucide React](https://lucide.dev/)**: Beautiful & consistent icons.
+-   **Hand-written CSS**: A single dark/mint design system (`src/styles.css` + `src/craft.css`). No CSS framework, no runtime style dependencies.
+-   **Build-time SSG prerender**: The app is rendered to static HTML at build time (`scripts/prerender.js`) and hydrated on the client, so content is in the markup on first paint.
+-   **[sharp](https://sharp.pixelplumbing.com/)** (dev only): Generates sized WebP from the source PNGs (`scripts/optimize-images.mjs`) for fast, low-CLS images.
 
 ## Features
 
--   **Case Study Gallery**: Detailed walkthroughs of past projects with "Before & After" metrics.
--   **Responsive Design**: Mobile-first architecture ensuring visually stunning experiences across all devices.
--   **Performance Optimization**: Fast load times and optimized assets.
+-   **Case Study Overlays**: Six brands, each opening a full diagnosis (context, friction, hypothesis, what shipped, result) with device-framed screenshot galleries.
+-   **Content on first paint**: Prerendered HTML means fast LCP and no blank-screen flash in in-app browsers; CSS-driven animation keeps the main thread light.
+-   **Responsive, mobile-first**: 44px+ touch targets, single-column reflow, `prefers-reduced-motion` support throughout.
+
+## How the build works
+
+`npm run build` runs three steps in order:
+
+1.  `scripts/optimize-images.mjs` — emits WebP into `public/media` and writes `src/media.js` (dimensions for explicit `width`/`height`).
+2.  `vite build` (client) then `vite build --ssr` (server bundle).
+3.  `scripts/prerender.js` — renders `<App/>` to HTML and injects it into `dist/index.html`.
+
+`npm run dev` runs the optimizer (`predev`) then the Vite dev server.
 
 ## Getting Started
 
