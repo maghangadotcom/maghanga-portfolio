@@ -683,8 +683,7 @@ section { padding: 88px 0; }
 .contact { text-align: center; }
 .contact-inner { max-width: 680px; margin: 0 auto; }
 .contact h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 20px; }
-.contact-sub { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 10px; }
-.contact-meta { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-muted); margin-bottom: 34px; }
+.contact-sub { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 34px; }
 .contact .btn-primary { padding: 16px 32px; font-size: 1.05rem; }
 .contact-links { display: flex; justify-content: center; gap: 28px; margin-top: 32px; }
 .contact-links a { color: var(--text-muted); font-size: 0.95rem; font-family: var(--font-mono); transition: color .2s; }

@@ -633,7 +633,6 @@ function Contact() {
       <div className="container contact-inner reveal">
         <h2>Let&apos;s build something that converts.</h2>
         <p className="contact-sub">Based in Nairobi, UTC+3. I work across UK and US timezones.</p>
-        <p className="contact-meta">Independent contractor / available July / paid via Wise or Deel</p>
         <a href="mailto:maghangamail@gmail.com" className="btn btn-primary">Get in touch</a>
         <div className="contact-links">
           <a href="https://www.linkedin.com/in/thomas-maghanga" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
