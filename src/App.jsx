@@ -19,7 +19,16 @@ const STATS = [
   { num: '10+', label: 'DTC brands', src: '4+ years building' },
 ];
 
-const WORDMARKS = ['Supply', 'Blu Atlas', 'Benevolence LA', 'Fifth Ray', 'Brute Magnetics', 'TechnoRV', 'Stryx', 'Craft & Kin'];
+const WORDMARKS = [
+  { name: 'Supply', url: 'https://supply.co/' },
+  { name: 'Blu Atlas', url: 'https://bluatlas.com/' },
+  { name: 'Benevolence LA', url: 'https://benevolencela.com' },
+  { name: 'Fifth Ray', url: 'https://fifthray.co.uk/' },
+  { name: 'Brute Magnetics', url: 'https://brutemagnetics.com/' },
+  { name: 'TechnoRV', url: 'https://technorv.com/' },
+  { name: 'Stryx', url: 'https://www.stryx.com/' },
+  { name: 'Craft & Kin', url: 'https://craftandkin.co/' },
+];
 
 const GAP_ROWS = [
   { n: '01', body: <>Most devs stop at the build.</> },
@@ -402,7 +411,9 @@ function Trust() {
       <div className="container">
         <h3>Brands I have built and scaled.</h3>
         <div className="wordmarks reveal-group">
-          {WORDMARKS.map((w) => <div className="wordmark" key={w}>{w}</div>)}
+          {WORDMARKS.map((w) => (
+            <a className="wordmark" key={w.name} href={w.url} target="_blank" rel="noopener noreferrer">{w.name}</a>
+          ))}
         </div>
         <p className="trust-foot">4+ years / 7-8 figure DTC brands / Shopify and Shopify Plus</p>
       </div>
@@ -622,7 +633,6 @@ function Contact() {
       <div className="container contact-inner reveal">
         <h2>Let&apos;s build something that converts.</h2>
         <p className="contact-sub">Based in Nairobi, UTC+3. I work across UK and US timezones.</p>
-        <p className="contact-meta">Independent contractor / available July / paid via Wise or Deel</p>
         <a href="mailto:maghangamail@gmail.com" className="btn btn-primary">Get in touch</a>
         <div className="contact-links">
           <a href="https://www.linkedin.com/in/thomas-maghanga" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
