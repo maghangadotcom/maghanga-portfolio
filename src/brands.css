@@ -32,7 +32,8 @@
 }
 .brands-toggle:hover { border-color: var(--ink); color: var(--ink); }
 .brand-window { overflow: hidden; }
-.brand-track { display: flex; width: 100%; }
+/* The mask creates an isolated group: provide paper inside it for logo blending. */
+.brand-track { display: flex; width: 100%; background: var(--paper); }
 .brand-list {
   display: flex;
   flex-wrap: wrap;
