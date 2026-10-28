@@ -128,12 +128,17 @@ function Header({ path }) {
             <a
               key={href}
               href={href}
+              onClick={() => setOpen(false)}
               aria-current={path.startsWith(href) ? "page" : undefined}
             >
               {label}
             </a>
           ))}
-          <a className="nav-contact" href="/#contact">
+          <a
+            className="nav-contact"
+            href="/#contact"
+            onClick={() => setOpen(false)}
+          >
             Let’s talk <Arrow />
           </a>
         </nav>
@@ -146,7 +151,7 @@ function Heading({ kicker, title, description, href, link }) {
     <div className="section-heading">
       <div>
         <p className="eyebrow">{kicker}</p>
-        <h2>{title}</h2>
+        <h2 tabIndex={-1}>{title}</h2>
       </div>
       <div>
         {description && <p>{description}</p>}
@@ -837,10 +842,15 @@ function CasePage({ study }) {
 function GuidesPage({ pillar }) {
   const [query, setQuery] = useState("");
   const base = pillar ? guides.filter((g) => g.pillar === pillar.id) : guides;
-  const terms = query.toLowerCase().trim().split(/\s+/).map((term) => term.length > 3 ? term.replace(/s$/, "") : term);
+  const terms = query
+    .toLowerCase()
+    .trim()
+    .split(/\s+/)
+    .map((term) => (term.length > 3 ? term.replace(/s$/, "") : term));
   const filtered = base.filter((guide) => {
     const topic = pillars.find((item) => item.id === guide.pillar);
-    const searchable = `${guide.title} ${guide.description} ${topic.short}`.toLowerCase();
+    const searchable =
+      `${guide.title} ${guide.description} ${topic.short}`.toLowerCase();
     return terms.every((term) => searchable.includes(term));
   });
   return (
@@ -1229,6 +1239,39 @@ function AboutPage() {
             See the work in context <Arrow />
           </a>
         </div>
+      </section>
+      <section
+        className="implementation-details wrap"
+        aria-label="Implementation detail"
+      >
+        <details>
+          <summary>
+            Shopify, APIs and the CRO workflow <span aria-hidden="true">+</span>
+          </summary>
+          <dl>
+            <div>
+              <dt>Storefront development</dt>
+              <dd>
+                Liquid, JavaScript, HTML, CSS, Online Store 2.0, metaobjects and
+                Shopify Functions.
+              </dd>
+            </div>
+            <div>
+              <dt>APIs and workflow</dt>
+              <dd>
+                Storefront API, Cart API, Shopify Subscriptions API and Git.
+              </dd>
+            </div>
+            <div>
+              <dt>Research and implementation tools</dt>
+              <dd>GA4, Shopify Analytics, Intelligems, Rebuy and Replo.</dd>
+            </div>
+          </dl>
+          <p>
+            These are overall capabilities. Each case study separately
+            identifies my contribution to that project.
+          </p>
+        </details>
       </section>
       <section className="section process-section" id="availability">
         <div className="wrap availability-grid">
