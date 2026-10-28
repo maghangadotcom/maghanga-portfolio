@@ -1,10 +1,10 @@
 # Maghanga Portfolio
 
-A showcase portfolio for Thomas Maghanga, a Shopify Developer specializing in high-performance storefronts, conversion optimization, and custom theme development.
+A portfolio for Thomas Maghanga, a Shopify Plus Developer & CRO Specialist, covering documented storefront development and CRO implementation since 2021.
 
 ## Live Demo
 
-Check out the live version here: [https://maghanga-portfolio.vercel.app/](https://maghanga-portfolio.vercel.app/)
+Live website: [https://maghanga.com/](https://maghanga.com/).
 
 ## Tech Stack
 
@@ -18,7 +18,8 @@ This project is built with a lean, performance-focused stack:
 
 ## Features
 
--   **Case Study Overlays**: Six brands, each opening a full diagnosis (context, friction, hypothesis, what shipped, result) with device-framed screenshot galleries.
+-   **Shareable case studies**: Six documented projects, with context, role, implementation details and real screenshot galleries where available. Links such as `/?case=supply#work` open accessible dialogs after hydration and support browser history.
+-   **Verified résumé**: The two-page `public/Thomas_Maghanga_Resume.pdf` is available as a same-origin download.
 -   **Content on first paint**: Prerendered HTML means fast LCP and no blank-screen flash in in-app browsers; CSS-driven animation keeps the main thread light.
 -   **Responsive, mobile-first**: 44px+ touch targets, single-column reflow, `prefers-reduced-motion` support throughout.
 
@@ -38,7 +39,7 @@ To run this project locally, follow these steps:
 
 ### Prerequisites
 
-Ensure you have Node.js installed on your machine.
+Use Node.js 24, matching the CI workflow and the configured Vercel runtime.
 
 ### Installation
 
@@ -50,7 +51,7 @@ Ensure you have Node.js installed on your machine.
 
 2.  Install dependencies:
     ```bash
-    npm install
+    npm ci
     ```
 
 ### Development
@@ -72,6 +73,14 @@ npm run build
 ```
 
 This will generate a `dist` folder with the optimized assets ready for deployment.
+
+Preview the production build with `npm run preview`. Confirm the homepage is present in `dist/index.html`, then check direct case links, Back/Forward, keyboard focus, mobile layouts and the résumé download.
+
+## Checks and release workflow
+
+The `portfolio-checks` GitHub Actions job runs installation, lint and the complete production build on pushes to `development` and pull requests into `development` or `main`.
+
+Work is prepared on `development` and reviewed in a pull request into `main`. Verify Vercel's Production branch and domain mapping before pushing. Approved releases use a regular merge commit; keep `development` and fast-forward it to `main` after release. Deployment to the Hostinger custom domain is a separate step from publishing the GitHub branches.
 
 ### Linting
 
