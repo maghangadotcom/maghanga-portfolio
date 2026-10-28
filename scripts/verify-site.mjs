@@ -258,6 +258,8 @@ check(brandSection.includes('data-enhanced="false"'), "Marquee: no-JavaScript fa
 const stryx = await fs.readFile(path.join(dist, "brands/stryx.svg"), "utf8");
 check(!/<(?:script|foreignObject|image)\b|\bon\w+\s*=|\b(?:href|xlink:href)\s*=/i.test(stryx), "Marquee: SVG contains no active or external content");
 
+check((await fs.readFile(path.join(dist, ".htaccess"), "utf8")).trim() === "ErrorDocument 404 /404.html", "Hostinger: built 404 mapping must persist");
+
 if (failures.length) {
   console.error(failures.map((failure) => `FAIL ${failure}`).join("\n"));
   process.exit(1);
