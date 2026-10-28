@@ -9,7 +9,8 @@
     "optimize": "node scripts/optimize-images.mjs",
     "build": "node scripts/optimize-images.mjs && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify": "node scripts/verify-site.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

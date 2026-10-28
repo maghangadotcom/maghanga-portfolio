@@ -1,7 +1,6 @@
-import { renderToString } from 'react-dom/server';
-import App from './App.jsx';
-
-// Called by scripts/prerender.js to produce the static HTML injected into index.html.
-export function render() {
-  return renderToString(<App />);
+import { renderToString } from "react-dom/server";
+import App from "./App.jsx";
+export { getRoutes, getPageMeta } from "./seo.js";
+export function render(path = "/") {
+  return renderToString(<App path={path} />);
 }

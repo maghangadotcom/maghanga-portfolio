@@ -1,346 +1,572 @@
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import media from './media.js';
-import CaseDialog from './CaseDialog.jsx';
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import media from "./media.js";
+import { cases } from "./cases.js";
+import { guides, pillars, guideHref } from "./content/index.js";
+import CaseDialog from "./CaseDialog.jsx";
 
-const NAV_LINKS = [
-  { href: '#work', label: 'Work' },
-  { href: '#capabilities', label: 'Capabilities' },
-  { href: '#process', label: 'Process' },
-  { href: '#about', label: 'About' },
-];
-
-const CAPABILITY_LABELS = [
-  'Shopify Plus',
-  'Liquid & Online Store 2.0',
-  'Metaobjects & Shopify Functions',
-  'Research & testing',
-];
-
-const WORDMARKS = [
-  { name: 'Supply', url: 'https://supply.co/' },
-  { name: 'Blu Atlas', url: 'https://bluatlas.com/' },
-  { name: 'Fifth Ray', url: 'https://fifthray.co.uk/' },
-  { name: 'TechnoRV', url: 'https://technorv.com/' },
-  { name: 'Stryx', url: 'https://www.stryx.com/' },
-];
-
-const CASES = [
-  {
-    id: 'supply',
-    title: 'Supply',
-    summary: 'Online Store 2.0 development, reusable Liquid sections and Rebuy upsell flows.',
-    tags: ['Online Store 2.0', 'Custom Liquid', 'Rebuy'],
-    role: 'Shopify Developer & CRO Specialist, 2021–2023. I worked with growth, media and creative teams on storefront development, performance and CRO implementation.',
-    context: 'The work covered theme architecture, page performance and the components used to build campaign landing pages and buying flows.',
-    built: [
-      'Rebuilt the storefront for Online Store 2.0.',
-      'Developed native Liquid sections to replace third-party page-builder components.',
-      'Built landing pages to support paid traffic.',
-      'Implemented Rebuy upsell and cross-sell flows.',
-      'Addressed performance issues on product and collection pages and supported storefront experiments.',
-    ],
-    gallery: [
-      { type: 'browser', img: 'sup-lp-comparison', cap: 'Campaign landing page with a product comparison section.' },
-      { type: 'browser', img: 'sup-progress-rebuycart', cap: 'Rebuy cart drawer with a progress bar and product recommendations.' },
-      { type: 'phone', img: 'sup-checkout-upsell-mobile', cap: 'Supply checkout upsell interface on mobile.' },
-      { type: 'phone', img: 'sup-quiz-lander-mobile', cap: 'Mobile landing page introducing the product quiz.' },
-    ],
-  },
-  {
-    id: 'fifthray',
-    title: 'Fifth Ray',
-    summary: 'Customer review research, product-page development and a native Liquid cart drawer.',
-    tags: ['Customer research', 'Product pages', 'Cart development'],
-    role: 'Shopify CRO Developer, contract, February–August 2026.',
-    context: 'My work combined analytics investigation, customer research and development of the product-page and cart experience.',
-    built: [
-      'Investigated an observed 51% difference between GA4 and Shopify reporting and rebuilt the analytics implementation.',
-      'Analysed 849+ customer reviews to create a customer-language bank for product-page content and the test roadmap.',
-      'Rebuilt the product page above the fold and the variant selection module.',
-      'Replaced a third-party cart app with a native Liquid cart drawer to address paid-social traffic failures in in-app browsers.',
-    ],
-    research: '849+ customer reviews analysed',
-    gallery: [
-      { type: 'browser', img: 'fifthray-product-page', cap: 'Fifth Ray product page with quantity selection, membership subscription and one-time purchase options.' },
-      { type: 'browser', img: 'fifthray-homepage', cap: 'Fifth Ray homepage hero and storefront navigation.' },
-      { type: 'browser', img: 'fifthray-testimonials', cap: 'Fifth Ray customer testimonial carousel.' },
-    ],
-  },
-  {
-    id: 'bluatlas',
-    title: 'Blu Atlas',
-    summary: 'Custom product and collection sections, subscription interfaces and cart features.',
-    tags: ['Custom sections', 'Subscriptions', 'Cart development'],
-    role: 'I developed product and collection sections, subscription interfaces and cart features.',
-    context: 'Storefront development for a men’s grooming and skincare brand on Shopify Plus with a broad catalogue and a subscription programme.',
-    built: [
-      'Rebuilt hero and collection templates, product-page information and trust blocks, and a product comparison section.',
-      'Developed a native subscription widget.',
-      'Built a custom cart drawer with a free-shipping progress bar, alongside embedded and popup upsell interfaces.',
-    ],
-    gallery: [
-      { type: 'browser', img: 'blu-hero', cap: 'Custom homepage hero section.' },
-      { type: 'browser', img: 'blu-product-meta', cap: 'Product information and trust content on the product page.' },
-      { type: 'browser', img: 'blu-vs-everyone', cap: 'Product comparison section.' },
-      { type: 'browser', img: 'blu-subscription-widget', cap: 'Product subscription selection interface.' },
-      { type: 'phone', img: 'blu-cart-progress-mobile', cap: 'Cart drawer and free-shipping progress display on mobile.' },
-      { type: 'phone', img: 'blu-popup-upsell-mobile', cap: 'Mobile product upsell interface.' },
-    ],
-  },
-  {
-    id: 'benevolence',
-    title: 'Benevolence LA',
-    summary: 'Cart drawer and Rebuy upsell implementation.',
-    tags: ['Cart development', 'Rebuy', 'Custom Liquid'],
-    role: 'I built a custom cart drawer with a Rebuy upsell and cross-sell module.',
-    context: 'CRO and storefront development for a meaningful-gifting jewellery brand on Shopify. The cart work brought relevant product recommendations into the buying flow.',
-    built: [
-      'Developed a custom Liquid cart drawer.',
-      'Implemented a Rebuy-powered upsell and cross-sell module for the brand’s gifting products and bundles.',
-    ],
-    gallery: [
-      { type: 'browser', img: 'bla-cart-upsell', cap: 'Cart drawer with the Rebuy upsell module.' },
-    ],
-  },
-  {
-    id: 'shopdeck',
-    title: 'ShopDeck',
-    summary: 'Theme architecture, AJAX cart and navigation development.',
-    tags: ['Theme architecture', 'AJAX cart', 'Navigation'],
-    role: 'I worked on theme architecture, cart interactions, navigation and performance investigation.',
-    context: 'Storefront engineering focused on a maintainable theme, cart interactions and navigation.',
-    built: [
-      'Rebuilt theme architecture and developed a custom mega menu.',
-      'Built an AJAX cart with a fetch-based add-to-cart flow.',
-      'Profiled storefront performance and investigated Core Web Vitals using browser debugging tools.',
-    ],
-    gallery: [
-      { type: 'browser', img: 'shopdeck-theme', cap: 'ShopDeck theme architecture and development workspace.' },
-      { type: 'browser', img: 'shopdeck-menu', cap: 'Custom mega menu navigation.' },
-      { type: 'browser', img: 'shopdeck-fetch-cart', cap: 'Fetch-based AJAX cart implementation.' },
-      { type: 'browser', img: 'shopdeck-cart', cap: 'Custom cart drawer interface.' },
-      { type: 'browser', img: 'shopdeck-performance', cap: 'Storefront performance inspection.' },
-      { type: 'browser', img: 'shopdeck-debug', cap: 'Browser debugging during storefront development.' },
-    ],
-  },
-  {
-    id: 'technorv',
-    title: 'TechnoRV',
-    summary: 'Cart promotion display and discount-state updates.',
-    tags: ['Cart promotions', 'Discount display', 'Custom Liquid'],
-    role: 'I worked on the storefront display of promotions and cart discount states.',
-    context: 'Storefront development for a specialist RV technology and accessories retailer on Shopify. The work focused on how promotions appeared in the cart.',
-    built: [
-      'Developed Liquid presentation for cart promotions and applied discount information.',
-      'Updated the displayed discount states as cart contents changed.',
-    ],
-    gallery: [
-      { type: 'browser', img: 'technorv-cart-discounts', cap: 'Cart interface displaying promotions and applied discount states.' },
-    ],
-  },
-];
-
-const CAPABILITIES = [
-  {
-    title: 'Shopify storefront development',
-    body: 'Custom Liquid sections, product and collection templates, landing pages and cart experiences built for maintainability.',
-  },
-  {
-    title: 'CRO research and implementation',
-    body: 'Customer review research, test roadmaps, analytics investigation and the development work needed to implement and evaluate storefront changes.',
-  },
-  {
-    title: 'Subscriptions and merchandising',
-    body: 'Subscription interfaces, bundle builders, upsell flows and the cart behaviour that connects them.',
-  },
-];
-
-const PROCESS_STEPS = [
-  { title: 'Understand the problem', body: 'I review the storefront, available analytics and customer feedback to identify the friction worth investigating.' },
-  { title: 'Define the change', body: 'I turn the findings into a clear implementation brief, with a hypothesis and a measurement plan where testing is appropriate.' },
-  { title: 'Build and check', body: 'I implement the change, review the important customer flows and check behaviour across devices.' },
-  { title: 'Evaluate and iterate', body: 'I review the available evidence, document what we learned and agree the next step with the team.' },
-];
-
-const CASE_IDS = new Set(CASES.map((study) => study.id));
-const LOCATION_EVENT = 'portfolio:location';
-
-// The server snapshot is deliberately closed. URL state is read only after hydration.
-function subscribeToLocation(callback) {
-  window.addEventListener('popstate', callback);
-  window.addEventListener(LOCATION_EVENT, callback);
-  return () => {
-    window.removeEventListener('popstate', callback);
-    window.removeEventListener(LOCATION_EVENT, callback);
-  };
+const LAB = "https://shopify-cro-lab.vercel.app/";
+const SOURCE = "https://github.com/maghangadotcom/shopify-cro-toolkit";
+const RESUME = "/Thomas_Maghanga_Resume.pdf";
+const CASE_IDS = new Set(cases.map((study) => study.id));
+function subscribe(callback) {
+  window.addEventListener("popstate", callback);
+  return () => window.removeEventListener("popstate", callback);
 }
-
-function getCaseSnapshot() {
-  const id = new URLSearchParams(window.location.search).get('case');
+function caseSnapshot() {
+  const id = new URLSearchParams(window.location.search).get("case");
   return CASE_IDS.has(id) ? id : null;
 }
-
-function getServerCaseSnapshot() { return null; }
-
-function ResumeLink({ className = '' }) {
-  return <a className={className} href="/Thomas_Maghanga_Resume.pdf" download="Thomas_Maghanga_Resume.pdf">Download resume</a>;
+function closedSnapshot() {
+  return null;
+}
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
+}
+function Resume({ className = "button secondary" }) {
+  return (
+    <a className={className} href={RESUME} download>
+      Download résumé <span aria-hidden="true">↓</span>
+    </a>
+  );
+}
+function Picture({ name, alt, priority = false, className = "" }) {
+  const img = media[name];
+  return img ? (
+    <img
+      className={className}
+      src={img.src}
+      width={img.w}
+      height={img.h}
+      alt={alt}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : undefined}
+      decoding="async"
+    />
+  ) : null;
+}
+function Pill({ children }) {
+  return <span className="pill">{children}</span>;
+}
+function Breadcrumbs({ items }) {
+  return (
+    <nav className="breadcrumbs wrap" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      {items.map((item) => (
+        <span key={item.label}>
+          <span aria-hidden="true">/</span>
+          {item.href ? (
+            <a href={item.href}>{item.label}</a>
+          ) : (
+            <span aria-current="page">{item.label}</span>
+          )}
+        </span>
+      ))}
+    </nav>
+  );
 }
 
-function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const headerRef = useRef(null);
-  const toggleRef = useRef(null);
-
+function Header({ path }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const toggle = useRef(null);
   useEffect(() => {
-    if (!menuOpen) return;
-    const onPointerDown = (event) => {
-      if (!headerRef.current?.contains(event.target)) setMenuOpen(false);
+    if (!open) return;
+    const dismiss = (e) => {
+      if (!ref.current?.contains(e.target)) setOpen(false);
     };
-    const onKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setMenuOpen(false);
-        toggleRef.current?.focus();
+    const escape = (e) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
       }
     };
-    document.addEventListener('pointerdown', onPointerDown);
-    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
     return () => {
-      document.removeEventListener('pointerdown', onPointerDown);
-      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("keydown", escape);
     };
-  }, [menuOpen]);
-
+  }, [open]);
   return (
-    <header className="nav" ref={headerRef}>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <div className="container nav-inner">
-        <a className="logo" href="#top" aria-label="Thomas Maghanga, back to top">
-          <span className="logo-dot" aria-hidden="true" />
-          <span>Thomas Maghanga</span>
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <div className="availability-bar">
+        <span className="status-dot" /> Open to remote in-house roles & ongoing
+        contracts{" "}
+        <a href="/about/#availability">
+          Working together <Arrow />
         </a>
-        <nav className={`nav-links${menuOpen ? ' is-open' : ''}`} id="primary-navigation" aria-label="Primary navigation">
-          {NAV_LINKS.map((link) => <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a>)}
-        </nav>
-        <a className="btn btn-primary nav-contact" href="#contact" onClick={() => setMenuOpen(false)}>Contact me</a>
-        <button className="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded={menuOpen} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)} ref={toggleRef}>
-          <span aria-hidden="true">{menuOpen ? '×' : '☰'}</span>
+      </div>
+      <header className="header wrap" ref={ref}>
+        <a className="wordmark" href="/" aria-label="Thomas Maghanga home">
+          maghanga<span>/</span>
+          <small>SHOPIFY DEVELOPMENT + CRO</small>
+        </a>
+        <button
+          ref={toggle}
+          className="menu-toggle"
+          aria-controls="primary-nav"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Close ×" : "Menu +"}
         </button>
-      </div>
-    </header>
+        <nav
+          id="primary-nav"
+          className={open ? "primary-nav open" : "primary-nav"}
+          aria-label="Primary navigation"
+        >
+          {[
+            ["/work/", "Work"],
+            ["/#capabilities", "Expertise"],
+            ["/#process", "How I work"],
+            ["/guides/", "Guides"],
+            ["/about/", "About"],
+          ].map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              aria-current={path.startsWith(href) ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))}
+          <a className="nav-contact" href="/#contact">
+            Let’s talk <Arrow />
+          </a>
+        </nav>
+      </header>
+    </>
   );
 }
-
+function Heading({ kicker, title, description, href, link }) {
+  return (
+    <div className="section-heading">
+      <div>
+        <p className="eyebrow">{kicker}</p>
+        <h2>{title}</h2>
+      </div>
+      <div>
+        {description && <p>{description}</p>}
+        {href && (
+          <a className="text-link" href={href}>
+            {link} <Arrow />
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
 function Hero() {
-  const hero = media['sup-lp-comparison'];
   return (
-    <section className="hero" aria-labelledby="hero-title">
-      <div className="container">
-        <div className="hero-inner">
-          <div className="hero-copy">
-            <p className="eyebrow">Thomas Maghanga · Nairobi, Kenya (UTC+3).</p>
-            <h1 id="hero-title">Shopify Plus Developer <span>&amp; CRO Specialist</span></h1>
-            <p className="hero-sub">I help DTC brands improve product pages, carts and subscription flows. I combine customer research, Shopify development and CRO implementation.</p>
-            <p className="hiring-line">Open to remote in-house roles and ongoing contracts.</p>
-            <div className="hero-actions">
-              <a className="btn btn-primary" href="#work">View selected work <span aria-hidden="true">↗</span></a>
-              <ResumeLink className="btn btn-outline" />
-            </div>
+    <section className="hero wrap" id="top" aria-labelledby="hero-title">
+      <div className="hero-copy">
+        <p className="eyebrow">
+          THOMAS MAGHANGA · SHOPIFY PLUS DEVELOPER & CRO SPECIALIST
+        </p>
+        <h1 id="hero-title">
+          Shopify Plus
+          <br />
+          Developer{" "}
+          <em>
+            &<br />
+            CRO Specialist.
+          </em>
+        </h1>
+        <p className="hero-intro">
+          I turn customer questions into storefront work your team can ship:
+          clearer product pages, dependable carts and maintainable Shopify
+          customizations.
+        </p>
+        <div className="actions">
+          <a className="button" href="/work/">
+            Explore my work <Arrow />
+          </a>
+          <Resume className="text-link" />
+        </div>
+        <p className="hero-note">
+          Storefront experience since 2021 · Nairobi, UTC+3 · Remote
+        </p>
+      </div>
+      <div className="hero-proof">
+        <div className="proof-head">
+          <span className="eyebrow">INSIDE THE WORK</span>
+          <span>01 / Fifth Ray</span>
+        </div>
+        <div className="hero-screen">
+          <Picture
+            name="fifthray-product-page"
+            alt="Fifth Ray product page showing quantity, subscription and one-time purchase choices."
+            priority
+          />
+        </div>
+        <div className="proof-foot">
+          <div>
+            <p>Research that reaches the storefront.</p>
+            <span>Product page + native Liquid cart development</span>
           </div>
-          <figure className="hero-visual">
-            <div className="screenshot-frame">
-              <img src={hero.src} width={hero.w} height={hero.h} alt="Supply campaign landing page with product comparison content." fetchPriority="high" decoding="async" />
-            </div>
-            <figcaption>Supply: selected storefront work.</figcaption>
-          </figure>
+          <a href="/work/fifthray/" aria-label="Explore Fifth Ray case study">
+            <Arrow />
+          </a>
         </div>
-        <ul className="capability-labels" aria-label="Core capabilities">
-          {CAPABILITY_LABELS.map((label) => <li key={label}>{label}</li>)}
-        </ul>
+        <div className="hero-stamp">
+          <span>Since</span>
+          <strong>2021</strong>
+          <span>Building for DTC</span>
+        </div>
       </div>
     </section>
   );
 }
-
-function ProjectExperience() {
+function Brands() {
   return (
-    <section className="project-experience" aria-labelledby="experience-title">
-      <div className="container">
-        <h2 id="experience-title">Selected project experience</h2>
-        <ul className="wordmarks">
-          {WORDMARKS.map((brand) => <li key={brand.name}><a href={brand.url} target="_blank" rel="noopener noreferrer">{brand.name}</a></li>)}
-        </ul>
-        <p>Storefront development and CRO implementation since 2021.</p>
+    <section className="brands wrap" aria-label="Selected project experience">
+      <p>SELECTED PROJECT EXPERIENCE</p>
+      <div>
+        {["Supply", "Blu Atlas", "Fifth Ray", "TechnoRV", "Stryx"].map(
+          (name) => (
+            <span key={name}>{name}</span>
+          ),
+        )}
       </div>
     </section>
   );
 }
-
-function Cases({ onOpen }) {
-  return (
-    <section className="cases" id="work" aria-labelledby="work-title">
-      <div className="container">
-        <div className="section-head">
-          <span className="kicker">Selected work</span>
-          <h2 id="work-title" tabIndex={-1}>Selected Shopify work</h2>
-          <p>A closer look at the storefront features I built, the problems they addressed and my role in each project.</p>
-        </div>
-        <div className="case-grid">
-          {CASES.map((study, index) => {
-            const preview = media[study.gallery[0]?.img];
-            return (
-              <article className={`case-card${index < 2 ? ' featured' : ''}`} key={study.id}>
-                {preview ? (
-                  <div className="case-preview">
-                    <img src={preview.src} width={preview.w} height={preview.h} alt={`${study.title}: ${study.gallery[0].cap}`} loading="lazy" decoding="async" />
-                  </div>
-                ) : (
-                  <div className="case-research">
-                    <span className="eyebrow">Customer research</span>
-                    <p><strong>849+</strong> customer reviews analysed</p>
-                  </div>
-                )}
-                <div className="case-card-copy">
-                  <h3>{study.title}</h3>
-                  <p>{study.summary}</p>
-                  <ul className="tags" aria-label={`${study.title} capabilities`}>
-                    {study.tags.map((tag) => <li key={tag}>{tag}</li>)}
-                  </ul>
-                  <a className="case-open" href={`?case=${study.id}#work`} onClick={(event) => onOpen(event, study.id)} aria-label={`Read ${study.title} case study`}>
-                    Read case study <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Capabilities() {
   return (
-    <section id="capabilities" aria-labelledby="capabilities-title">
-      <div className="container">
-        <div className="section-head">
-          <span className="kicker">Capabilities</span>
-          <h2 id="capabilities-title">What I can help with</h2>
+    <section className="section wrap" id="capabilities">
+      <Heading
+        kicker="WHAT YOUR STORE NEEDS NEXT"
+        title={
+          <>
+            From “something feels off”
+            <br />
+            to a change you can ship.
+          </>
+        }
+        description="I connect the customer problem to the development work, so research and implementation move together."
+      />
+      <div className="service-grid">
+        {[
+          [
+            "01",
+            "Make the product easier to choose.",
+            "Product-page content, comparison sections and variant selectors that answer real buying questions.",
+            "Custom Liquid · Online Store 2.0 · Metaobjects",
+            "storefront",
+          ],
+          [
+            "02",
+            "Make the buying flow dependable.",
+            "Subscription interfaces, cart drawers and optional upsells with clear prices and useful error states.",
+            "Subscriptions · Cart development · Shopify Functions",
+            "offers",
+          ],
+          [
+            "03",
+            "Know what deserves another iteration.",
+            "Review research, analytics investigation and measurement plans that separate evidence from assumptions.",
+            "Customer research · GA4 · QA & experimentation",
+            "research",
+          ],
+        ].map(([n, t, p, s, id]) => (
+          <article className="service" key={n}>
+            <span className="number">{n}</span>
+            <h3>{t}</h3>
+            <p>{p}</p>
+            <small>{s}</small>
+            <a className="text-link" href={`/guides/topics/${id}/`}>
+              Explore the approach <Arrow />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+function WorkCards({ limit }) {
+  return (
+    <div className="work-grid">
+      {cases.slice(0, limit ?? cases.length).map((study, i) => (
+        <article className={`work-card work-${study.id}`} key={study.id}>
+          <a
+            className="work-image"
+            href={`/work/${study.id}/`}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+            <span className="image-index">SELECTED WORK / 0{i + 1}</span>
+            <Picture name={study.gallery[0].img} alt="" />
+          </a>
+          <div className="work-copy">
+            <div className="work-title">
+              <h3>
+                <a href={`/work/${study.id}/`}>{study.title}</a>
+              </h3>
+              <Arrow />
+            </div>
+            <p>{study.summary}</p>
+            <div className="tags">
+              {study.tags.map((tag) => (
+                <Pill key={tag}>{tag}</Pill>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+function WorkSection() {
+  return (
+    <section className="section work-section" id="work">
+      <div className="wrap">
+        <Heading
+          kicker="SELECTED WORK"
+          title="Real storefronts. Specific contributions."
+          description="The context, my role and selected screens from Shopify development and CRO implementation."
+          href="/work/"
+          link="View all selected work"
+        />
+        <WorkCards limit={3} />
+      </div>
+    </section>
+  );
+}
+const LESSONS = [
+  {
+    id: "price",
+    label: "“Why does it cost that much?”",
+    before: "Premium coffee. $24 for 250 g.",
+    after:
+      "$24 for 250 g. At 15 g per cup, that is about 16.7 cups — approximately $1.44 per cup. Your recipe may differ.",
+    question:
+      "Before publishing: are the pack size, price and serving assumptions accurate?",
+    guide: "price-justification-product-expertise",
+    source:
+      "https://frictionless-commerce.com/blog/increase-conversions-with-price-justification/",
+    credit: "Rishi Rawat’s price justification teaching",
+  },
+  {
+    id: "proof",
+    label: "“Can I believe this claim?”",
+    before: "The best coffee, chosen by experts.",
+    after:
+      "Here is the sourcing information to check, the roasting decision to explain and the evidence a merchant would need before making this claim.",
+    question:
+      "Before publishing: can someone verify the source, date and scope of the evidence?",
+    guide: "honest-product-comparisons",
+    source: "https://frictionless-commerce.com/blog/demonstrate-expertise/",
+    credit: "Rishi Rawat’s expertise teaching",
+  },
+  {
+    id: "plan",
+    label: "“Am I signing up for anything?”",
+    before: "Get your coffee for less.",
+    after:
+      "One-time purchase or subscription? Show the full amount due now, the delivery frequency, future charge and how to manage the plan before adding to cart.",
+    question:
+      "Before publishing: does the cart and checkout preserve the shopper’s explicit choice?",
+    guide: "shopify-subscription-selector",
+    source:
+      "https://shopify.dev/docs/storefronts/themes/pricing-payments/subscriptions/add-subscriptions-to-your-theme",
+    credit: "Shopify’s selling-plan documentation",
+  },
+];
+function LabExercise() {
+  const [choice, setChoice] = useState("price");
+  const [improved, setImproved] = useState(false);
+  const lesson = LESSONS.find((item) => item.id === choice);
+  return (
+    <div className="lab-exercise">
+      <div className="exercise-top">
+        <span className="eyebrow">TRY A SHOPPER QUESTION</span>
+        <span className="demo-label">Fictional coffee example</span>
+      </div>
+      <fieldset className="question-list">
+        <legend className="sr-only">Choose a shopper question</legend>
+        {LESSONS.map((item) => (
+          <label key={item.id} className={choice === item.id ? "selected" : ""}>
+            <input
+              type="radio"
+              name="lesson"
+              value={item.id}
+              checked={choice === item.id}
+              onChange={() => {
+                setChoice(item.id);
+                setImproved(false);
+              }}
+            />
+            {item.label}
+            <span aria-hidden="true">→</span>
+          </label>
+        ))}
+      </fieldset>
+      <fieldset className="comparison-switch">
+        <legend>Compare the explanation</legend>
+        <label>
+          <input
+            type="radio"
+            name="explanation"
+            checked={!improved}
+            onChange={() => setImproved(false)}
+          />
+          Before
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="explanation"
+            checked={improved}
+            onChange={() => setImproved(true)}
+          />
+          Possible improvement
+        </label>
+      </fieldset>
+      <div className="example-copy" aria-live="polite">
+        <p>{improved ? lesson.after : lesson.before}</p>
+      </div>
+      <p className="exercise-question">{lesson.question}</p>
+      <p className="source-note">
+        Educational interpretation of{" "}
+        <a href={lesson.source}>{lesson.credit}</a>. No customer results are
+        measured here.
+      </p>
+    </div>
+  );
+}
+function LabFeature({ full = false }) {
+  return (
+    <section className={`lab-feature ${full ? "full" : ""}`} id="cro-lab">
+      <div className="wrap lab-grid">
+        <div className="lab-copy">
+          <p className="eyebrow">THE SHOPIFY CRO LAB</p>
+          <h2>
+            Read the idea.
+            <br />
+            <em>Try the difference.</em>
+          </h2>
+          <p>
+            A hands-on place to explore clearer buying experiences before
+            changing your store. Seven merchant lessons, a fictional storefront
+            and a draft test plan.
+          </p>
+          <p className="lab-limit">
+            All commerce is simulated. There is no real checkout, analytics
+            connection or measured conversion lift.
+          </p>
+          <div className="actions">
+            <a className="button light" href={LAB}>
+              Open the interactive Lab <Arrow />
+            </a>
+            {!full && (
+              <a className="light-link" href="/lab/">
+                What’s inside <Arrow />
+              </a>
+            )}
+          </div>
         </div>
-        <div className="capabilities-grid">
-          {CAPABILITIES.map((capability, index) => (
-            <article className="capability-card" key={capability.title}>
-              <span className="card-number" aria-hidden="true">0{index + 1}</span>
-              <h3>{capability.title}</h3>
-              <p>{capability.body}</p>
-            </article>
+        <LabExercise />
+      </div>
+    </section>
+  );
+}
+function GuideCard({ guide, index }) {
+  const pillar = pillars.find((p) => p.id === guide.pillar);
+  return (
+    <article className="guide-card">
+      <div className="guide-card-meta">
+        <span>{pillar.short}</span>
+        <span>{String(index + 1).padStart(2, "0")}</span>
+      </div>
+      <h3>
+        <a href={guideHref(guide)}>{guide.title}</a>
+      </h3>
+      <p>{guide.description}</p>
+      <div className="guide-card-foot">
+        <span>{guide.readingMinutes} min read</span>
+        <a href={guideHref(guide)} aria-label={`Read ${guide.title}`}>
+          <Arrow />
+        </a>
+      </div>
+    </article>
+  );
+}
+function Pillars({ active }) {
+  return (
+    <div className="pillar-grid">
+      {pillars.map((pillar) => (
+        <a
+          className={`pillar-card ${active === pillar.id ? "active" : ""}`}
+          href={`/guides/topics/${pillar.id}/`}
+          key={pillar.id}
+        >
+          <span className="number">
+            {pillar.symbol} <Arrow />
+          </span>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
+          <small>
+            {guides.filter((guide) => guide.pillar === pillar.id).length}{" "}
+            practical guides
+          </small>
+        </a>
+      ))}
+    </div>
+  );
+}
+function GuidesFeature() {
+  return (
+    <section className="section wrap">
+      <Heading
+        kicker="HOW I THINK THROUGH THE WORK"
+        title="A practical guide behind each decision."
+        description="Explore implementation briefs, research methods and QA checklists. Useful for your next project — and a closer look at how I approach the work."
+        href="/guides/"
+        link={`Explore all ${guides.length} guides`}
+      />
+      <div className="guide-grid home-guides">
+        {guides
+          .filter((g) => [0, 6, 12, 17].includes(guides.indexOf(g)))
+          .map((guide, i) => (
+            <GuideCard key={guide.slug} guide={guide} index={i} />
           ))}
+      </div>
+    </section>
+  );
+}
+function LabProof() {
+  return (
+    <section className="lab-proof">
+      <div className="wrap lab-proof-grid">
+        <div>
+          <p className="eyebrow">SUPPORTING IMPLEMENTATION EVIDENCE</p>
+          <h2>
+            Explore the decisions.
+            <br />
+            <em>Try the implementation.</em>
+          </h2>
         </div>
-        <dl className="skill-groups">
-          <div><dt>Development</dt><dd>Liquid, JavaScript, HTML, CSS, Online Store 2.0, metaobjects and Shopify Functions.</dd></div>
-          <div><dt>APIs and workflow</dt><dd>Storefront API, Cart API, Shopify Subscriptions API and Git.</dd></div>
-          <div><dt>CRO tools</dt><dd>GA4, Shopify Analytics, Intelligems, Rebuy and Replo.</dd></div>
-        </dl>
-        <a className="text-link" href="https://github.com/maghangadotcom/shopify-cro-toolkit" target="_blank" rel="noopener noreferrer">View my Shopify CRO Toolkit <span aria-hidden="true">↗</span></a>
+        <div>
+          <p>
+            The Shopify CRO Lab connects seven merchant lessons to an
+            interactive, fictional buying journey and a test plan. Explore the
+            behavior and inspect the source behind it.
+          </p>
+          <p className="lab-proof-note">
+            Educational demo · Simulated commerce · No conversion lift claimed
+          </p>
+          <div className="actions">
+            <a className="text-link" href="/lab/">
+              Inside the CRO Lab <Arrow />
+            </a>
+            <a className="text-link" href={SOURCE}>
+              View source <Arrow />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -348,18 +574,36 @@ function Capabilities() {
 
 function Process() {
   return (
-    <section className="process" id="process" aria-labelledby="process-title">
-      <div className="container">
-        <div className="section-head">
-          <span className="kicker">Process</span>
-          <h2 id="process-title">How I work</h2>
-        </div>
+    <section className="section process-section" id="process">
+      <div className="wrap">
+        <Heading
+          kicker="HOW I WORK"
+          title="One connected process."
+          description="A good release needs a customer reason, clear implementation and a way to check what happened."
+        />
         <ol className="process-grid">
-          {PROCESS_STEPS.map((step, index) => (
-            <li key={step.title}>
-              <span className="card-number" aria-hidden="true">0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
+          {[
+            [
+              "Understand",
+              "Review the storefront, available analytics and customer feedback.",
+            ],
+            [
+              "Define",
+              "Agree the problem, scope, hypothesis and measurement plan.",
+            ],
+            [
+              "Build & check",
+              "Implement the change and check the important customer journeys.",
+            ],
+            [
+              "Learn",
+              "Review evidence, document limitations and choose the next step.",
+            ],
+          ].map(([t, p], i) => (
+            <li key={t}>
+              <span className="number">0{i + 1}</span>
+              <h3>{t}</h3>
+              <p>{p}</p>
             </li>
           ))}
         </ol>
@@ -367,100 +611,739 @@ function Process() {
     </section>
   );
 }
-
-function About() {
+function AboutPreview() {
   return (
-    <section className="about" id="about" aria-labelledby="about-title">
-      <div className="container about-grid">
-        <figure className="portrait">
-          <img src={media.portrait.src} width={media.portrait.w} height={media.portrait.h} alt="Thomas Maghanga, Shopify Plus developer and CRO specialist." loading="lazy" decoding="async" />
-          <figcaption>Thomas Maghanga · Nairobi, UTC+3</figcaption>
-        </figure>
-        <div className="about-copy">
-          <span className="kicker">About</span>
-          <h2 id="about-title">About Thomas</h2>
-          <p>I’m Thomas Maghanga, a Shopify Plus developer and CRO specialist based in Nairobi. Since 2021, I’ve worked on DTC storefronts, bringing customer research, development and experimentation together.</p>
-          <p>I work with growth, media and creative teams to turn storefront problems into clear development tasks. My focus is maintainable code, usable buying flows and careful measurement.</p>
-          <ul className="experience-list" aria-label="Professional experience">
-            <li><span>Fifth Ray</span><p>Shopify CRO Developer · Contract<br /><time>February–August 2026</time></p></li>
-            <li><span>Foundry Brands</span><p>Shopify Developer<br /><time>2023–2025</time></p></li>
-            <li><span>Supply Co</span><p>Shopify Developer &amp; CRO Specialist<br /><time>2021–2023</time></p></li>
-          </ul>
-        </div>
+    <section className="section wrap about-preview" id="about">
+      <Picture name="portrait" alt="Thomas Maghanga" />
+      <div>
+        <p className="eyebrow">THE PERSON BEHIND THE WORK</p>
+        <h2>A developer who stays curious about the customer.</h2>
+        <p>
+          I’m Thomas, based in Nairobi. Since 2021, I’ve worked with DTC teams
+          on Shopify storefronts, bringing customer research, development and
+          experimentation together.
+        </p>
+        <a className="text-link" href="/about/">
+          About me & working together <Arrow />
+        </a>
+      </div>
+      <div className="hiring-note">
+        <span className="status-dot" />
+        <p>Hiring for your team?</p>
+        <span>Open to remote in-house roles and ongoing contracts.</span>
+        <Resume className="text-link" />
       </div>
     </section>
   );
 }
-
 function Contact() {
   return (
-    <section className="contact" id="contact" aria-labelledby="contact-title">
-      <div className="container contact-inner">
-        <span className="kicker">Let’s talk</span>
-        <h2 id="contact-title">Discuss a role or project</h2>
-        <p>Looking for a Shopify developer who can also implement CRO work? Tell me about your team, storefront and what you need built.</p>
-        <p className="availability">Based in Nairobi, Kenya (UTC+3). Available for a full workday when required, with a preferred 3–4 hours of daily team overlap.</p>
-        <div className="hero-actions">
-          <a className="btn btn-primary" href="mailto:maghangamail@gmail.com">Email Thomas <span aria-hidden="true">↗</span></a>
-          <ResumeLink className="btn btn-outline" />
+    <section className="contact-section" id="contact">
+      <div className="wrap contact-grid">
+        <div>
+          <p className="eyebrow">YOUR NEXT STOREFRONT IMPROVEMENT</p>
+          <h2>
+            Let’s make the
+            <br />
+            <em>next change count.</em>
+          </h2>
         </div>
-        <div className="contact-links">
-          <a href="https://www.linkedin.com/in/thomas-maghanga/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-          <a href="https://github.com/maghangadotcom" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <div>
+          <p>
+            Tell me about your storefront, the problem you’re seeing and the
+            team you’re building. We can start with a focused project or discuss
+            a longer-term role.
+          </p>
+          <a className="button" href="mailto:thomas@maghanga.com">
+            Email Thomas <Arrow />
+          </a>
+          <p className="contact-small">
+            Nairobi, Kenya · UTC+3
+            <br />
+            Full workday availability, with a preferred 3–4 hours of daily team
+            overlap.
+          </p>
         </div>
       </div>
     </section>
   );
 }
-
-export default function App() {
-  const openCase = useSyncExternalStore(subscribeToLocation, getCaseSnapshot, getServerCaseSnapshot);
-
-  const onOpen = (event, id) => {
-    // Preserve normal link behaviour for new tabs and modified clicks.
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    event.currentTarget.focus();
-    const url = new URL(window.location.href);
-    url.searchParams.set('case', id);
-    url.hash = 'work';
-    window.history.pushState({ ...window.history.state, portfolioCase: id }, '', url);
-    window.dispatchEvent(new Event(LOCATION_EVENT));
-  };
-
-  const onClose = () => {
-    if (window.history.state?.portfolioCase === openCase) {
-      // A case opened here has a portfolio entry directly behind it.
-      window.history.back();
-    } else {
-      // Direct entries must close onto this portfolio, never leave the site.
-      const url = new URL(window.location.href);
-      url.searchParams.delete('case');
-      window.history.replaceState(window.history.state, '', url);
-      window.dispatchEvent(new Event(LOCATION_EVENT));
-    }
-  };
-
+function Footer() {
+  return (
+    <footer className="footer wrap">
+      <div>
+        <a className="wordmark" href="/">
+          maghanga<span>/</span>
+        </a>
+        <p>
+          Shopify Plus development.
+          <br />
+          Customer research. Careful implementation.
+        </p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/work/">Selected work</a>
+        <a href="/lab/">CRO Lab</a>
+        <a href="/guides/">Merchant guides</a>
+        <a href="/about/">About & availability</a>
+      </nav>
+      <div className="footer-links">
+        <a href="mailto:thomas@maghanga.com">thomas@maghanga.com</a>
+        <a href="https://www.linkedin.com/in/thomas-maghanga/">
+          LinkedIn <Arrow />
+        </a>
+        <a href="https://github.com/maghangadotcom">
+          GitHub <Arrow />
+        </a>
+        <Resume className="text-link" />
+      </div>
+      <p className="copyright">
+        © Thomas Maghanga · Built with care in Nairobi.
+      </p>
+    </footer>
+  );
+}
+function PageIntro({ kicker, title, children }) {
+  return (
+    <header className="page-intro wrap">
+      <p className="eyebrow">{kicker}</p>
+      <h1>{title}</h1>
+      {children && <div className="page-intro-copy">{children}</div>}
+    </header>
+  );
+}
+function WorkPage() {
   return (
     <>
-      <Nav />
-      <main id="main">
-        <div id="top" />
+      <Breadcrumbs items={[{ label: "Selected work" }]} />
+      <PageIntro
+        kicker="SELECTED SHOPIFY WORK"
+        title={
+          <>
+            The context.
+            <br />
+            <em>The contribution.</em>
+          </>
+        }
+      >
+        <p>
+          A closer look at the storefront features I built, the problems they
+          addressed and my role in each project.
+        </p>
+      </PageIntro>
+      <section className="wrap section work-page">
+        <WorkCards />
+      </section>
+      <Contact />
+    </>
+  );
+}
+function CasePage({ study }) {
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { label: "Selected work", href: "/work/" },
+          { label: study.title },
+        ]}
+      />
+      <PageIntro kicker="SELECTED PROJECT" title={study.title}>
+        <p>{study.summary}</p>
+        <div className="tags">
+          {study.tags.map((tag) => (
+            <Pill key={tag}>{tag}</Pill>
+          ))}
+        </div>
+      </PageIntro>
+      <div className="wrap case-detail">
+        <aside>
+          <p className="eyebrow">MY ROLE</p>
+          <p>{study.role}</p>
+          <a className="text-link" href="/#contact">
+            Discuss similar needs <Arrow />
+          </a>
+          <p className="evidence-note">
+            This case study documents the work and selected screens. It does not
+            claim a measured conversion lift.
+          </p>
+        </aside>
+        <article>
+          <section>
+            <h2>Context</h2>
+            <p>{study.context}</p>
+          </section>
+          <section>
+            <h2>What I built</h2>
+            <ul className="built-list">
+              {study.built.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+          {study.research && (
+            <p className="research-callout">{study.research}</p>
+          )}
+          <section>
+            <h2>Selected screens</h2>
+            <div className="case-gallery">
+              {study.gallery.map((screen) => (
+                <figure
+                  key={screen.img}
+                  className={`case-screen case-screen-${screen.type}`}
+                >
+                  <Picture
+                    name={screen.img}
+                    alt={`${study.title}: ${screen.cap}`}
+                  />
+                  <figcaption>{screen.cap}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+          <a className="text-link" href="/work/">
+            ← All selected work
+          </a>
+        </article>
+      </div>
+      <section className="section wrap">
+        <Heading
+          kicker="CONTINUE EXPLORING"
+          title="Practical guidance for your team."
+          description="Educational articles are separate from the client work above."
+        />
+        <div className="guide-grid">
+          {guides
+            .filter(
+              (g) =>
+                g.pillar ===
+                (study.id === "fifthray"
+                  ? "research"
+                  : study.id === "shopdeck"
+                    ? "quality"
+                    : study.id === "bluatlas"
+                      ? "offers"
+                      : "storefront"),
+            )
+            .slice(0, 3)
+            .map((guide, i) => (
+              <GuideCard key={guide.slug} guide={guide} index={i} />
+            ))}
+        </div>
+      </section>
+      <Contact />
+    </>
+  );
+}
+function GuidesPage({ pillar }) {
+  const [query, setQuery] = useState("");
+  const base = pillar ? guides.filter((g) => g.pillar === pillar.id) : guides;
+  const terms = query.toLowerCase().trim().split(/\s+/).map((term) => term.length > 3 ? term.replace(/s$/, "") : term);
+  const filtered = base.filter((guide) => {
+    const topic = pillars.find((item) => item.id === guide.pillar);
+    const searchable = `${guide.title} ${guide.description} ${topic.short}`.toLowerCase();
+    return terms.every((term) => searchable.includes(term));
+  });
+  return (
+    <>
+      <Breadcrumbs
+        items={
+          pillar
+            ? [{ label: "Guides", href: "/guides/" }, { label: pillar.short }]
+            : [{ label: "Guides" }]
+        }
+      />
+      <PageIntro
+        kicker="THE MERCHANT’S FIELD NOTES"
+        title={
+          pillar ? (
+            pillar.title
+          ) : (
+            <>
+              Make the next
+              <br />
+              <em>decision clearer.</em>
+            </>
+          )
+        }
+      >
+        <p>
+          {pillar
+            ? pillar.description
+            : `${guides.length} practical guides to Shopify customization and full-stack CRO. Customer questions, implementation decisions and checks you can take to your team.`}
+        </p>
+      </PageIntro>
+      <section className="wrap guide-library">
+        <Pillars active={pillar?.id} />
+        <div className="library-toolbar">
+          <div>
+            <label htmlFor="guide-search">Find a guide</label>
+            <input
+              id="guide-search"
+              type="search"
+              placeholder="Try cart, subscriptions or research"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </div>
+          <p role="status">
+            {filtered.length} {filtered.length === 1 ? "guide" : "guides"}
+            {query ? ` matching “${query}”` : " to explore"}
+            {pillar && (
+              <>
+                {" "}
+                · <a href="/guides/">All topics</a>
+              </>
+            )}
+          </p>
+        </div>
+        <div className="guide-grid">
+          {filtered.map((guide, i) => (
+            <GuideCard key={guide.slug} guide={guide} index={i} />
+          ))}
+        </div>
+        {!filtered.length && (
+          <p className="empty-results">
+            No guides match yet. Try a broader term such as “cart” or clear the
+            search.
+          </p>
+        )}
+        <div className="editorial-note">
+          <h2>Useful before you open the theme editor.</h2>
+          <p>
+            These articles explain decisions, practical handoffs and QA. They
+            are educational guidance, not proof that an idea will increase
+            sales. Check current Shopify plan eligibility and validate any
+            implementation in your own store.
+          </p>
+          <a className="text-link" href="/lab/">
+            Practice with the CRO Lab <Arrow />
+          </a>
+        </div>
+      </section>
+      <Contact />
+    </>
+  );
+}
+function GuidePage({ guide }) {
+  const pillar = pillars.find((p) => p.id === guide.pillar);
+  const selected = guide.related
+    .map((slug) => guides.find((g) => g.slug === slug))
+    .filter(Boolean);
+  const related = [
+    ...selected,
+    ...guides.filter(
+      (g) =>
+        g.pillar === guide.pillar &&
+        g.slug !== guide.slug &&
+        !selected.includes(g),
+    ),
+  ].slice(0, 3);
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { label: "Guides", href: "/guides/" },
+          { label: pillar.short, href: `/guides/topics/${pillar.id}/` },
+          { label: guide.title },
+        ]}
+      />
+      <header className="article-header wrap">
+        <a className="eyebrow" href={`/guides/topics/${pillar.id}/`}>
+          {pillar.short}
+        </a>
+        <h1>{guide.title}</h1>
+        <p className="article-deck">{guide.description}</p>
+        <div className="article-byline">
+          <Picture name="avatar" alt="" />
+          <p>
+            By <a href="/about/">Thomas Maghanga</a>
+            <span>
+              Reviewed <time dateTime={guide.date}>28 October 2026</time> ·{" "}
+              {guide.readingMinutes} min read
+            </span>
+          </p>
+          <Pill>Merchant guide</Pill>
+        </div>
+      </header>
+      <div className="article-layout wrap">
+        <aside className="article-toc">
+          <nav aria-label="In this guide">
+            <h2>In this guide</h2>
+            {guide.sections.map((s) => (
+              <a key={s.id} href={`#${s.id}`}>
+                {s.title}
+              </a>
+            ))}
+            <a href="#sources">Sources & further reading</a>
+          </nav>
+          <a className="text-link" href="/lab/">
+            Try the CRO Lab <Arrow />
+          </a>
+        </aside>
+        <article className="article-body">
+          <div className="article-intro">
+            {guide.intro.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+          {guide.sections.map((s) => (
+            <section key={s.id} id={s.id}>
+              <h2>{s.title}</h2>
+              {s.paragraphs?.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+              {s.steps && (
+                <ol>
+                  {s.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              )}
+              {s.code && (
+                <figure className="code-example">
+                  <figcaption>
+                    {s.codeLabel ||
+                      "Illustrative example — validate in a development store before use."}
+                  </figcaption>
+                  <pre>
+                    <code>{s.code}</code>
+                  </pre>
+                </figure>
+              )}
+              {s.checklist && (
+                <div className="qa-checklist">
+                  <h3>Checks to take to your team</h3>
+                  <ul>
+                    {s.checklist.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          ))}
+          <aside className="article-takeaway">
+            <p className="eyebrow">TAKE THIS INTO THE NEXT CONVERSATION</p>
+            <p>{guide.takeaway}</p>
+          </aside>
+          <section id="sources" className="article-sources">
+            <h2>Sources & further reading</h2>
+            <p>
+              Primary documentation and credited teaching used for this guide.
+              Platform details can change; confirm the current documentation
+              before implementation.
+            </p>
+            <ul>
+              {guide.sources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url}>
+                    {source.label} <Arrow />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <aside className="article-next">
+            <h2>Need help turning the brief into a storefront change?</h2>
+            <p>
+              I combine Shopify development, customer research and CRO
+              implementation. Tell me what your team needs to investigate or
+              build.
+            </p>
+            <a className="button" href="mailto:thomas@maghanga.com">
+              Discuss your project <Arrow />
+            </a>
+            <a className="text-link" href={`/work/${pillar.work}/`}>
+              Explore selected client work <Arrow />
+            </a>
+            <small>
+              Client case studies document specific contributions. This guide is
+              educational.
+            </small>
+          </aside>
+        </article>
+      </div>
+      <section className="section wrap">
+        <Heading
+          kicker="KEEP THE THREAD GOING"
+          title="Related guides"
+          href={`/guides/topics/${pillar.id}/`}
+          link={`Explore ${pillar.short.toLowerCase()}`}
+        />
+        <div className="guide-grid">
+          {related.map((g, i) => (
+            <GuideCard key={g.slug} guide={g} index={i} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+function LabPage() {
+  return (
+    <>
+      <Breadcrumbs items={[{ label: "CRO Lab" }]} />
+      <PageIntro
+        kicker="LEARN BY DOING"
+        title={
+          <>
+            A small idea.
+            <br />
+            <em>A clearer experience.</em>
+          </>
+        }
+      >
+        <p>
+          The CRO Lab brings research ideas into a working educational
+          storefront. Use it to practice asking better questions, then take a
+          considered brief to your team.
+        </p>
+      </PageIntro>
+      <LabFeature full />
+      <section className="section wrap">
+        <Heading
+          kicker="WHAT YOU CAN EXPLORE"
+          title="From explanation to interaction."
+        />
+        <div className="lab-paths">
+          <article>
+            <span className="number">01</span>
+            <h3>Merchant lessons</h3>
+            <p>
+              Explore seven shopper questions. Compare an original explanation
+              with a possible improvement, see what evidence to gather and draft
+              a test plan.
+            </p>
+            <a className="text-link" href={`${LAB}#improvements`}>
+              Explore improvements <Arrow />
+            </a>
+          </article>
+          <article>
+            <span className="number">02</span>
+            <h3>A fictional buying journey</h3>
+            <p>
+              Switch to Shopper preview inside the Lab to try the FORM & FIELD
+              coffee page, voluntary subscriptions, larger bags and a one-time
+              scoop offer.
+            </p>
+            <a className="text-link" href={LAB}>
+              Open the Lab <Arrow />
+            </a>
+          </article>
+          <article>
+            <span className="number">03</span>
+            <h3>The implementation evidence</h3>
+            <p>
+              Optional developer details connect interactions to source code and
+              a validation plan. The separate Liquid examples still need Shopify
+              development-store validation.
+            </p>
+            <a
+              className="text-link"
+              href={`${SOURCE}/blob/main/docs/TESTING-GUIDE.md`}
+            >
+              Read the testing guide <Arrow />
+            </a>
+          </article>
+        </div>
+        <div className="editorial-note">
+          <h2>Good teaching names its sources.</h2>
+          <p>
+            The Lab’s merchant lessons interpret ideas from Rishi Rawat /
+            Frictionless Commerce and customer-review research discussed by
+            Lorenzo Carreri. The Lab links the original sources beside each
+            lesson. These are independent educational interpretations, with no
+            endorsement implied.
+          </p>
+          <a className="text-link" href={SOURCE}>
+            Explore the source repository <Arrow />
+          </a>
+        </div>
+      </section>
+      <GuidesFeature />
+      <Contact />
+    </>
+  );
+}
+function AboutPage() {
+  return (
+    <>
+      <Breadcrumbs items={[{ label: "About" }]} />
+      <PageIntro
+        kicker="THOMAS MAGHANGA"
+        title={
+          <>
+            The build matters.
+            <br />
+            <em>So does the reason.</em>
+          </>
+        }
+      >
+        <p>
+          Shopify Plus Developer & CRO Specialist. Based in Nairobi, working
+          with DTC teams remotely.
+        </p>
+      </PageIntro>
+      <section className="section wrap about-page" id="thomas">
+        <Picture
+          name="portrait"
+          alt="Thomas Maghanga, Shopify Plus developer and CRO specialist"
+        />
+        <div>
+          <h2>Customer questions are part of the development brief.</h2>
+          <p>
+            Since 2021, I’ve worked on DTC storefronts, bringing customer
+            research, development and experimentation together. I work with
+            growth, media and creative teams to turn storefront problems into
+            clear development tasks.
+          </p>
+          <p>
+            My focus is maintainable code, usable buying flows and careful
+            measurement. That means looking at the question behind a page
+            change, checking the important journeys and documenting what the
+            evidence can support.
+          </p>
+          <dl className="experience-list">
+            <div>
+              <dt>Fifth Ray</dt>
+              <dd>
+                Shopify CRO Developer · Contract
+                <span>February–August 2026</span>
+              </dd>
+            </div>
+            <div>
+              <dt>Foundry Brands</dt>
+              <dd>
+                Shopify Developer<span>2023–2025</span>
+              </dd>
+            </div>
+            <div>
+              <dt>Supply Co</dt>
+              <dd>
+                Shopify Developer & CRO Specialist<span>2021–2023</span>
+              </dd>
+            </div>
+          </dl>
+          <Resume />
+          <a className="text-link" href="/work/">
+            See the work in context <Arrow />
+          </a>
+        </div>
+      </section>
+      <section className="section process-section" id="availability">
+        <div className="wrap availability-grid">
+          <div>
+            <p className="eyebrow">WORKING TOGETHER</p>
+            <h2>
+              A clear role.
+              <br />A connected workflow.
+            </h2>
+            <p>Open to remote in-house roles and ongoing contracts.</p>
+          </div>
+          <div>
+            <h3>For a merchant or growth team</h3>
+            <p>
+              Bring a product-page, cart, subscription or storefront problem. We
+              can define the scope, implementation and checks together.
+            </p>
+            <h3>For a hiring manager</h3>
+            <p>
+              Explore the client case studies for my exact contribution, the
+              public CRO Lab for implementation evidence and my résumé for
+              professional experience.
+            </p>
+            <p>
+              Nairobi, Kenya (UTC+3). Available for a full workday when
+              required, with a preferred 3–4 hours of daily team overlap.
+            </p>
+            <a className="text-link" href="mailto:thomas@maghanga.com">
+              Start a conversation <Arrow />
+            </a>
+          </div>
+        </div>
+      </section>
+      <Process />
+      <Contact />
+    </>
+  );
+}
+function NotFound() {
+  return (
+    <section className="wrap not-found">
+      <p className="eyebrow">404 · PAGE NOT FOUND</p>
+      <h1>
+        This path doesn’t
+        <br />
+        <em>lead to a page.</em>
+      </h1>
+      <p>
+        The page may have moved. Explore the guides or head back to the selected
+        work.
+      </p>
+      <div className="actions">
+        <a className="button" href="/">
+          Back home <Arrow />
+        </a>
+        <a className="text-link" href="/guides/">
+          Browse guides <Arrow />
+        </a>
+      </div>
+    </section>
+  );
+}
+export default function App({ path = "/" }) {
+  const normalized = path === "/" ? "/" : `${path.replace(/\/+$/, "")}/`;
+  const openCase = useSyncExternalStore(
+    subscribe,
+    caseSnapshot,
+    closedSnapshot,
+  );
+  const closeCase = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete("case");
+    window.history.replaceState(null, "", url);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  };
+  let page;
+  if (normalized === "/")
+    page = (
+      <>
         <Hero />
-        <ProjectExperience />
-        <Cases onOpen={onOpen} />
+        <Brands />
+        <WorkSection />
         <Capabilities />
         <Process />
-        <About />
+        <LabProof />
+        <GuidesFeature />
+        <AboutPreview />
         <Contact />
-      </main>
-      <footer className="foot">
-        <div className="container">
-          <span>© Thomas Maghanga</span>
-          <span>Shopify Plus Developer &amp; CRO Specialist</span>
-        </div>
-      </footer>
-      <CaseDialog study={CASES.find((study) => study.id === openCase) ?? null} onClose={onClose} />
+      </>
+    );
+  else if (normalized === "/work/") page = <WorkPage />;
+  else if (normalized === "/lab/") page = <LabPage />;
+  else if (normalized === "/guides/") page = <GuidesPage />;
+  else if (normalized === "/about/") page = <AboutPage />;
+  else if (normalized.startsWith("/work/")) {
+    const study = cases.find((s) => `/work/${s.id}/` === normalized);
+    page = study ? <CasePage study={study} /> : <NotFound />;
+  } else if (normalized.startsWith("/guides/topics/")) {
+    const pillar = pillars.find(
+      (p) => `/guides/topics/${p.id}/` === normalized,
+    );
+    page = pillar ? <GuidesPage pillar={pillar} /> : <NotFound />;
+  } else {
+    const guide = guides.find((g) => guideHref(g) === normalized);
+    page = guide ? <GuidePage guide={guide} /> : <NotFound />;
+  }
+  return (
+    <>
+      <Header path={normalized} />
+      <main id="main">{page}</main>
+      <Footer />
+      <CaseDialog
+        study={cases.find((s) => s.id === openCase) ?? null}
+        onClose={closeCase}
+      />
     </>
   );
 }
