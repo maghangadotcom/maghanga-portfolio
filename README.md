@@ -2,15 +2,33 @@
 
 A portfolio for Thomas Maghanga, a Shopify Plus Developer & CRO Specialist, covering documented storefront development and CRO implementation since 2021.
 
-## Live Demo
+**[View live portfolio](https://maghanga.com/) · [Download résumé](https://maghanga.com/Thomas_Maghanga_Resume.pdf) · [Contact](mailto:maghangamail@gmail.com)**
 
-Live website: [https://maghanga.com/](https://maghanga.com/).
+Open to remote in-house roles and ongoing contracts. Based in Nairobi, Kenya (UTC+3), available for a full workday when required with a preferred 3–4 hours of daily team overlap.
+
+## Selected Shopify work
+
+Start with the case studies for the problem, my role, implementation details and screenshots:
+
+| Case study | Work documented |
+| --- | --- |
+| [Supply](https://maghanga.com/?case=supply#work) | Online Store 2.0 development, reusable Liquid sections, campaign landing pages and Rebuy upsell flows |
+| [Fifth Ray](https://maghanga.com/?case=fifthray#work) | Customer review research, product-page development, analytics investigation and a native Liquid cart drawer |
+| [Blu Atlas](https://maghanga.com/?case=bluatlas#work) | Product and collection sections, subscription interfaces and cart features |
+
+These are descriptions of my contribution, not claims of measured conversion lift. The repository contains the portfolio website, not the client stores' source code.
+
+For an inspectable personal implementation, try the [Shopify CRO Lab](https://shopify-cro-lab.vercel.app/) and review its [source, tests and integration limits](https://github.com/maghangadotcom/shopify-cro-toolkit). It is an educational simulation, separate from the client work above.
+
+## About this repository
+
+A React portfolio that makes case studies shareable and keeps key content available in the initial HTML. The [case-study content and routing](src/App.jsx), [dialog behaviour](src/CaseDialog.jsx) and [prerender script](scripts/prerender.js) are available to inspect.
 
 ## Tech Stack
 
 This project is built with a lean, performance-focused stack:
 
--   **[React 19](https://react.dev/)**: The latest version of the library for web and native user interfaces.
+-   **[React 19](https://react.dev/)**: Component-based UI with client hydration.
 -   **[Vite](https://vitejs.dev/)**: Next Generation Frontend Tooling for fast development and build speeds.
 -   **Hand-written CSS**: A single dark/mint design system (`src/styles.css` + `src/craft.css`). No CSS framework, no runtime style dependencies.
 -   **Build-time SSG prerender**: The app is rendered to static HTML at build time (`scripts/prerender.js`) and hydrated on the client, so content is in the markup on first paint.
@@ -19,7 +37,7 @@ This project is built with a lean, performance-focused stack:
 ## Features
 
 -   **Shareable case studies**: Six documented projects, with context, role, implementation details and real screenshot galleries where available. Links such as `/?case=supply#work` open accessible dialogs after hydration and support browser history.
--   **Verified résumé**: The two-page `public/Thomas_Maghanga_Resume.pdf` is available as a same-origin download.
+-   **Downloadable résumé**: The two-page `public/Thomas_Maghanga_Resume.pdf` is available as a same-origin download.
 -   **Content on first paint**: Prerendered HTML means fast LCP and no blank-screen flash in in-app browsers; CSS-driven animation keeps the main thread light.
 -   **Responsive, mobile-first**: 44px+ touch targets, single-column reflow, `prefers-reduced-motion` support throughout.
 
