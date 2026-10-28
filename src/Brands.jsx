@@ -54,7 +54,9 @@ export default function Brands() {
             aria-pressed={paused}
             onClick={() => setPaused((value) => !value)}
           >
-            <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+              {paused ? <path d="M4 2 13 8 4 14Z" /> : <path d="M3 2h3v12H3zM10 2h3v12h-3z" />}
+            </svg>
             {paused ? "Resume logos" : "Pause logos"}
           </button>
         )}
