@@ -19,13 +19,33 @@ function caseSnapshot() {
 function closedSnapshot() {
   return null;
 }
-function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+function Arrow({ direction = "up-right" }) {
+  const paths = {
+    "up-right": "M6 18 18 6M6 6h12v12",
+    down: "M12 4v16M5 13l7 7 7-7",
+    right: "M4 12h16M13 5l7 7-7 7",
+    left: "M20 12H4m7-7-7 7 7 7",
+  };
+  return (
+    <svg
+      className="icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d={paths[direction]} />
+    </svg>
+  );
 }
 function Resume({ className = "button secondary" }) {
   return (
     <a className={className} href={RESUME} download>
-      Download résumé <span aria-hidden="true">↓</span>
+      Download résumé <Arrow direction="down" />
     </a>
   );
 }
@@ -403,7 +423,7 @@ function LabExercise() {
               }}
             />
             {item.label}
-            <span aria-hidden="true">→</span>
+            <Arrow direction="right" />
           </label>
         ))}
       </fieldset>
@@ -804,7 +824,7 @@ function CasePage({ study }) {
             </div>
           </section>
           <a className="text-link" href="/work/">
-            ← All selected work
+            <Arrow direction="left" /> All selected work
           </a>
         </article>
       </div>
@@ -947,6 +967,12 @@ function ArticleContents({ guide }) {
 }
 function GuidePage({ guide }) {
   const pillar = pillars.find((p) => p.id === guide.pillar);
+  const reviewedDateLabel = new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${guide.date}T00:00:00Z`));
   const selected = guide.related
     .map((slug) => guides.find((g) => g.slug === slug))
     .filter(Boolean);
@@ -979,7 +1005,7 @@ function GuidePage({ guide }) {
           <p>
             By <a href="/about/">Thomas Maghanga</a>
             <span>
-              Reviewed <time dateTime={guide.date}>28 October 2026</time> ·{" "}
+              Reviewed <time dateTime={guide.date}>{reviewedDateLabel}</time> ·{" "}
               {guide.readingMinutes} min read
             </span>
           </p>

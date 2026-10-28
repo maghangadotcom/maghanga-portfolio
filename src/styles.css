@@ -240,10 +240,17 @@ summary:focus-visible,
   border-bottom: 1px solid #9aa08f;
   padding-block: 7px;
 }
-.text-link > span,
-.button > span {
-  font-size: 19px;
-  line-height: 1;
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+}
+.text-link > .icon,
+.button > .icon {
+  width: 19px;
+  height: 19px;
 }
 .actions {
   display: flex;
@@ -351,8 +358,9 @@ summary:focus-visible,
   place-items: center;
   text-decoration: none;
 }
-.proof-foot a span {
-  font-size: 21px;
+.proof-foot a .icon {
+  width: 21px;
+  height: 21px;
   color: var(--ink);
 }
 .hero-stamp {
@@ -652,7 +660,7 @@ summary:focus-visible,
   margin-top: 6px;
   cursor: pointer;
 }
-.question-list label > span {
+.question-list label > .icon {
   margin-left: auto;
 }
 .question-list label.selected {
