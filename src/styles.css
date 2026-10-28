@@ -390,38 +390,6 @@ summary:focus-visible,
   letter-spacing: 1px;
   line-height: 1.7;
 }
-.brands {
-  border-block: 1px solid var(--line);
-  padding-block: 26px;
-  display: flex;
-  gap: 35px;
-  align-items: center;
-}
-.brands p {
-  font-size: 9px;
-  letter-spacing: 1px;
-  max-width: 110px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-.brands > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 35px;
-  flex: 1;
-}
-.brands span {
-  font:
-    22px Georgia,
-    serif;
-  white-space: nowrap;
-}
-.brands span:first-child {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  letter-spacing: -1px;
-}
 .section-heading {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -1799,22 +1767,6 @@ summary:focus-visible,
   .hero-stamp {
     display: none;
   }
-  .brands {
-    display: block;
-  }
-  .brands p {
-    max-width: none;
-    font-size: 9px;
-    margin-bottom: 20px;
-  }
-  .brands > div {
-    gap: 18px;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .brands span {
-    font-size: 20px;
-  }
   .section-heading {
     gap: 35px;
     grid-template-columns: 1.2fr 1fr;
@@ -2187,20 +2139,6 @@ summary:focus-visible,
   }
   .hero-stamp span {
     font-size: 6px;
-  }
-  .brands {
-    padding-block: 22px;
-  }
-  .brands p {
-    font-size: 8px;
-    margin-bottom: 17px;
-  }
-  .brands > div {
-    justify-content: flex-start;
-    gap: 14px 23px;
-  }
-  .brands span {
-    font-size: 19px;
   }
   .section {
     padding-block: 53px;
