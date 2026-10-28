@@ -60,7 +60,11 @@ const CASES = [
       'Replaced a third-party cart app with a native Liquid cart drawer to address paid-social traffic failures in in-app browsers.',
     ],
     research: '849+ customer reviews analysed',
-    gallery: [],
+    gallery: [
+      { type: 'browser', img: 'fifthray-product-page', cap: 'Fifth Ray product page with quantity selection, membership subscription and one-time purchase options.' },
+      { type: 'browser', img: 'fifthray-homepage', cap: 'Fifth Ray homepage hero and storefront navigation.' },
+      { type: 'browser', img: 'fifthray-testimonials', cap: 'Fifth Ray customer testimonial carousel.' },
+    ],
   },
   {
     id: 'bluatlas',
