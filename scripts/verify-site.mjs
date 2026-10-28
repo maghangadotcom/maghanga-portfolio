@@ -247,6 +247,19 @@ check(
   "Guides: fewer than 20 rendered articles",
 );
 
+// The prerendered fallback remains a complete, accessible static brand list.
+const homepage = pages.get("/") || "";
+const brandSection = homepage.match(/<section[^>]*class="brands wrap"[\s\S]*?<\/section>/)?.[0] || "";
+const brandImages = [...brandSection.matchAll(/<img\b[^>]*>/g)].map((match) => attributes(match[0]));
+const brandNames = ["Supply Razors", "Blu Atlas", "Fifth Ray", "Benevolence LA", "TechnoRV", "Stryx", "Brute Magnetics"];
+check(brandImages.length === 7, "Marquee: seven original logos in the static fallback");
+check(brandImages.every((img, index) => img.alt === brandNames[index] && img.src.startsWith("/brands/") && Number(img.width) > 0 && Number(img.height) > 0), "Marquee: names, local assets and intrinsic dimensions");
+check(brandSection.includes('data-enhanced="false"'), "Marquee: no-JavaScript fallback stays static");
+const stryx = await fs.readFile(path.join(dist, "brands/stryx.svg"), "utf8");
+check(!/<(?:script|foreignObject|image)\b|\bon\w+\s*=|\b(?:href|xlink:href)\s*=/i.test(stryx), "Marquee: SVG contains no active or external content");
+
+check((await fs.readFile(path.join(dist, ".htaccess"), "utf8")).trim() === "ErrorDocument 404 /404.html", "Hostinger: built 404 mapping must persist");
+
 if (failures.length) {
   console.error(failures.map((failure) => `FAIL ${failure}`).join("\n"));
   process.exit(1);

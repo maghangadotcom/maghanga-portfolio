@@ -3,6 +3,7 @@ import media from "./media.js";
 import { cases } from "./cases.js";
 import { guides, pillars, guideHref } from "./content/index.js";
 import CaseDialog from "./CaseDialog.jsx";
+import Brands from "./Brands.jsx";
 
 const LAB = "https://shopify-cro-lab.vercel.app/";
 const SOURCE = "https://github.com/maghangadotcom/shopify-cro-toolkit";
@@ -239,20 +240,6 @@ function Hero() {
           <strong>2021</strong>
           <span>Building for DTC</span>
         </div>
-      </div>
-    </section>
-  );
-}
-function Brands() {
-  return (
-    <section className="brands wrap" aria-label="Selected project experience">
-      <p>SELECTED PROJECT EXPERIENCE</p>
-      <div>
-        {["Supply", "Blu Atlas", "Fifth Ray", "TechnoRV", "Stryx"].map(
-          (name) => (
-            <span key={name}>{name}</span>
-          ),
-        )}
       </div>
     </section>
   );
