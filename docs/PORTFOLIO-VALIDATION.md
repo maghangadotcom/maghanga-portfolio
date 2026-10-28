@@ -17,7 +17,7 @@ than replacing its home page. No production merge or deployment is included.
   HTML file and has a unique title, description, canonical, source links and
   Article/Breadcrumb metadata. Review dates are not treated as publication dates.
 - `npm ci`, `npm run lint`, `npm run build` and `npm run verify` passed locally.
-  The verifier checked 1,241 internal links and 211 asset references, plus metadata,
+  The verifier checked 1,368 internal links and 211 asset references, plus metadata,
   headings, schema, sitemap coverage and missing-page configuration.
 - No new runtime dependency or framework migration was needed. The existing
   build-time WebP optimization and explicit image dimensions are retained.
@@ -39,7 +39,10 @@ Interactions checked:
   explanation; changing the question resets the comparison.
 - Historical `/?case=fifthray#work` still opens the case dialog. Escape closes it,
   removes the query and restores focus to a focusable work heading.
-- Contact links and Person metadata use `thomas@maghanga.com`.
+- Contact links and Person metadata use `thomas@maghanga.com`. Availability
+  reflects flexible scheduling to fully overlap UK or US team hours.
+- Mobile article contents open as a native disclosure, keeping reading content
+  near the top while preserving keyboard access to the section links.
 - Motion reductions have a CSS fallback; no essential action depends on animation.
 
 These checks do not claim a full assistive-technology audit, real Android in-app
@@ -48,11 +51,13 @@ ranking. See the CRO Lab's own validation plan for its simulated commerce limits
 
 ## Release checks and remaining gate
 
-The normal Vercel development integration may generate a preview after the PR.
-Before production, verify a known guide's HTTP 200 response, missing-slash
-redirect and an unknown URL's actual HTTP 404. Local Vite fallback behavior cannot
+The normal Vercel development integration generated a protected review preview.
+Authenticated preview checks confirmed a known guide HTTP 200 and an unknown
+URL HTTP 404 with the custom missing-page body. The native fetch follows
+same-origin redirects, so its final 200 does not record the initial missing-slash
+redirect status; check that separately before production. Local Vite fallback behavior cannot
 establish production response status. Preserve hosting protection and DNS.
 
 The downloadable two-page resume uses the corrected `thomas@maghanga.com` address.
-Its visible text and clickable email were checked, with pixel comparison confirming
-that all other content is unchanged. See `resume-contact-update.md` for evidence.
+Its contact and availability text were checked, with pixel comparison used to
+confirm that the remaining content is unchanged. See `resume-contact-update.md` for evidence.

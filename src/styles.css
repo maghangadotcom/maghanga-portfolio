@@ -3122,3 +3122,80 @@ summary:focus-visible,
     font-size: 12px;
   }
 }
+/* Proof should be visible at feed and phone scale; reading comes before navigation. */
+.work-supply .work-image img {
+  width: 170%;
+  max-width: none;
+  margin-left: -70%;
+  object-position: right top;
+}
+.toc-mobile {
+  display: none;
+}
+@media (max-width: 600px) {
+  .hero-copy > .eyebrow {
+    font-size: 10px;
+    max-width: 100%;
+    line-height: 1.8;
+    letter-spacing: 1px;
+  }
+  .availability-bar {
+    font-size: 10px;
+  }
+  .hero-note {
+    font-size: 11px;
+  }
+  .article-byline > p > span {
+    font-size: 11px;
+  }
+  .toc-desktop {
+    display: none;
+  }
+  .toc-mobile {
+    display: block;
+    border-block: 1px solid var(--line);
+    padding-block: 13px;
+  }
+  .toc-mobile summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 36px;
+    font-size: 12px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .toc-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+  .toc-mobile summary > span {
+    font-size: 22px;
+  }
+  .toc-mobile[open] summary > span {
+    transform: rotate(45deg);
+  }
+  .toc-mobile nav {
+    margin-top: 17px;
+    margin-bottom: 8px;
+  }
+  .toc-mobile nav h2 {
+    display: none;
+  }
+  .toc-mobile nav a {
+    min-height: 30px;
+  }
+  .article-layout {
+    gap: 24px;
+  }
+}
+@media (max-width: 360px) {
+  .hero-copy > .eyebrow {
+    font-size: 9px;
+  }
+  .availability-bar {
+    font-size: 9px;
+  }
+  .hero-note {
+    font-size: 10px;
+  }
+}

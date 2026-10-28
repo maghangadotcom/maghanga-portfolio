@@ -3,7 +3,7 @@ import { cases } from "./cases.js";
 
 export const SITE_ORIGIN = "https://maghanga.com";
 const PERSON_ID = `${SITE_ORIGIN}/about/#thomas`;
-const SOCIAL_IMAGE = `${SITE_ORIGIN}/media/sup-lp-comparison.webp`;
+const SOCIAL_IMAGE = `${SITE_ORIGIN}/media/fifthray-product-page.webp`;
 const person = {
   "@type": "Person",
   "@id": PERSON_ID,
@@ -44,7 +44,7 @@ function meta(route, title, description, schema = [], extra = {}) {
     ogType: "website",
     image: SOCIAL_IMAGE,
     imageAlt:
-      "Selected Supply storefront work from Thomas Maghanga’s Shopify portfolio.",
+      "Selected Fifth Ray storefront work from Thomas Maghanga’s Shopify portfolio.",
     schema: { "@context": "https://schema.org", "@graph": schema },
     ...extra,
   };

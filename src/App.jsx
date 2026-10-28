@@ -168,9 +168,7 @@ function Hero() {
   return (
     <section className="hero wrap" id="top" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">
-          THOMAS MAGHANGA · SHOPIFY PLUS DEVELOPER & CRO SPECIALIST
-        </p>
+        <p className="eyebrow">THOMAS MAGHANGA · NAIROBI, KENYA · UTC+3</p>
         <h1 id="hero-title">
           Shopify Plus
           <br />
@@ -181,9 +179,9 @@ function Hero() {
           </em>
         </h1>
         <p className="hero-intro">
-          I turn customer questions into storefront work your team can ship:
-          clearer product pages, dependable carts and maintainable Shopify
-          customizations.
+          I help lifestyle, subscription, health and wellness teams turn
+          customer questions into clearer product pages, dependable carts and
+          maintainable Shopify customizations.
         </p>
         <div className="actions">
           <a className="button" href="/work/">
@@ -303,7 +301,7 @@ function WorkCards({ limit }) {
             aria-hidden="true"
           >
             <span className="image-index">SELECTED WORK / 0{i + 1}</span>
-            <Picture name={study.gallery[0].img} alt="" />
+            <Picture name={study.cover ?? study.gallery[0].img} alt="" />
           </a>
           <div className="work-copy">
             <div className="work-title">
@@ -665,8 +663,8 @@ function Contact() {
           <p className="contact-small">
             Nairobi, Kenya · UTC+3
             <br />
-            Full workday availability, with a preferred 3–4 hours of daily team
-            overlap.
+            Full workday availability, with flexible scheduling to fully overlap
+            UK or US team hours.
           </p>
         </div>
       </div>
@@ -934,6 +932,19 @@ function GuidesPage({ pillar }) {
     </>
   );
 }
+function ArticleContents({ guide }) {
+  return (
+    <nav aria-label="In this guide">
+      <h2>In this guide</h2>
+      {guide.sections.map((section) => (
+        <a key={section.id} href={`#${section.id}`}>
+          {section.title}
+        </a>
+      ))}
+      <a href="#sources">Sources & further reading</a>
+    </nav>
+  );
+}
 function GuidePage({ guide }) {
   const pillar = pillars.find((p) => p.id === guide.pillar);
   const selected = guide.related
@@ -977,15 +988,15 @@ function GuidePage({ guide }) {
       </header>
       <div className="article-layout wrap">
         <aside className="article-toc">
-          <nav aria-label="In this guide">
-            <h2>In this guide</h2>
-            {guide.sections.map((s) => (
-              <a key={s.id} href={`#${s.id}`}>
-                {s.title}
-              </a>
-            ))}
-            <a href="#sources">Sources & further reading</a>
-          </nav>
+          <div className="toc-desktop">
+            <ArticleContents guide={guide} />
+          </div>
+          <details className="toc-mobile">
+            <summary>
+              In this guide <span aria-hidden="true">+</span>
+            </summary>
+            <ArticleContents guide={guide} />
+          </details>
           <a className="text-link" href="/lab/">
             Try the CRO Lab <Arrow />
           </a>
@@ -1190,8 +1201,8 @@ function AboutPage() {
         }
       >
         <p>
-          Shopify Plus Developer & CRO Specialist. Based in Nairobi, working
-          with DTC teams remotely.
+          Shopify Plus Developer & CRO Specialist for lifestyle, subscription,
+          health and wellness brands. Based in Nairobi, working remotely.
         </p>
       </PageIntro>
       <section className="section wrap about-page" id="thomas">
@@ -1296,8 +1307,8 @@ function AboutPage() {
               professional experience.
             </p>
             <p>
-              Nairobi, Kenya (UTC+3). Available for a full workday when
-              required, with a preferred 3–4 hours of daily team overlap.
+              Nairobi, Kenya (UTC+3). Full workday availability, with flexible
+              scheduling to fully overlap UK or US team hours.
             </p>
             <a className="text-link" href="mailto:thomas@maghanga.com">
               Start a conversation <Arrow />

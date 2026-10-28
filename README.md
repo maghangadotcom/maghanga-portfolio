@@ -4,7 +4,7 @@ A portfolio for Thomas Maghanga, a Shopify Plus Developer & CRO Specialist, cove
 
 **[View live portfolio](https://maghanga.com/) · [Download résumé](https://maghanga.com/Thomas_Maghanga_Resume.pdf) · [Contact](mailto:thomas@maghanga.com)**
 
-Open to remote in-house roles and ongoing contracts. Based in Nairobi, Kenya (UTC+3), available for a full workday when required with a preferred 3–4 hours of daily team overlap.
+Open to remote in-house roles and ongoing contracts. Based in Nairobi, Kenya (UTC+3), with full workday availability and flexible scheduling to fully overlap UK or US team hours.
 
 ## Selected Shopify work
 

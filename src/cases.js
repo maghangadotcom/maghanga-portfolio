@@ -2,6 +2,7 @@ export const cases = [
   {
     id: "supply",
     title: "Supply",
+    cover: "sup-progress-rebuycart",
     summary:
       "Online Store 2.0 development, reusable Liquid sections and Rebuy upsell flows.",
     tags: ["Online Store 2.0", "Custom Liquid", "Rebuy"],
