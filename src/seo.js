@@ -70,7 +70,7 @@ export function getPageMeta(value = "/") {
     return meta(
       route,
       "Thomas Maghanga | Shopify Plus Developer & CRO Specialist",
-      "Merchant-focused Shopify development and CRO: explore Thomas Maghanga’s storefront work, practical guides and interactive lab. Open to remote roles and contracts.",
+      "Shopify Plus development, Liquid components, APIs and app integrations, backed by end-to-end CRO. Explore Thomas Maghanga’s work, implementation guides and availability.",
       [
         person,
         {
@@ -127,8 +127,8 @@ export function getPageMeta(value = "/") {
   if (route === "/guides/") {
     return meta(
       route,
-      "Shopify customization & full-stack CRO guides | Thomas Maghanga",
-      "Practical Shopify guides for merchants: editable storefronts, carts and offers, technical quality, customer research and trustworthy measurement. With implementation and QA steps.",
+      "Shopify development & end-to-end CRO guides | Thomas Maghanga",
+      "Shopify implementation guides: theme architecture, API-connected buying flows, performance, accessibility and end-to-end CRO. Practical build and release checks.",
       [
         breadcrumb([
           ["Home", "/"],

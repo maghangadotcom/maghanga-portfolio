@@ -189,7 +189,7 @@ function Hero() {
   return (
     <section className="hero wrap" id="top" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">THOMAS MAGHANGA · NAIROBI, KENYA · UTC+3</p>
+        <p className="eyebrow">THOMAS MAGHANGA · SHOPIFY DEVELOPMENT SINCE 2021</p>
         <h1 id="hero-title">
           Shopify Plus
           <br />
@@ -200,9 +200,9 @@ function Hero() {
           </em>
         </h1>
         <p className="hero-intro">
-          I help lifestyle, subscription, health and wellness teams turn
-          customer questions into clearer product pages, dependable carts and
-          maintainable Shopify customizations.
+          I build Shopify storefronts, custom Liquid components and app-connected
+          buying flows. From theme architecture and subscriptions to cart
+          interactions, I connect hands-on development with end-to-end CRO.
         </p>
         <div className="actions">
           <a className="button" href="/work/">
@@ -211,7 +211,7 @@ function Hero() {
           <Resume className="text-link" />
         </div>
         <p className="hero-note">
-          Storefront experience since 2021 · Nairobi, UTC+3 · Remote
+          Liquid · JavaScript · Shopify APIs · Remote roles & contracts
         </p>
       </div>
       <div className="hero-proof">
@@ -228,8 +228,8 @@ function Hero() {
         </div>
         <div className="proof-foot">
           <div>
-            <p>Research that reaches the storefront.</p>
-            <span>Product page + native Liquid cart development</span>
+            <p>A product form built, tested and refined.</p>
+            <span>Liquid product form · Skio subscriptions · 10+ tests</span>
           </div>
           <a href="/work/fifthray/" aria-label="Explore Fifth Ray case study">
             <Arrow />
@@ -248,36 +248,36 @@ function Capabilities() {
   return (
     <section className="section wrap" id="capabilities">
       <Heading
-        kicker="WHAT YOUR STORE NEEDS NEXT"
+        kicker="DEVELOPMENT FIRST. CRO THROUGHOUT."
         title={
           <>
-            From “something feels off”
+            From storefront requirements
             <br />
-            to a change you can ship.
+            to tested implementation.
           </>
         }
-        description="I connect the customer problem to the development work, so research and implementation move together."
+        description="Theme engineering, app integrations and experimentation, connected in one delivery workflow."
       />
       <div className="service-grid">
         {[
           [
             "01",
-            "Make the product easier to choose.",
-            "Product-page content, comparison sections and variant selectors that answer real buying questions.",
+            "Build the storefront foundation.",
+            "Online Store 2.0 themes, reusable sections, metaobject-driven content and responsive product and landing pages.",
             "Custom Liquid · Online Store 2.0 · Metaobjects",
             "storefront",
           ],
           [
             "02",
-            "Make the buying flow dependable.",
-            "Subscription interfaces, cart drawers and optional upsells with clear prices and useful error states.",
-            "Subscriptions · Cart development · Shopify Functions",
+            "Connect the buying flow.",
+            "Subscription widgets, cart interactions and app integrations that connect the interface to Shopify’s buying flow.",
+            "Shopify APIs · Skio · Rebuy · Cart development",
             "offers",
           ],
           [
             "03",
-            "Know what deserves another iteration.",
-            "Review research, analytics investigation and measurement plans that separate evidence from assumptions.",
+            "Take CRO from research to release.",
+            "Customer research, analytics investigation, test hypotheses and experiment development, followed by QA and measurement.",
             "Customer research · GA4 · QA & experimentation",
             "research",
           ],
@@ -532,7 +532,7 @@ function GuidesFeature() {
     <section className="section wrap">
       <Heading
         kicker="HOW I THINK THROUGH THE WORK"
-        title="A practical guide behind each decision."
+        title="Implementation notes behind the work."
         description="Explore implementation briefs, research methods and QA checklists. Useful for your next project — and a closer look at how I approach the work."
         href="/guides/"
         link={`Explore all ${guides.length} guides`}
@@ -627,11 +627,11 @@ function AboutPreview() {
       <Picture name="portrait" alt="Thomas Maghanga" />
       <div>
         <p className="eyebrow">THE PERSON BEHIND THE WORK</p>
-        <h2>A developer who stays curious about the customer.</h2>
+        <h2>A developer who owns the implementation.</h2>
         <p>
-          I’m Thomas, based in Nairobi. Since 2021, I’ve worked with DTC teams
-          on Shopify storefronts, bringing customer research, development and
-          experimentation together.
+          I’m Thomas. Since 2021, I’ve built Shopify storefronts for teams at
+          Supply, Foundry Brands and Fifth Ray. My work spans theme architecture,
+          custom interfaces, integrations and the experiments that improve them.
         </p>
         <a className="text-link" href="/about/">
           About me & working together <Arrow />
@@ -694,7 +694,7 @@ function Footer() {
       <nav aria-label="Footer navigation">
         <a href="/work/">Selected work</a>
         <a href="/lab/">CRO Lab</a>
-        <a href="/guides/">Merchant guides</a>
+        <a href="/guides/">Implementation guides</a>
         <a href="/about/">About & availability</a>
       </nav>
       <div className="footer-links">
@@ -790,6 +790,18 @@ function CasePage({ study }) {
               ))}
             </ul>
           </section>
+          {study.implementation && (
+            <section>
+              <h2>How the pieces connect</h2>
+              <p>{study.implementation}</p>
+            </section>
+          )}
+          {study.constraint && (
+            <section>
+              <h2>Scope & technical considerations</h2>
+              <p>{study.constraint}</p>
+            </section>
+          )}
           {study.research && (
             <p className="research-callout">{study.research}</p>
           )}
@@ -868,15 +880,15 @@ function GuidesPage({ pillar }) {
         }
       />
       <PageIntro
-        kicker="THE MERCHANT’S FIELD NOTES"
+        kicker="SHOPIFY IMPLEMENTATION FIELD NOTES"
         title={
           pillar ? (
             pillar.title
           ) : (
             <>
-              Make the next
+              Build the next
               <br />
-              <em>decision clearer.</em>
+              <em>change with confidence.</em>
             </>
           )
         }
@@ -884,7 +896,7 @@ function GuidesPage({ pillar }) {
         <p>
           {pillar
             ? pillar.description
-            : `${guides.length} practical guides to Shopify customization and full-stack CRO. Customer questions, implementation decisions and checks you can take to your team.`}
+            : `${guides.length} implementation guides across Shopify development and end-to-end CRO. Architecture, data flow, interaction states, experiment delivery and release checks.`}
         </p>
       </PageIntro>
       <section className="wrap guide-library">
@@ -996,7 +1008,7 @@ function GuidePage({ guide }) {
               {guide.readingMinutes} min read
             </span>
           </p>
-          <Pill>Merchant guide</Pill>
+          <Pill>Implementation guide</Pill>
         </div>
       </header>
       <div className="article-layout wrap">
@@ -1046,7 +1058,7 @@ function GuidePage({ guide }) {
               )}
               {s.checklist && (
                 <div className="qa-checklist">
-                  <h3>Checks to take to your team</h3>
+                  <h3>Implementation acceptance checks</h3>
                   <ul>
                     {s.checklist.map((item) => (
                       <li key={item}>{item}</li>
@@ -1057,7 +1069,7 @@ function GuidePage({ guide }) {
             </section>
           ))}
           <aside className="article-takeaway">
-            <p className="eyebrow">TAKE THIS INTO THE NEXT CONVERSATION</p>
+            <p className="eyebrow">TAKE THIS INTO THE NEXT BUILD</p>
             <p>{guide.takeaway}</p>
           </aside>
           <section id="sources" className="article-sources">
@@ -1224,18 +1236,19 @@ function AboutPage() {
           alt="Thomas Maghanga, Shopify Plus developer and CRO specialist"
         />
         <div>
-          <h2>Customer questions are part of the development brief.</h2>
+          <h2>Shopify engineering, with the customer journey in view.</h2>
           <p>
-            Since 2021, I’ve worked on DTC storefronts, bringing customer
-            research, development and experimentation together. I work with
-            growth, media and creative teams to turn storefront problems into
-            clear development tasks.
+            Since 2021, I’ve developed Shopify storefronts across product pages,
+            collections, subscription interfaces and carts. At Supply and
+            Foundry Brands I worked with full Pacific Time overlap, collaborating
+            with growth, media and creative teams on delivery.
           </p>
           <p>
-            My focus is maintainable code, usable buying flows and careful
-            measurement. That means looking at the question behind a page
-            change, checking the important journeys and documenting what the
-            evidence can support.
+            I work with Liquid, JavaScript, Shopify CLI and Shopify APIs, from
+            reusable theme components to app-connected storefront features.
+            I also bring WordPress experience, organized project management and
+            AI-assisted development with human review. My CRO work connects
+            research and hypotheses to implementation, QA and measurement.
           </p>
           <dl className="experience-list">
             <div>
@@ -1276,19 +1289,20 @@ function AboutPage() {
             <div>
               <dt>Storefront development</dt>
               <dd>
-                Liquid, JavaScript, HTML, CSS, Online Store 2.0, metaobjects and
-                Shopify Functions.
+                Liquid, JavaScript, HTML, CSS, Online Store 2.0, metafields, metaobjects,
+                Search & Discovery, Shopify CLI and Shopify Functions.
               </dd>
             </div>
             <div>
               <dt>APIs and workflow</dt>
               <dd>
-                Storefront API, Cart API, Shopify Subscriptions API and Git.
+                Storefront GraphQL API, AJAX Cart API, Section Rendering API,
+                subscription integrations, Git and cross-browser QA.
               </dd>
             </div>
             <div>
               <dt>Research and implementation tools</dt>
-              <dd>GA4, Shopify Analytics, Intelligems, Rebuy and Replo.</dd>
+              <dd>GA4, Shopify Analytics, Intelligems, Skio, Rebuy and Replo.</dd>
             </div>
           </dl>
           <p>

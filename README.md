@@ -22,9 +22,9 @@ For an inspectable personal implementation, try the [Shopify CRO Lab](https://sh
 
 ## About this repository
 
-A hiring-first React portfolio with six case studies, an integrated CRO Lab discovery page, and 22 merchant guides across four topic pillars. The [case facts](src/cases.js), [page rendering](src/App.jsx), [guide content](src/content/index.js), [metadata](src/seo.js) and [prerender script](scripts/prerender.js) are available to inspect.
+A hiring-first React portfolio with six case studies, an integrated CRO Lab discovery page, and 22 implementation guides across four topic pillars. The [case facts](src/cases.js), [page rendering](src/App.jsx), [guide content](src/content/index.js), [metadata](src/seo.js) and [prerender script](scripts/prerender.js) are available to inspect.
 
-The redesign is prepared on `development` for review. Production publication remains a separate approved release. See [validation evidence](docs/PORTFOLIO-VALIDATION.md) and [SEO maintenance notes](docs/SEO.md).
+The November 16 messaging refresh leads with Shopify engineering and app integrations, followed by end-to-end CRO. Production publication for this refresh was explicitly requested by the owner. See [validation evidence](docs/PORTFOLIO-VALIDATION.md) and [SEO maintenance notes](docs/SEO.md).
 
 ## Tech Stack
 
@@ -41,7 +41,7 @@ This project is built with a lean, performance-focused stack:
 -   **Shareable case studies**: Six directly rendered project pages with context, exact role, implementation scope and real screenshot galleries. Historical `/?case=supply#work` links still open the accessible dialog.
 -   **Downloadable résumé**: The two-page `public/Thomas_Maghanga_Resume.pdf` is available as a same-origin download.
 -   **Crawlable content**: All 38 routes ship their main content in the initial HTML, with unique metadata, canonical URLs, honest Article/Breadcrumb structured data, sitemap, robots and a 404 document. This does not guarantee performance scores, indexing or rankings.
--   **Merchant guide library**: 22 substantial articles with practical implementation handoffs, limitations, QA checklists, primary references and related reading. The searchable library and four pillar routes connect the material.
+-   **Implementation guide library**: 22 substantial articles with practical implementation handoffs, limitations, QA checklists, primary references and related reading. The searchable library and four pillar routes connect the material.
 -   **CRO Lab**: Clearly labelled fictional teaching examples support the client portfolio. Both repositories and live experiences are retained.
 -   **Responsive layouts**: Single-column mobile reflow, visible keyboard focus, native controls and `prefers-reduced-motion` support. Six page types were checked at 320, 390, 768 and 1440 pixels.
 

@@ -9,7 +9,7 @@ export const pillars = [
     title: "Storefronts your team can maintain",
     short: "Storefront development",
     description:
-      "Build useful product pages, editable sections and content systems that your team can work with.",
+      "Implement reusable Liquid sections, product templates and metaobject-driven content with clear editor controls and empty states.",
     symbol: "01",
     work: "supply",
   },
@@ -18,7 +18,7 @@ export const pillars = [
     title: "Clear offers. Reliable buying flows.",
     short: "Offers, cart & checkout",
     description:
-      "Help shoppers choose the right variant, understand subscriptions and move through a dependable cart.",
+      "Connect variant selection, subscription state and cart interactions across the theme and app integrations.",
     symbol: "02",
     work: "bluatlas",
   },
@@ -27,7 +27,7 @@ export const pillars = [
     title: "Speed and usability, together",
     short: "Speed & accessibility",
     description:
-      "Find performance bottlenecks, check mobile journeys and ship changes with a practical safety net.",
+      "Profile bottlenecks, implement accessible interactions and verify mobile journeys before a controlled release.",
     symbol: "03",
     work: "shopdeck",
   },
@@ -36,7 +36,7 @@ export const pillars = [
     title: "Research before the redesign",
     short: "Research & measurement",
     description:
-      "Turn customer questions into testable changes, then check what the evidence actually supports.",
+      "Turn research into hypotheses, instrument the journey, implement experiment variants and interpret the evidence.",
     symbol: "04",
     work: "fifthray",
   },
