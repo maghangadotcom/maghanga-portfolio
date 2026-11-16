@@ -31,7 +31,7 @@ For an inspectable personal implementation, try the [Shopify CRO Lab](https://sh
 
 ## About this repository
 
-A hiring-first React portfolio with six case studies, an integrated CRO Lab discovery page, and 22 implementation guides across four topic pillars. The [case facts](src/cases.js), [page rendering](src/App.jsx), [guide content](src/content/index.js), [metadata](src/seo.js) and [prerender script](scripts/prerender.js) are available to inspect.
+A hiring-first React portfolio with three selected case studies (with three older project URLs preserved), an integrated CRO Lab discovery page, and 22 implementation guides across four topic pillars. The [case facts](src/cases.js), [page rendering](src/App.jsx), [guide content](src/content/index.js), [metadata](src/seo.js) and [prerender script](scripts/prerender.js) are available to inspect.
 
 The portfolio leads with Shopify engineering and app integrations, followed by end-to-end CRO. Guides emphasize implementation decisions, state and data flows, integration boundaries, QA and release considerations. See [validation evidence](docs/PORTFOLIO-VALIDATION.md) and [SEO maintenance notes](docs/SEO.md).
 

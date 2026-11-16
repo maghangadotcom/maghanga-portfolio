@@ -3145,3 +3145,55 @@ summary:focus-visible,
     font-size: 10px;
   }
 }
+
+/* Selected case studies: outcomes first, implementation alongside evidence. */
+.case-story { padding-bottom: 80px; }
+.story-intro { padding-top: clamp(32px,6vw,90px); padding-bottom: 46px; }
+.story-intro > .eyebrow { margin-top: 48px; }
+.story-intro h1 { max-width: 1000px; font-size: clamp(38px,5.7vw,78px); line-height: 1.06; letter-spacing: -.045em; margin: 18px 0 24px; }
+.story-lead { max-width: 760px; font-size: clamp(19px,2vw,24px); line-height: 1.55; }
+.story-role { max-width: 760px; padding-top: 24px; font-size: 15px; line-height: 1.7; }
+.story-role strong { display:block; margin-bottom: 6px; }
+.story-nav { display:flex; flex-wrap:wrap; gap:24px; margin-top:32px; font-size:14px; }
+.story-nav a { text-underline-offset:6px; }
+.story-impact { border-top:1px solid #b9b8af; border-bottom:1px solid #b9b8af; padding-top:32px; padding-bottom:32px; scroll-margin-top:100px; }
+.story-impact h2 { font-size:18px; }
+.story-metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:24px; margin:28px 0; }
+.story-metrics > div { display:flex; flex-direction:column-reverse; gap:10px; }
+.story-metrics dd { font-size:clamp(32px,4vw,52px); letter-spacing:-.045em; margin:0; font-weight:600; }
+.story-metrics dt { font-size:14px; max-width:200px; line-height:1.5; }
+.story-evidence { max-width:920px; font-size:13px; line-height:1.7; color:#62625b; }
+.story-context { display:grid; grid-template-columns:1fr 1fr; gap:64px; padding-top:70px; padding-bottom:54px; }
+.story-context h2,.story-chapter h2,.story-working h2,.story-cta h2 { font-size:clamp(26px,3vw,40px); line-height:1.15; letter-spacing:-.035em; margin:12px 0 22px; }
+.story-context p,.story-chapter-copy p,.story-working > p:last-child,.story-cta p { font-size:17px; line-height:1.8; }
+.story-flow { display:grid; grid-template-columns:repeat(4,1fr); padding:0; list-style:none; border:1px solid #c5c4bb; margin:0 0 64px; }
+.story-flow li { padding:20px; font-size:13px; line-height:1.5; border-right:1px solid #c5c4bb; }
+.story-flow li:last-child { border:0; }
+.story-chapter { display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr); gap:48px; padding:32px 0 64px; align-items:start; }
+.story-screen { margin:0; min-width:0; }
+.story-screen img { display:block; width:100%; height:auto; max-height:760px; object-fit:contain; background:#fff; border:1px solid #dddcd5; border-radius:8px; }
+.story-screen a { display:block; }
+.story-screen figcaption { padding:12px 0; font-size:12px; line-height:1.65; color:#62625b; }
+.story-screen figcaption span { display:block; text-decoration:underline; text-underline-offset:3px; }
+.story-paired { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.story-paired img { max-height:650px; }
+.story-working { border-top:1px solid #b9b8af; padding-top:48px; padding-bottom:48px; scroll-margin-top:100px; }
+.story-working p { max-width:850px; }
+.story-cta { background:#e7e8dd; padding:40px; border-radius:12px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+.story-cta > div { max-width:700px; }
+.story-cta .button { flex-shrink:0; }
+.story-approach { scroll-margin-top:100px; }
+.work-proof strong { font-size:25px; }
+@media(max-width:760px) {
+ .story-context,.story-chapter { grid-template-columns:1fr; gap:20px; }
+ .story-context { padding-top:40px; }
+ .story-flow { grid-template-columns:1fr 1fr; margin-bottom:32px; }
+ .story-flow li { border-bottom:1px solid #c5c4bb; }
+ .story-flow li:nth-child(2) { border-right:0; }
+ .story-flow li:nth-child(3) { border-bottom:0; }
+ .story-metrics { grid-template-columns:1fr 1fr; gap:28px 16px; }
+ .story-chapter { padding-bottom:36px; }
+ .story-cta { display:block; padding:28px 20px; }
+ .story-cta .button { margin-top:16px; }
+ .story-paired { gap:10px; }
+}

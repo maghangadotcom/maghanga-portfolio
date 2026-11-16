@@ -2,15 +2,15 @@ export const cases = [
   {
     "id": "supply",
     "title": "Supply",
-    "cover": "sup-progress-rebuycart",
-    "summary": "Online Store 2.0 development, reusable Liquid sections and Rebuy upsell flows.",
+    "cover": "supply-product-rebuild",
+    "summary": "A complete Shopify rebuild, reusable content sections and upsells that became a meaningful share of annual revenue.",
     "tags": [
       "Online Store 2.0",
       "Custom Liquid",
       "Rebuy"
     ],
-    "role": "Shopify Developer & CRO Specialist, 2021–2023. I worked with growth, media and creative teams on storefront development, performance and CRO implementation.",
-    "context": "The work covered theme architecture, page performance and the components used to build campaign landing pages and buying flows.",
+    "role": "Shopify Developer & CRO Specialist, 2021–2023. The technical go-to for the team, working across development, research, experimentation and merchandising.",
+    "context": "Supply’s older Liquid-template storefront was slow and had low Lighthouse scores. The goal was to rebuild the shopping experience without losing the brand’s established messaging, then give the team a better foundation for ongoing improvements.",
     "built": [
       "Rebuilt the storefront for Online Store 2.0.",
       "Developed native Liquid sections to replace third-party page-builder components.",
@@ -41,12 +41,60 @@ export const cases = [
       }
     ],
     "implementation": "The work connected reusable Liquid sections and campaign landing pages to the main Shopify storefront, with Rebuy providing the upsell and cross-sell integration. I worked with growth, media and creative teams on the implementation and supported storefront experiments.",
-    "constraint": "Replacing page-builder components with native sections changed the implementation, not the purpose of the pages. The aim was to retain the campaign content while making the theme easier to maintain; no measured speed or conversion improvement is claimed here."
+    "constraint": "Replacing page-builder components with native sections changed the implementation, not the purpose of the pages. The aim was to retain the campaign content while making the theme easier to maintain; no measured speed or conversion improvement is claimed here.",
+    "featured": true,
+    "headline": "A faster storefront. A more useful growth platform.",
+    "metrics": [
+      [
+        "38%",
+        "increase in sitewide conversion"
+      ],
+      [
+        "35%",
+        "load-time improvement"
+      ],
+      [
+        "16% → 21%",
+        "annual revenue share from upsells"
+      ],
+      [
+        "$1,200/mo",
+        "saved after seven apps were removed"
+      ]
+    ],
+    "evidence": "Conversion and load-time improvements are reported against the previous store. Load time was measured in Shopify’s dashboard. Upsells and cross-sells accounted for 16% of annual revenue in year one and 21% in year two after further iterations; this is revenue share, not an absolute revenue-growth claim.",
+    "working": "I stayed involved beyond the rebuild: customer research, copywriting, prototyping, technical SEO, landing pages, experiments and third-party integrations. Being the team’s technical go-to meant connecting requests to working storefront changes, rather than handing over a theme and moving on.",
+    "flow": [
+      "Reusable Liquid sections",
+      "Product-specific content",
+      "Rebuy recommendations",
+      "Ongoing experiments"
+    ],
+    "chapters": [
+      {
+        "title": "Rebuild the foundation, preserve the brand",
+        "body": "I rebuilt the whole store for Online Store 2.0, updating the homepage and product-page layout while keeping the messaging consistent. Moving from older Liquid templates to sections throughout the storefront made the new design a reusable system rather than a collection of one-off pages.",
+        "img": "supply-product-rebuild",
+        "cap": "The rebuilt product page brings imagery, variants, purchase action and supporting information together."
+      },
+      {
+        "title": "Make content easier to reuse",
+        "body": "I added metafields and metaobjects to the below-the-fold product sections so products could share one template while displaying their own content. I also rebuilt page-builder landing pages as reusable Liquid sections, giving the team components for future campaigns.",
+        "img": "sup-lp-comparison",
+        "cap": "Campaign content became reusable theme sections instead of separate page-builder implementations."
+      },
+      {
+        "title": "Build value across the customer journey",
+        "body": "Using Rebuy, I added popup, embedded product-page, in-cart and checkout offers, with personalization for customer segments. I also brought upsells into customer-account and subscription interfaces to support the existing customer base. Continued iteration increased the share of annual revenue attributed to upsells and cross-sells, with limited discounting.",
+        "img": "sup-progress-rebuycart",
+        "cap": "Cart recommendations connect relevant add-ons to a purchase already in progress."
+      }
+    ]
   },
   {
     "id": "fifthray",
     "title": "Fifth Ray",
-    "summary": "Liquid product-form development, Skio subscription UI, app integration and 10+ product-experience tests.",
+    "summary": "A subscription-first product experience shaped by customer research, 10+ tests and hands-on Liquid, Skio and Videowise implementation.",
     "tags": [
       "Liquid product form",
       "Skio integration",
@@ -86,19 +134,66 @@ export const cases = [
       }
     ],
     "implementation": "The existing Liquid product form was the foundation. I rebuilt its layout and purchase-option experience, designed and configured the Skio subscription widget, and integrated Videowise for interactive, shoppable videos. Intelligems supported theme, pricing and shipping experiments, connecting the implementation to an iterative test programme.",
-    "constraint": "The reported improvements compare the product-page experience with previous versions: an 18%+ relative increase in conversion rate and 16%+ increase in subscriptions on the product page. The work covered the Liquid storefront and integrations; Skio and Videowise supplied their respective application services."
+    "constraint": "The reported improvements compare the product-page experience with previous versions: an 18%+ relative increase in conversion rate and 16%+ increase in subscriptions on the product page. The work covered the Liquid storefront and integrations; Skio and Videowise supplied their respective application services.",
+    "featured": true,
+    "cover": "fifthray-product-form-desktop",
+    "headline": "Make the product decision clearer. Test what matters.",
+    "metrics": [
+      [
+        "18%+",
+        "increase in product-page conversion"
+      ],
+      [
+        "16%+",
+        "increase in product-page subscriptions"
+      ],
+      [
+        "10+",
+        "product-experience tests"
+      ]
+    ],
+    "evidence": "Reported increases compare the product-page experience with previous versions. The test period and subscription-measure definition are not published here; the figures do not imply that every individual change produced a measured lift.",
+    "working": "I used customer language and test findings to refine the experience, not just a preferred design. The wider work included reviewing 849+ customer reviews, investigating a GA4/Shopify reporting discrepancy and replacing a third-party cart with a native Liquid drawer to address in-app-browser failures.",
+    "flow": [
+      "Customer research",
+      "Liquid product form",
+      "Skio + Videowise",
+      "Intelligems tests"
+    ],
+    "chapters": [
+      {
+        "title": "Build on the existing product form",
+        "body": "I rebuilt the product-form area on its existing Liquid foundation, organizing quantity offers, purchase options and delivery expectations into a clear subscription-first experience. The aim was a fast-loading interface that explained the decision without adding unnecessary complexity.",
+        "img": "fifthray-product-form-desktop",
+        "cap": "Offer hierarchy, social proof and purchase options are presented as one connected experience."
+      },
+      {
+        "title": "Connect subscriptions and product confidence",
+        "body": "I designed, styled and configured the Skio subscription widget. I also integrated Videowise to bring interactive, shoppable videos into the product page. My contribution was the storefront experience and integration; the apps supplied their underlying services.",
+        "img": "fifthray-skio-mobile",
+        "cap": "The mobile subscription and one-time purchase options, with delivery expectations near the purchase action.",
+        "secondImg": "fifthray-videowise-mobile",
+        "secondCap": "Videowise opens a shoppable video experience from the stories-style block."
+      },
+      {
+        "title": "Iterate beyond the first design",
+        "body": "I ran more than 10 tests using Intelligems, covering theme, price and shipping experiments. The programme explored layout, offer placement, messaging, subscription preselection and delivery expectations before arriving at the final design.",
+        "img": "fifthray-offers-mobile",
+        "cap": "The mobile offer layout makes quantity and pricing choices visible alongside the video content."
+      }
+    ]
   },
   {
     "id": "bluatlas",
     "title": "Blu Atlas",
-    "summary": "Custom product and collection sections, subscription interfaces and cart features.",
+    "summary": "Kingdom to Horizon, with reusable sections, Recharge subscriptions and Rebuy customizations. Validated in a month-long theme test.",
     "tags": [
       "Custom sections",
       "Subscriptions",
       "Cart development"
     ],
-    "role": "I developed product and collection sections, subscription interfaces and cart features.",
-    "context": "Storefront development for a men’s grooming and skincare brand on Shopify Plus with a broad catalogue and a subscription programme.",
+    "role": "Shopify development across the theme rebuild, landing pages and subscription experience, with QA and coordination with customer experience and site merchandising.",
+    "context": "The work was a complete theme rebuild from Kingdom to Horizon, covering the storefront and its subscription journey. The new experience needed to support brand-specific design without fighting the architecture of the underlying theme.",
     "built": [
       "Rebuilt hero and collection templates, product-page information and trust blocks, and a product comparison section.",
       "Developed a native subscription widget.",
@@ -137,7 +232,52 @@ export const cases = [
       }
     ],
     "implementation": "Product and collection sections handled merchandising content; the subscription interface presented purchase options; and the cart drawer brought shipping progress and upsell interfaces into the buying journey. My contribution was the storefront components and their interactions.",
-    "constraint": "The contribution spans the theme and shopping interfaces: product content, purchase-option presentation and cart features. The subscription platform remains a separate integration rather than a custom-built backend."
+    "constraint": "The contribution spans the theme and shopping interfaces: product content, purchase-option presentation and cart features. The subscription platform remains a separate integration rather than a custom-built backend.",
+    "featured": true,
+    "cover": "blu-horizon-product",
+    "headline": "A theme migration built around the whole buying journey.",
+    "metrics": [
+      [
+        "14%",
+        "conversion increase in theme test"
+      ],
+      [
+        "25%",
+        "load-time improvement"
+      ],
+      [
+        "1 month",
+        "Optimizely comparison"
+      ]
+    ],
+    "evidence": "The 14% conversion increase was reported from a one-month Optimizely test of the new Horizon theme against Kingdom. The separate 25% load-time improvement was measured in Shopify’s dashboard. The conversion result evaluates the theme experience as a whole, not speed in isolation.",
+    "working": "I followed Horizon’s existing architecture when adding custom sections, tested the rebuilt experience and stayed in contact with CX and merchandising about unexpected issues after the update. The work combined learning a new theme foundation with practical implementation and post-release follow-through.",
+    "flow": [
+      "Horizon theme + sections",
+      "Recharge purchase options",
+      "Rebuy customizations",
+      "Optimizely validation"
+    ],
+    "chapters": [
+      {
+        "title": "Rebuild around a maintainable theme system",
+        "body": "I migrated the whole theme from Kingdom to Horizon and built custom sections on top of Horizon’s existing architecture. The scope included the homepage, product page, cart, checkout experience and 404 page. Landing pages were rebuilt in Replo, then converted into reusable Liquid sections for future page creation.",
+        "img": "blu-horizon-collection",
+        "cap": "The rebuilt collection experience within the new theme."
+      },
+      {
+        "title": "Carry subscriptions through the shopping journey",
+        "body": "Recharge powered subscriptions. I designed the subscription widget and added subscription upsells in key placements. I connected selling plans to the Rebuy subscription-widget code and used the Rebuy REST API to customize the widget and subscription flows.",
+        "img": "blu-horizon-product",
+        "cap": "The product page presents subscription frequency and one-time purchase options together."
+      },
+      {
+        "title": "Validate the change, then support the team",
+        "body": "I tested the new Horizon experience against Kingdom for a full month in Optimizely, reporting a 14% conversion increase. Alongside the rebuild, I worked on messaging and feature experiments. QA and communication with CX and merchandising helped surface unexpected issues after the theme update.",
+        "img": "blu-subscription-benefits",
+        "cap": "Subscription benefits are explained within the buying experience."
+      }
+    ]
   },
   {
     "id": "benevolence",
@@ -162,7 +302,8 @@ export const cases = [
       }
     ],
     "implementation": "The native Liquid cart drawer provided the storefront interface, with Rebuy supplying the recommendation integration. My work brought upsell and cross-sell content into the cart alongside the products already selected.",
-    "constraint": "The custom drawer and the recommendation service have different responsibilities. Liquid owns the storefront presentation; Rebuy provides the recommendation integration. The case demonstrates that connected interface rather than a replacement recommendation engine."
+    "constraint": "The custom drawer and the recommendation service have different responsibilities. Liquid owns the storefront presentation; Rebuy provides the recommendation integration. The case demonstrates that connected interface rather than a replacement recommendation engine.",
+    "featured": false
   },
   {
     "id": "shopdeck",
@@ -213,7 +354,8 @@ export const cases = [
       }
     ],
     "implementation": "The theme architecture, navigation and fetch-based add-to-cart flow formed the storefront implementation. Browser debugging and performance profiling supported investigation of the interactions and loading behaviour.",
-    "constraint": "The work stays focused on theme architecture, navigation and cart interactions. Performance profiling informed the investigation; the available material does not include a measured before-and-after score."
+    "constraint": "The work stays focused on theme architecture, navigation and cart interactions. Performance profiling informed the investigation; the available material does not include a measured before-and-after score.",
+    "featured": false
   },
   {
     "id": "technorv",
@@ -238,6 +380,9 @@ export const cases = [
       }
     ],
     "implementation": "Liquid displayed promotion and applied-discount information in the cart, with the displayed states updated as the cart contents changed. This work focused on what the shopper sees during cart interactions.",
-    "constraint": "The cart should present the applied discount state rather than invent an offer from a display calculation. My scope was that presentation and its updates as the cart changed, separate from the rules that authorize a discount."
+    "constraint": "The cart should present the applied discount state rather than invent an offer from a display calculation. My scope was that presentation and its updates as the cart changed, separate from the rules that authorize a discount.",
+    "featured": false
   }
 ];
+
+export const selectedCases = cases.filter((study) => study.featured);

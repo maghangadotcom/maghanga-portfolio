@@ -270,3 +270,20 @@ console.log(
 console.log(
   "[verify] HTTP status codes and redirect behavior still require a deployed preview check.",
 );
+
+// The portfolio now selects three substantiated stories; old URLs remain reachable.
+const { cases, selectedCases } = await import('../src/cases.js');
+assert.deepEqual(selectedCases.map(study => study.id), ['supply', 'fifthray', 'bluatlas']);
+for (const route of ['/', '/work/']) {
+  const html = pages.get(route);
+  for (const id of ['benevolence', 'shopdeck', 'technorv']) {
+    assert.ok(!html.includes(`href="/work/${id}/"`), `${route} must not feature ${id}`);
+  }
+}
+for (const study of selectedCases) {
+  const html = pages.get(`/work/${study.id}/`);
+  assert.ok(html.includes('story-metrics') && html.includes('story-chapter'), `${study.id} needs impact and implementation`);
+  assert.ok(html.includes('id="collaboration"'), `${study.id} needs working style`);
+}
+assert.equal(cases.length, 6, 'Preserve legacy project routes');
+console.log('[verify] Three featured stories, outcomes and legacy routes passed.');

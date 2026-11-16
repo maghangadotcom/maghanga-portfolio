@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import media from "./media.js";
-import { cases } from "./cases.js";
+import { cases, selectedCases } from "./cases.js";
+import CaseStory from "./CaseStory.jsx";
 import { guides, pillars, guideHref } from "./content/index.js";
 import CaseDialog from "./CaseDialog.jsx";
 import Brands from "./Brands.jsx";
@@ -299,7 +300,7 @@ function Capabilities() {
 function WorkCards({ limit }) {
   return (
     <div className="work-grid">
-      {cases.slice(0, limit ?? cases.length).map((study, i) => (
+      {selectedCases.slice(0, limit ?? selectedCases.length).map((study, i) => (
         <article className={`work-card work-${study.id}`} key={study.id}>
           <a
             className="work-image"
@@ -318,6 +319,7 @@ function WorkCards({ limit }) {
               <Arrow />
             </div>
             <p>{study.summary}</p>
+            {study.metrics && <p className="work-proof"><strong>{study.metrics[0][0]}</strong> {study.metrics[0][1]}</p>}
             <div className="tags">
               {study.tags.map((tag) => (
                 <Pill key={tag}>{tag}</Pill>
@@ -335,8 +337,8 @@ function WorkSection() {
       <div className="wrap">
         <Heading
           kicker="SELECTED WORK"
-          title="Real storefronts. Specific contributions."
-          description="The context, my role and selected screens from Shopify development and CRO implementation."
+          title="Three brands. Work that made a difference."
+          description="See the business problem, the implementation and the impact across Supply, Fifth Ray and Blu Atlas."
           href="/work/"
           link="View all selected work"
         />
@@ -749,6 +751,7 @@ function WorkPage() {
   );
 }
 function CasePage({ study }) {
+  if (study.featured) return <CaseStory study={study} />;
   return (
     <>
       <Breadcrumbs

@@ -18,6 +18,7 @@ const OUT = path.join(root, 'public', 'media');
 
 // Gallery shots: scaled to 880px tall (2x of the 440px frame) preserving aspect.
 const GALLERY = [
+  "supply-product-rebuild", "blu-horizon-collection", "blu-horizon-product", "blu-subscription-benefits",
   'sup-lp-comparison', 'sup-checkout-upsell-mobile', 'sup-progress-rebuycart',
   'sup-quiz-lander-mobile', 'sup-review-slider', 'sup-testimonial-carousel-mobile',
   'fifthray-product-page', 'fifthray-homepage', 'fifthray-testimonials',

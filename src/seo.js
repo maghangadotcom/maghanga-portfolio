@@ -109,6 +109,7 @@ export function getPageMeta(value = "/") {
           [study.title, route],
         ]),
       ],
+      study.featured ? {} : { robots: "noindex, follow" },
     );
   }
   if (route === "/lab/") {
