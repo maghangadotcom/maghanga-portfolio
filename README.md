@@ -1,10 +1,19 @@
 # Maghanga Portfolio
 
-A portfolio for Thomas Maghanga, a Shopify Plus Developer & CRO Specialist, covering documented storefront development and CRO implementation since 2021.
+## Thomas Maghanga · Shopify Plus Developer & CRO Specialist
+
+I build and improve Shopify storefronts, from custom Liquid sections and API-powered shopping interactions to app integrations, QA and release. My work connects hands-on development with end-to-end CRO: customer research, test hypotheses, implementation and measurement.
 
 **[View live portfolio](https://maghanga.com/) · [Download résumé](https://maghanga.com/Thomas_Maghanga_Resume.pdf) · [Contact](mailto:thomas@maghanga.com)**
 
 Open to remote in-house roles and ongoing contracts. Based in Nairobi, Kenya (UTC+3), with full workday availability and flexible scheduling to fully overlap UK or US team hours.
+
+## Engineering first, informed by CRO
+
+- **Shopify development:** Online Store 2.0, reusable Liquid sections, metafields and metaobjects, responsive HTML/CSS/JavaScript, Storefront GraphQL and Shopify storefront APIs.
+- **Buying flows and integrations:** Product forms, subscriptions, bundles, carts, upsells and third-party integrations including Skio, Rebuy and Videowise.
+- **Experiment delivery:** Research and analytics investigation translated into implementable hypotheses, test variants, QA and iteration. Intelligems experience includes theme, price and shipping tests.
+- **Remote ownership:** Experience delivering for Supply and Foundry Brands with full Pacific-time overlap, clear project management and AI-assisted workflows with human review.
 
 ## Selected Shopify work
 
@@ -13,10 +22,10 @@ Start with the case studies for the problem, my role, implementation details and
 | Case study | Work documented |
 | --- | --- |
 | [Supply](https://maghanga.com/work/supply/) | Online Store 2.0 development, reusable Liquid sections, campaign landing pages and Rebuy upsell flows |
-| [Fifth Ray](https://maghanga.com/work/fifthray/) | Customer review research, product-page development, analytics investigation and a native Liquid cart drawer |
+| [Fifth Ray](https://maghanga.com/work/fifthray/) | Liquid product-form rebuild, Skio widget design/configuration, Videowise shoppable videos, 10+ tests with Intelligems and a native Liquid cart drawer |
 | [Blu Atlas](https://maghanga.com/work/bluatlas/) | Product and collection sections, subscription interfaces and cart features |
 
-These are descriptions of my contribution, not claims of measured conversion lift. The repository contains the portfolio website, not the client stores' source code.
+Fifth Ray reports an 18%+ relative increase in product-page conversion rate and a 16%+ increase in subscriptions on the product page versus previous versions. Other case studies describe implementation scope without claiming measured lift. The repository contains the portfolio website, not the client stores' source code.
 
 For an inspectable personal implementation, try the [Shopify CRO Lab](https://shopify-cro-lab.vercel.app/) and review its [source, tests and integration limits](https://github.com/maghangadotcom/shopify-cro-toolkit). It is an educational simulation, separate from the client work above.
 
@@ -24,7 +33,7 @@ For an inspectable personal implementation, try the [Shopify CRO Lab](https://sh
 
 A hiring-first React portfolio with six case studies, an integrated CRO Lab discovery page, and 22 implementation guides across four topic pillars. The [case facts](src/cases.js), [page rendering](src/App.jsx), [guide content](src/content/index.js), [metadata](src/seo.js) and [prerender script](scripts/prerender.js) are available to inspect.
 
-The November 16 messaging refresh leads with Shopify engineering and app integrations, followed by end-to-end CRO. Production publication for this refresh was explicitly requested by the owner. See [validation evidence](docs/PORTFOLIO-VALIDATION.md) and [SEO maintenance notes](docs/SEO.md).
+The portfolio leads with Shopify engineering and app integrations, followed by end-to-end CRO. Guides emphasize implementation decisions, state and data flows, integration boundaries, QA and release considerations. See [validation evidence](docs/PORTFOLIO-VALIDATION.md) and [SEO maintenance notes](docs/SEO.md).
 
 ## Tech Stack
 
@@ -100,9 +109,9 @@ Run `npm run verify` after building, then preview with `npm run preview`. The ve
 
 ## Checks and release workflow
 
-The `portfolio-checks` GitHub Actions job runs installation, lint, the complete production build and shipping-HTML verification on pushes to `development` and pull requests into `development` or `main`.
+The `portfolio-checks` GitHub Actions job runs installation, lint, the complete production build and shipping-HTML verification on pushes to `development` and `main`, and pull requests into `development` or `main`.
 
-Work is prepared on `development` and reviewed in a pull request into `main`. Verify Vercel's Production branch and domain mapping before pushing. Approved releases use a regular merge commit; keep `development` and fast-forward it to `main` after release. Keep the existing hosting protections and custom-domain configuration unchanged during review.
+Prepare and validate work on `development` before publication to `main`. Use pull requests for review, or an explicitly authorized fast-forward release after the exact candidate passes CI. Keep both branches aligned after release. Verify the production deployment and live pages after publication; keep hosting protections and custom-domain configuration unchanged.
 
 ### Linting
 
