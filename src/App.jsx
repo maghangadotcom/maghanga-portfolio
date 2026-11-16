@@ -773,8 +773,9 @@ function CasePage({ study }) {
             Discuss similar needs <Arrow />
           </a>
           <p className="evidence-note">
-            This case study documents the work and selected screens. It does not
-            claim a measured conversion lift.
+            {study.id === "fifthray"
+              ? "Results shown are reported increases versus previous product-page versions. Screenshots document the implementation."
+              : "This case study documents the work and selected screens. It does not claim a measured conversion lift."}
           </p>
         </aside>
         <article>
