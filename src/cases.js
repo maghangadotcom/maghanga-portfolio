@@ -55,33 +55,38 @@ export const cases = [
     "role": "Shopify CRO Developer, contract, February–August 2026.",
     "context": "The product page needed to explain the offer and support quantity, subscription and one-time purchase decisions within the existing Shopify storefront. My work connected customer research and analytics investigation to the product form, its integrations and the cart.",
     "built": [
-      "Built out the product form on top of its existing Liquid implementation, including the above-the-fold experience and variant selection.",
-      "Ran 10+ tests before the final design across offer placement and hierarchy, messaging, an Instagram-style stories feature, subscription preselection and delivery expectations.",
-      "Built and designed the subscription widget using Skio, and integrated a third-party app for the Instagram-style stories feature.",
+      "Rebuilt the product form on its existing Liquid foundation using current Shopify theme conventions, with a focus on fast loading and a clear subscription-first design.",
+      "Ran 10+ tests before the final design using Intelligems, including theme, price and shipping tests across layout, offer hierarchy, messaging, subscription preselection and delivery expectations.",
+      "Designed, styled and configured the Skio subscription widget, and integrated Videowise for interactive, shoppable videos presented in an Instagram-style stories block.",
       "Replaced a third-party cart app with a native Liquid cart drawer to address paid-social traffic failures in in-app browsers.",
       "Investigated an observed 51% difference between GA4 and Shopify reporting and rebuilt the analytics implementation.",
       "Analysed 849+ customer reviews to create a customer-language bank for product-page content and the test roadmap."
     ],
-    "research": "10+ product-experience tests · 849+ customer reviews analysed",
+    "research": "10+ tests · 18%+ relative increase in product-page conversion rate · 16%+ increase in subscriptions on the product page versus previous versions",
     "gallery": [
       {
         "type": "browser",
-        "img": "fifthray-product-page",
-        "cap": "Fifth Ray product page with quantity selection, membership subscription and one-time purchase options."
+        "img": "fifthray-product-form-desktop",
+        "cap": "Rebuilt Liquid product form with offer hierarchy, quantity selection, shoppable stories and Skio purchase options."
       },
       {
-        "type": "browser",
-        "img": "fifthray-homepage",
-        "cap": "Fifth Ray homepage hero and storefront navigation."
+        "type": "phone",
+        "img": "fifthray-offers-mobile",
+        "cap": "Mobile stories block and quantity offers, with distinct pricing and offer messages."
       },
       {
-        "type": "browser",
-        "img": "fifthray-testimonials",
-        "cap": "Fifth Ray customer testimonial carousel."
+        "type": "phone",
+        "img": "fifthray-skio-mobile",
+        "cap": "Custom Skio subscription presentation, one-time purchase option and delivery expectations."
+      },
+      {
+        "type": "phone",
+        "img": "fifthray-videowise-mobile",
+        "cap": "Videowise shoppable video experience with an embedded product action."
       }
     ],
-    "implementation": "The existing Liquid product form was the foundation. The custom Skio subscription interface brought purchase options into that form, while the third-party stories app supplied the story experience beside the product content. I iterated on the presentation and selection experience through the test programme rather than treating the page as a one-off redesign.",
-    "constraint": "The product form already existed. I extended that Liquid foundation and integrated third-party functionality rather than creating a separate buying interface. The documented scope covers the storefront and integration layer; Skio and the stories app provide their own application services."
+    "implementation": "The existing Liquid product form was the foundation. I rebuilt its layout and purchase-option experience, designed and configured the Skio subscription widget, and integrated Videowise for interactive, shoppable videos. Intelligems supported theme, pricing and shipping experiments, connecting the implementation to an iterative test programme.",
+    "constraint": "The reported improvements compare the product-page experience with previous versions: an 18%+ relative increase in conversion rate and 16%+ increase in subscriptions on the product page. The work covered the Liquid storefront and integrations; Skio and Videowise supplied their respective application services."
   },
   {
     "id": "bluatlas",

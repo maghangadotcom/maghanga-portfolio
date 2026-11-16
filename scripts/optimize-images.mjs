@@ -21,6 +21,7 @@ const GALLERY = [
   'sup-lp-comparison', 'sup-checkout-upsell-mobile', 'sup-progress-rebuycart',
   'sup-quiz-lander-mobile', 'sup-review-slider', 'sup-testimonial-carousel-mobile',
   'fifthray-product-page', 'fifthray-homepage', 'fifthray-testimonials',
+  'fifthray-product-form-desktop', 'fifthray-offers-mobile', 'fifthray-skio-mobile', 'fifthray-videowise-mobile',
   'blu-hero', 'blu-vs-everyone', 'blu-subscription-widget',
   'blu-product-meta', 'blu-cart-progress-mobile', 'blu-popup-upsell-mobile',
   'bla-cart-upsell',
