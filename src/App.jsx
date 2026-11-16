@@ -201,9 +201,10 @@ function Hero() {
           </em>
         </h1>
         <p className="hero-intro">
-          I build Shopify storefronts, custom Liquid components and app-connected
-          buying flows. From theme architecture and subscriptions to cart
-          interactions, I connect hands-on development with end-to-end CRO.
+          I build the Shopify features your store needs to perform: custom themes,
+          Figma-to-Liquid landing pages, carts and integrations. Then I optimize
+          performance, test and refine the experience to help turn more visits
+          into customers.
         </p>
         <div className="actions">
           <a className="button" href="/work/">
